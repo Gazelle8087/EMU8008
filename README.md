@@ -140,6 +140,13 @@ Ryo MukaiさんがTangNanoで8008を動作させています。
 ASCIIARTのBASICソースもこちらからいただきました。  
 https://github.com/ryomuk/tangnano-5V/tree/main/applications/TangNano8008MEM
 
+## EMUZ80について
+
+Z80をPICで駆動するSBCで本製作の発想のベースとなってます。
+
+https://vintagechips.wordpress.com/2022/03/05/emuz80_reference/
+
+
 ## 変更履歴
 2025/07/26 Rev. 1.00 初回公開  
 
