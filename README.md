@@ -5,7 +5,9 @@ PICにてクロック生成 ROM/RAM UART および割込みコントローラー
 機能を実現し2チップ構成としました。  
 
 8088定格の500kHzで SCELBAL BASIC を動作させています。
+
 ![外観](https://github.com/Gazelle8087/EMU8008/blob/main/EMU8008%E9%83%A8%E5%93%81%E5%AE%9F%E8%A3%85%E4%BE%8B.jpg)
+
 ## ビルド環境
 PIC ファームウエア  
 IDE: MPLAB X v6.25  
@@ -16,6 +18,15 @@ Macro assembler  AS V1.42 Beta [Bld 290]
 
 PICのファームウエアのビルドに必要なファイルは  
 EMU8008.c と sc1.txt のみです。
+
+## プリント基板
+
+EMU8008_100.zipはJLCPCBに発注した基板データです。  
+設計時の配慮不足で、8008用のゼロプレッシャソケットのピンに対し穴が小さく  
+うまく入りません。スルーホール内面のメッキを残しつつリーマ加工が必要です。  
+
+![表](https://github.com/Gazelle8087/EMU8008/blob/main/EMU8008%E5%9F%BA%E6%9D%BF%E8%A1%A8%E9%9D%A2.jpg)
+![裏](https://github.com/Gazelle8087/EMU8008/blob/main/EMU8008%E5%9F%BA%E6%9D%BF%E8%A3%8F%E9%9D%A2.jpg)
 
 ## 回路の説明
 
