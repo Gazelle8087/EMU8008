@@ -5,7 +5,7 @@ PICにてクロック生成 ROM/RAM UART および割込みコントローラー
 機能を実現し2チップ構成としました。  
 
 8088定格の500kHzで SCELBAL BASIC を動作させています。
-
+![外観](https://github.com/Gazelle8087/EMU8008/blob/main/EMU8008%E9%83%A8%E5%93%81%E5%AE%9F%E8%A3%85%E4%BE%8B.jpg)
 ## ビルド環境
 PIC ファームウエア  
 IDE: MPLAB X v6.25  
