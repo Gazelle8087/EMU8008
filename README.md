@@ -142,8 +142,7 @@ https://github.com/ryomuk/tangnano-5V/tree/main/applications/TangNano8008MEM
 
 ## EMUZ80について
 
-Z80をPICで駆動するSBCで本製作の発想のベースとなってます。
-
+電脳伝説さん制作のZ80をPICで駆動するSBCで本製作の発想のベースとなってます。
 https://vintagechips.wordpress.com/2022/03/05/emuz80_reference/
 
 
