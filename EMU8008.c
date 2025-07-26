@@ -254,12 +254,6 @@ void main(void) {
 	TRISE		= 0xff;		// Set as input
 	WPUE		= 0xff;		// weak pull up
 
-//	LATA5		= 1;
-//	TRISA5		= 0;		// set READY
-
-//	LATC5		= 0;
-//	TRISC5		= 0;		// reset INT
-
 //======== Generate 2 pahse CPU clock using PWM ================================
 //	#define		Hispeed		// enable Hispeed for 8008-1
 

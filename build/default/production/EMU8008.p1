@@ -3042,68 +3042,83 @@ Version 4.0 HI-TECH Software Intermediate Code
 "255
 [; ;EMU8008.c: 255:  WPUE = 0xff;
 [e = _WPUE -> -> 255 `i `uc ]
-"266
-[; ;EMU8008.c: 266:  ANSELB5 = 0;
+"260
+[; ;EMU8008.c: 260:  ANSELB5 = 0;
 [e = _ANSELB5 -> -> 0 `i `b ]
-"267
-[; ;EMU8008.c: 267:  TRISB5 = 0;
+"261
+[; ;EMU8008.c: 261:  TRISB5 = 0;
 [e = _TRISB5 -> -> 0 `i `b ]
-"268
-[; ;EMU8008.c: 268:  RB5PPS = 0x18;
+"262
+[; ;EMU8008.c: 262:  RB5PPS = 0x18;
 [e = _RB5PPS -> -> 24 `i `uc ]
-"270
-[; ;EMU8008.c: 270:  ANSELB4 = 0;
+"264
+[; ;EMU8008.c: 264:  ANSELB4 = 0;
 [e = _ANSELB4 -> -> 0 `i `b ]
-"271
-[; ;EMU8008.c: 271:  TRISB4 = 0;
+"265
+[; ;EMU8008.c: 265:  TRISB4 = 0;
 [e = _TRISB4 -> -> 0 `i `b ]
-"272
-[; ;EMU8008.c: 272:  RB4PPS = 0x1A;
+"266
+[; ;EMU8008.c: 266:  RB4PPS = 0x1A;
 [e = _RB4PPS -> -> 26 `i `uc ]
-"274
-[; ;EMU8008.c: 274:  PWM1CON = 0x00;
+"268
+[; ;EMU8008.c: 268:  PWM1CON = 0x00;
 [e = _PWM1CON -> -> 0 `i `uc ]
-"275
-[; ;EMU8008.c: 275:  PWM2CON = 0x00;
+"269
+[; ;EMU8008.c: 269:  PWM2CON = 0x00;
 [e = _PWM2CON -> -> 0 `i `uc ]
-"276
-[; ;EMU8008.c: 276:  PWM1CLK = 0x02;
+"270
+[; ;EMU8008.c: 270:  PWM1CLK = 0x02;
 [e = _PWM1CLK -> -> 2 `i `uc ]
-"277
-[; ;EMU8008.c: 277:  PWM2CLK = 0x02;
+"271
+[; ;EMU8008.c: 271:  PWM2CLK = 0x02;
 [e = _PWM2CLK -> -> 2 `i `uc ]
-"278
-[; ;EMU8008.c: 278:  PWM1GIE = 0x00;
+"272
+[; ;EMU8008.c: 272:  PWM1GIE = 0x00;
 [e = _PWM1GIE -> -> 0 `i `uc ]
-"279
-[; ;EMU8008.c: 279:  PWM2GIE = 0x00;
+"273
+[; ;EMU8008.c: 273:  PWM2GIE = 0x00;
 [e = _PWM2GIE -> -> 0 `i `uc ]
-"280
-[; ;EMU8008.c: 280:  PWM1S1CFG = 0x00;
+"274
+[; ;EMU8008.c: 274:  PWM1S1CFG = 0x00;
 [e = _PWM1S1CFG -> -> 0 `i `uc ]
-"281
-[; ;EMU8008.c: 281:  PWM2S1CFG = 0x00;
+"275
+[; ;EMU8008.c: 275:  PWM2S1CFG = 0x00;
 [e = _PWM2S1CFG -> -> 0 `i `uc ]
-"288
-[; ;EMU8008.c: 288:  PWM1PR = 127;
+"282
+[; ;EMU8008.c: 282:  PWM1PR = 127;
 [e = _PWM1PR -> -> 127 `i `us ]
-"289
-[; ;EMU8008.c: 289:  PWM1S1P1 = 44;
+"283
+[; ;EMU8008.c: 283:  PWM1S1P1 = 44;
 [e = _PWM1S1P1 -> -> 44 `i `us ]
-"290
-[; ;EMU8008.c: 290:  PWM2S1P1 = 35;
+"284
+[; ;EMU8008.c: 284:  PWM2S1P1 = 35;
 [e = _PWM2S1P1 -> -> 35 `i `us ]
-"293
-[; ;EMU8008.c: 293:  PWM2PR = PWM1PR;
+"287
+[; ;EMU8008.c: 287:  PWM2PR = PWM1PR;
 [e = _PWM2PR _PWM1PR ]
-"294
-[; ;EMU8008.c: 294:  PWM1CON = 0x84;
+"288
+[; ;EMU8008.c: 288:  PWM1CON = 0x84;
 [e = _PWM1CON -> -> 132 `i `uc ]
+"289
+[; ;EMU8008.c: 289:  __nop();
+[e ( ___nop ..  ]
+"290
+[; ;EMU8008.c: 290:  __nop();
+[e ( ___nop ..  ]
+"291
+[; ;EMU8008.c: 291:  __nop();
+[e ( ___nop ..  ]
+"292
+[; ;EMU8008.c: 292:  __nop();
+[e ( ___nop ..  ]
+"293
+[; ;EMU8008.c: 293:  __nop();
+[e ( ___nop ..  ]
+"294
+[; ;EMU8008.c: 294:  __nop();
+[e ( ___nop ..  ]
 "295
 [; ;EMU8008.c: 295:  __nop();
-[e ( ___nop ..  ]
-"296
-[; ;EMU8008.c: 296:  __nop();
 [e ( ___nop ..  ]
 "297
 [; ;EMU8008.c: 297:  __nop();
@@ -3120,547 +3135,532 @@ Version 4.0 HI-TECH Software Intermediate Code
 "301
 [; ;EMU8008.c: 301:  __nop();
 [e ( ___nop ..  ]
+"302
+[; ;EMU8008.c: 302:  __nop();
+[e ( ___nop ..  ]
 "303
 [; ;EMU8008.c: 303:  __nop();
 [e ( ___nop ..  ]
 "304
 [; ;EMU8008.c: 304:  __nop();
 [e ( ___nop ..  ]
-"305
-[; ;EMU8008.c: 305:  __nop();
-[e ( ___nop ..  ]
 "306
-[; ;EMU8008.c: 306:  __nop();
-[e ( ___nop ..  ]
-"307
-[; ;EMU8008.c: 307:  __nop();
-[e ( ___nop ..  ]
-"308
-[; ;EMU8008.c: 308:  __nop();
-[e ( ___nop ..  ]
-"309
-[; ;EMU8008.c: 309:  __nop();
-[e ( ___nop ..  ]
-"310
-[; ;EMU8008.c: 310:  __nop();
-[e ( ___nop ..  ]
-"312
-[; ;EMU8008.c: 312:  PWM2CON = 0x84;
+[; ;EMU8008.c: 306:  PWM2CON = 0x84;
 [e = _PWM2CON -> -> 132 `i `uc ]
-"316
-[; ;EMU8008.c: 316:  CLCIN0PPS = 0x00;
+"310
+[; ;EMU8008.c: 310:  CLCIN0PPS = 0x00;
 [e = _CLCIN0PPS -> -> 0 `i `uc ]
-"317
-[; ;EMU8008.c: 317:  CLCIN1PPS = 0x01;
+"311
+[; ;EMU8008.c: 311:  CLCIN1PPS = 0x01;
 [e = _CLCIN1PPS -> -> 1 `i `uc ]
-"318
-[; ;EMU8008.c: 318:  CLCIN2PPS = 0x0C;
+"312
+[; ;EMU8008.c: 312:  CLCIN2PPS = 0x0C;
 [e = _CLCIN2PPS -> -> 12 `i `uc ]
-"319
-[; ;EMU8008.c: 319:  CLCIN3PPS = 0x0D;
+"313
+[; ;EMU8008.c: 313:  CLCIN3PPS = 0x0D;
 [e = _CLCIN3PPS -> -> 13 `i `uc ]
-"320
-[; ;EMU8008.c: 320:  CLCIN4PPS = 0x02;
+"314
+[; ;EMU8008.c: 314:  CLCIN4PPS = 0x02;
 [e = _CLCIN4PPS -> -> 2 `i `uc ]
-"322
-[; ;EMU8008.c: 322:  CLCIN6PPS = 0x0B;
+"316
+[; ;EMU8008.c: 316:  CLCIN6PPS = 0x0B;
 [e = _CLCIN6PPS -> -> 11 `i `uc ]
-"326
-[; ;EMU8008.c: 326:     CLCSELECT = 0;
+"320
+[; ;EMU8008.c: 320:     CLCSELECT = 0;
 [e = _CLCSELECT -> -> 0 `i `uc ]
-"328
-[; ;EMU8008.c: 328:  CLCnSEL0 = 6;
+"322
+[; ;EMU8008.c: 322:  CLCnSEL0 = 6;
 [e = _CLCnSEL0 -> -> 6 `i `uc ]
-"329
-[; ;EMU8008.c: 329:  CLCnSEL1 = 2;
+"323
+[; ;EMU8008.c: 323:  CLCnSEL1 = 2;
 [e = _CLCnSEL1 -> -> 2 `i `uc ]
-"330
-[; ;EMU8008.c: 330:  CLCnSEL2 = 53;
+"324
+[; ;EMU8008.c: 324:  CLCnSEL2 = 53;
 [e = _CLCnSEL2 -> -> 53 `i `uc ]
-"331
-[; ;EMU8008.c: 331:  CLCnSEL3 = 127;
+"325
+[; ;EMU8008.c: 325:  CLCnSEL3 = 127;
 [e = _CLCnSEL3 -> -> 127 `i `uc ]
+"327
+[; ;EMU8008.c: 327:  CLCnGLS0 = 1 + 4;
+[e = _CLCnGLS0 -> + -> 1 `i -> 4 `i `uc ]
+"328
+[; ;EMU8008.c: 328:  CLCnGLS1 = 0x20;
+[e = _CLCnGLS1 -> -> 32 `i `uc ]
+"329
+[; ;EMU8008.c: 329:  CLCnGLS2 = 0;
+[e = _CLCnGLS2 -> -> 0 `i `uc ]
+"330
+[; ;EMU8008.c: 330:  CLCnGLS3 = 0;
+[e = _CLCnGLS3 -> -> 0 `i `uc ]
+"332
+[; ;EMU8008.c: 332:  CLCnPOL = 0x00;
+[e = _CLCnPOL -> -> 0 `i `uc ]
 "333
-[; ;EMU8008.c: 333:  CLCnGLS0 = 1 + 4;
-[e = _CLCnGLS0 -> + -> 1 `i -> 4 `i `uc ]
-"334
-[; ;EMU8008.c: 334:  CLCnGLS1 = 0x20;
-[e = _CLCnGLS1 -> -> 32 `i `uc ]
-"335
-[; ;EMU8008.c: 335:  CLCnGLS2 = 0;
-[e = _CLCnGLS2 -> -> 0 `i `uc ]
+[; ;EMU8008.c: 333:  CLCnCON = 0x94;
+[e = _CLCnCON -> -> 148 `i `uc ]
 "336
-[; ;EMU8008.c: 336:  CLCnGLS3 = 0;
-[e = _CLCnGLS3 -> -> 0 `i `uc ]
-"338
-[; ;EMU8008.c: 338:  CLCnPOL = 0x00;
-[e = _CLCnPOL -> -> 0 `i `uc ]
-"339
-[; ;EMU8008.c: 339:  CLCnCON = 0x94;
-[e = _CLCnCON -> -> 148 `i `uc ]
-"342
-[; ;EMU8008.c: 342:  CLCSELECT = 1;
+[; ;EMU8008.c: 336:  CLCSELECT = 1;
 [e = _CLCSELECT -> -> 1 `i `uc ]
-"344
-[; ;EMU8008.c: 344:  CLCnSEL0 = 6;
+"338
+[; ;EMU8008.c: 338:  CLCnSEL0 = 6;
 [e = _CLCnSEL0 -> -> 6 `i `uc ]
-"345
-[; ;EMU8008.c: 345:  CLCnSEL1 = 2;
+"339
+[; ;EMU8008.c: 339:  CLCnSEL1 = 2;
 [e = _CLCnSEL1 -> -> 2 `i `uc ]
-"346
-[; ;EMU8008.c: 346:  CLCnSEL2 = 54;
+"340
+[; ;EMU8008.c: 340:  CLCnSEL2 = 54;
 [e = _CLCnSEL2 -> -> 54 `i `uc ]
-"347
-[; ;EMU8008.c: 347:  CLCnSEL3 = 127;
+"341
+[; ;EMU8008.c: 341:  CLCnSEL3 = 127;
 [e = _CLCnSEL3 -> -> 127 `i `uc ]
-"349
-[; ;EMU8008.c: 349:  CLCnGLS0 = 1 + 4;
+"343
+[; ;EMU8008.c: 343:  CLCnGLS0 = 1 + 4;
 [e = _CLCnGLS0 -> + -> 1 `i -> 4 `i `uc ]
-"350
-[; ;EMU8008.c: 350:  CLCnGLS1 = 0x20;
+"344
+[; ;EMU8008.c: 344:  CLCnGLS1 = 0x20;
 [e = _CLCnGLS1 -> -> 32 `i `uc ]
-"351
-[; ;EMU8008.c: 351:  CLCnGLS2 = 0;
+"345
+[; ;EMU8008.c: 345:  CLCnGLS2 = 0;
 [e = _CLCnGLS2 -> -> 0 `i `uc ]
-"352
-[; ;EMU8008.c: 352:  CLCnGLS3 = 0;
+"346
+[; ;EMU8008.c: 346:  CLCnGLS3 = 0;
 [e = _CLCnGLS3 -> -> 0 `i `uc ]
-"354
-[; ;EMU8008.c: 354:  CLCnPOL = 0x00;
+"348
+[; ;EMU8008.c: 348:  CLCnPOL = 0x00;
 [e = _CLCnPOL -> -> 0 `i `uc ]
-"355
-[; ;EMU8008.c: 355:  CLCnCON = 0x94;
+"349
+[; ;EMU8008.c: 349:  CLCnCON = 0x94;
 [e = _CLCnCON -> -> 148 `i `uc ]
-"358
-[; ;EMU8008.c: 358:     CLCSELECT = 2;
+"352
+[; ;EMU8008.c: 352:     CLCSELECT = 2;
 [e = _CLCSELECT -> -> 2 `i `uc ]
+"354
+[; ;EMU8008.c: 354:  CLCnSEL0 = 0;
+[e = _CLCnSEL0 -> -> 0 `i `uc ]
+"355
+[; ;EMU8008.c: 355:  CLCnSEL1 = 1;
+[e = _CLCnSEL1 -> -> 1 `i `uc ]
+"356
+[; ;EMU8008.c: 356:  CLCnSEL2 = 4;
+[e = _CLCnSEL2 -> -> 4 `i `uc ]
+"357
+[; ;EMU8008.c: 357:  CLCnSEL3 = 127;
+[e = _CLCnSEL3 -> -> 127 `i `uc ]
+"359
+[; ;EMU8008.c: 359:  CLCnGLS0 = 1;
+[e = _CLCnGLS0 -> -> 1 `i `uc ]
 "360
-[; ;EMU8008.c: 360:  CLCnSEL0 = 0;
-[e = _CLCnSEL0 -> -> 0 `i `uc ]
+[; ;EMU8008.c: 360:  CLCnGLS1 = 8;
+[e = _CLCnGLS1 -> -> 8 `i `uc ]
 "361
-[; ;EMU8008.c: 361:  CLCnSEL1 = 1;
-[e = _CLCnSEL1 -> -> 1 `i `uc ]
-"362
-[; ;EMU8008.c: 362:  CLCnSEL2 = 4;
-[e = _CLCnSEL2 -> -> 4 `i `uc ]
-"363
-[; ;EMU8008.c: 363:  CLCnSEL3 = 127;
-[e = _CLCnSEL3 -> -> 127 `i `uc ]
-"365
-[; ;EMU8008.c: 365:  CLCnGLS0 = 1;
-[e = _CLCnGLS0 -> -> 1 `i `uc ]
-"366
-[; ;EMU8008.c: 366:  CLCnGLS1 = 8;
-[e = _CLCnGLS1 -> -> 8 `i `uc ]
-"367
-[; ;EMU8008.c: 367:  CLCnGLS2 = 0x10;
+[; ;EMU8008.c: 361:  CLCnGLS2 = 0x10;
 [e = _CLCnGLS2 -> -> 16 `i `uc ]
+"362
+[; ;EMU8008.c: 362:  CLCnGLS3 = 0x40;
+[e = _CLCnGLS3 -> -> 64 `i `uc ]
+"364
+[; ;EMU8008.c: 364:  CLCnPOL = 0x00;
+[e = _CLCnPOL -> -> 0 `i `uc ]
+"365
+[; ;EMU8008.c: 365:  CLCnCON = 0x82;
+[e = _CLCnCON -> -> 130 `i `uc ]
 "368
-[; ;EMU8008.c: 368:  CLCnGLS3 = 0x40;
-[e = _CLCnGLS3 -> -> 64 `i `uc ]
-"370
-[; ;EMU8008.c: 370:  CLCnPOL = 0x00;
-[e = _CLCnPOL -> -> 0 `i `uc ]
-"371
-[; ;EMU8008.c: 371:  CLCnCON = 0x82;
-[e = _CLCnCON -> -> 130 `i `uc ]
-"374
-[; ;EMU8008.c: 374:  CLCSELECT = 3;
+[; ;EMU8008.c: 368:  CLCSELECT = 3;
 [e = _CLCSELECT -> -> 3 `i `uc ]
-"376
-[; ;EMU8008.c: 376:  CLCnSEL0 = 0;
+"370
+[; ;EMU8008.c: 370:  CLCnSEL0 = 0;
 [e = _CLCnSEL0 -> -> 0 `i `uc ]
-"377
-[; ;EMU8008.c: 377:  CLCnSEL1 = 1;
+"371
+[; ;EMU8008.c: 371:  CLCnSEL1 = 1;
 [e = _CLCnSEL1 -> -> 1 `i `uc ]
-"378
-[; ;EMU8008.c: 378:  CLCnSEL2 = 4;
+"372
+[; ;EMU8008.c: 372:  CLCnSEL2 = 4;
 [e = _CLCnSEL2 -> -> 4 `i `uc ]
-"379
-[; ;EMU8008.c: 379:  CLCnSEL3 = 127;
+"373
+[; ;EMU8008.c: 373:  CLCnSEL3 = 127;
 [e = _CLCnSEL3 -> -> 127 `i `uc ]
-"381
-[; ;EMU8008.c: 381:  CLCnGLS0 = 1;
+"375
+[; ;EMU8008.c: 375:  CLCnGLS0 = 1;
 [e = _CLCnGLS0 -> -> 1 `i `uc ]
-"382
-[; ;EMU8008.c: 382:  CLCnGLS1 = 8;
+"376
+[; ;EMU8008.c: 376:  CLCnGLS1 = 8;
 [e = _CLCnGLS1 -> -> 8 `i `uc ]
-"383
-[; ;EMU8008.c: 383:  CLCnGLS2 = 0x20;
+"377
+[; ;EMU8008.c: 377:  CLCnGLS2 = 0x20;
 [e = _CLCnGLS2 -> -> 32 `i `uc ]
-"384
-[; ;EMU8008.c: 384:  CLCnGLS3 = 0x40;
+"378
+[; ;EMU8008.c: 378:  CLCnGLS3 = 0x40;
 [e = _CLCnGLS3 -> -> 64 `i `uc ]
-"386
-[; ;EMU8008.c: 386:  CLCnPOL = 0x00;
+"380
+[; ;EMU8008.c: 380:  CLCnPOL = 0x00;
 [e = _CLCnPOL -> -> 0 `i `uc ]
-"387
-[; ;EMU8008.c: 387:  CLCnCON = 0x82;
+"381
+[; ;EMU8008.c: 381:  CLCnCON = 0x82;
 [e = _CLCnCON -> -> 130 `i `uc ]
-"391
-[; ;EMU8008.c: 391:  U3BRG = 416;
+"385
+[; ;EMU8008.c: 385:  U3BRG = 416;
 [e = _U3BRG -> -> 416 `i `us ]
-"392
-[; ;EMU8008.c: 392:  U3RXEN = 1;
+"386
+[; ;EMU8008.c: 386:  U3RXEN = 1;
 [e = _U3RXEN -> -> 1 `i `b ]
-"393
-[; ;EMU8008.c: 393:  U3TXEN = 1;
+"387
+[; ;EMU8008.c: 387:  U3TXEN = 1;
 [e = _U3TXEN -> -> 1 `i `b ]
-"396
-[; ;EMU8008.c: 396:  ANSELA7 = 0;
+"390
+[; ;EMU8008.c: 390:  ANSELA7 = 0;
 [e = _ANSELA7 -> -> 0 `i `b ]
-"397
-[; ;EMU8008.c: 397:  TRISA7 = 1;
+"391
+[; ;EMU8008.c: 391:  TRISA7 = 1;
 [e = _TRISA7 -> -> 1 `i `b ]
-"398
-[; ;EMU8008.c: 398:  U3RXPPS = 0x07;
+"392
+[; ;EMU8008.c: 392:  U3RXPPS = 0x07;
 [e = _U3RXPPS -> -> 7 `i `uc ]
-"401
-[; ;EMU8008.c: 401:  ANSELA6 = 0;
+"395
+[; ;EMU8008.c: 395:  ANSELA6 = 0;
 [e = _ANSELA6 -> -> 0 `i `b ]
-"402
-[; ;EMU8008.c: 402:  LATA6 = 1;
+"396
+[; ;EMU8008.c: 396:  LATA6 = 1;
 [e = _LATA6 -> -> 1 `i `b ]
-"403
-[; ;EMU8008.c: 403:  TRISA6 = 0;
+"397
+[; ;EMU8008.c: 397:  TRISA6 = 0;
 [e = _TRISA6 -> -> 0 `i `b ]
-"404
-[; ;EMU8008.c: 404:  RA6PPS = 0x26;
+"398
+[; ;EMU8008.c: 398:  RA6PPS = 0x26;
 [e = _RA6PPS -> -> 38 `i `uc ]
-"406
-[; ;EMU8008.c: 406:  U3ON = 1;
+"400
+[; ;EMU8008.c: 400:  U3ON = 1;
 [e = _U3ON -> -> 1 `i `b ]
-"408
-[; ;EMU8008.c: 408:  printf("\r\nEMU8008 clock speed %3.0fkHz\r\n",(float)64000/(PWM1PR+1));
+"402
+[; ;EMU8008.c: 402:  printf("\r\nEMU8008 clock speed %3.0fkHz\r\n",(float)64000/(PWM1PR+1));
 [e ( _printf , (. :s 1C -> / -> -> 64000 `l `f -> + -> _PWM1PR `ui -> -> 1 `i `ui `f `d ]
-"409
-[; ;EMU8008.c: 409:  printf("PWM1 -> RB5 -> PHI1 width %3.0f nsec\r\n",(float)PWM1S1P1*15.625);
+"403
+[; ;EMU8008.c: 403:  printf("PWM1 -> RB5 -> PHI1 width %3.0f nsec\r\n",(float)PWM1S1P1*15.625);
 [e ( _printf , (. :s 2C * -> -> _PWM1S1P1 `f `d .15.625 ]
-"410
-[; ;EMU8008.c: 410:  printf("PWM2 -> RB4 -> PHI2 width %3.0f nsec\r\n\r\n",(float)PWM2S1P1*15.625);
+"404
+[; ;EMU8008.c: 404:  printf("PWM2 -> RB4 -> PHI2 width %3.0f nsec\r\n\r\n",(float)PWM2S1P1*15.625);
 [e ( _printf , (. :s 3C * -> -> _PWM2S1P1 `f `d .15.625 ]
-"412
-[; ;EMU8008.c: 412:  for(i = 0; i < 0x1F00; i++) {
+"406
+[; ;EMU8008.c: 406:  for(i = 0; i < 0x1F00; i++) {
 {
 [e = _i -> -> 0 `i `ui ]
 [e $ < _i -> -> 7936 `i `ui 2411  ]
 [e $U 2412  ]
 [e :U 2411 ]
 {
-"413
-[; ;EMU8008.c: 413:   ram[i] = rom[i];
+"407
+[; ;EMU8008.c: 407:   ram[i] = rom[i];
 [e = *U + &U _ram * -> _i `ux -> -> # *U &U _ram `ui `ux *U + &U _rom * -> _i `ux -> -> # *U &U _rom `ui `ux ]
-"414
-[; ;EMU8008.c: 414:  }
+"408
+[; ;EMU8008.c: 408:  }
 }
 [e ++ _i -> -> 1 `i `ui ]
 [e $ < _i -> -> 7936 `i `ui 2411  ]
 [e :U 2412 ]
 }
-"417
-[; ;EMU8008.c: 417:     IVTLOCK = 0x55;
+"411
+[; ;EMU8008.c: 411:     IVTLOCK = 0x55;
 [e = _IVTLOCK -> -> 85 `i `uc ]
-"418
-[; ;EMU8008.c: 418:     IVTLOCK = 0xAA;
+"412
+[; ;EMU8008.c: 412:     IVTLOCK = 0xAA;
 [e = _IVTLOCK -> -> 170 `i `uc ]
-"419
-[; ;EMU8008.c: 419:     IVTLOCKbits.IVTLOCKED = 0x00;
+"413
+[; ;EMU8008.c: 413:     IVTLOCKbits.IVTLOCKED = 0x00;
 [e = . . _IVTLOCKbits 0 0 -> -> 0 `i `uc ]
-"422
-[; ;EMU8008.c: 422:     IVTBASE = 0x000008;
+"416
+[; ;EMU8008.c: 416:     IVTBASE = 0x000008;
 [e = _IVTBASE -> -> -> 8 `i `m `um ]
-"425
-[; ;EMU8008.c: 425:     IVTLOCK = 0x55;
+"419
+[; ;EMU8008.c: 419:     IVTLOCK = 0x55;
 [e = _IVTLOCK -> -> 85 `i `uc ]
-"426
-[; ;EMU8008.c: 426:     IVTLOCK = 0xAA;
+"420
+[; ;EMU8008.c: 420:     IVTLOCK = 0xAA;
 [e = _IVTLOCK -> -> 170 `i `uc ]
-"427
-[; ;EMU8008.c: 427:     IVTLOCKbits.IVTLOCKED = 0x01;
+"421
+[; ;EMU8008.c: 421:     IVTLOCKbits.IVTLOCKED = 0x01;
 [e = . . _IVTLOCKbits 0 0 -> -> 1 `i `uc ]
-"430
-[; ;EMU8008.c: 430:     CLC1IF = 0;
+"424
+[; ;EMU8008.c: 424:     CLC1IF = 0;
 [e = _CLC1IF -> -> 0 `i `b ]
-"431
-[; ;EMU8008.c: 431:     CLC2IF = 0;
+"425
+[; ;EMU8008.c: 425:     CLC2IF = 0;
 [e = _CLC2IF -> -> 0 `i `b ]
-"432
-[; ;EMU8008.c: 432:     CLC3IF = 0;
+"426
+[; ;EMU8008.c: 426:     CLC3IF = 0;
 [e = _CLC3IF -> -> 0 `i `b ]
-"433
-[; ;EMU8008.c: 433:     CLC4IF = 0;
+"427
+[; ;EMU8008.c: 427:     CLC4IF = 0;
 [e = _CLC4IF -> -> 0 `i `b ]
-"434
-[; ;EMU8008.c: 434:     CLC5IF = 0;
+"428
+[; ;EMU8008.c: 428:     CLC5IF = 0;
 [e = _CLC5IF -> -> 0 `i `b ]
-"435
-[; ;EMU8008.c: 435:     CLC6IF = 0;
+"429
+[; ;EMU8008.c: 429:     CLC6IF = 0;
 [e = _CLC6IF -> -> 0 `i `b ]
-"436
-[; ;EMU8008.c: 436:     CLC7IF = 0;
+"430
+[; ;EMU8008.c: 430:     CLC7IF = 0;
 [e = _CLC7IF -> -> 0 `i `b ]
-"437
-[; ;EMU8008.c: 437:     CLC8IF = 0;
+"431
+[; ;EMU8008.c: 431:     CLC8IF = 0;
 [e = _CLC8IF -> -> 0 `i `b ]
-"439
-[; ;EMU8008.c: 439:     CLC1IE = 1;
+"433
+[; ;EMU8008.c: 433:     CLC1IE = 1;
 [e = _CLC1IE -> -> 1 `i `b ]
-"440
-[; ;EMU8008.c: 440:     CLC2IE = 1;
+"434
+[; ;EMU8008.c: 434:     CLC2IE = 1;
 [e = _CLC2IE -> -> 1 `i `b ]
-"441
-[; ;EMU8008.c: 441:     CLC3IE = 0;
+"435
+[; ;EMU8008.c: 435:     CLC3IE = 0;
 [e = _CLC3IE -> -> 0 `i `b ]
-"442
-[; ;EMU8008.c: 442:     CLC4IE = 0;
+"436
+[; ;EMU8008.c: 436:     CLC4IE = 0;
 [e = _CLC4IE -> -> 0 `i `b ]
-"443
-[; ;EMU8008.c: 443:     CLC5IE = 0;
+"437
+[; ;EMU8008.c: 437:     CLC5IE = 0;
 [e = _CLC5IE -> -> 0 `i `b ]
-"444
-[; ;EMU8008.c: 444:     CLC6IE = 0;
+"438
+[; ;EMU8008.c: 438:     CLC6IE = 0;
 [e = _CLC6IE -> -> 0 `i `b ]
-"445
-[; ;EMU8008.c: 445:     CLC7IE = 0;
+"439
+[; ;EMU8008.c: 439:     CLC7IE = 0;
 [e = _CLC7IE -> -> 0 `i `b ]
-"446
-[; ;EMU8008.c: 446:     CLC8IE = 0;
+"440
+[; ;EMU8008.c: 440:     CLC8IE = 0;
 [e = _CLC8IE -> -> 0 `i `b ]
-"448
-[; ;EMU8008.c: 448:     GIE = 1;
+"442
+[; ;EMU8008.c: 442:     GIE = 1;
 [e = _GIE -> -> 1 `i `b ]
-"449
-[; ;EMU8008.c: 449:     BSR = 0;
+"443
+[; ;EMU8008.c: 443:     BSR = 0;
 [e = _BSR -> -> 0 `i `uc ]
-"450
-[; ;EMU8008.c: 450:     TBLPTRU = 1;
+"444
+[; ;EMU8008.c: 444:     TBLPTRU = 1;
 [e = _TBLPTRU -> -> 1 `i `uc ]
-"451
-[; ;EMU8008.c: 451:     CLCSELECT = 0;
+"445
+[; ;EMU8008.c: 445:     CLCSELECT = 0;
 [e = _CLCSELECT -> -> 0 `i `uc ]
-"454
-[; ;EMU8008.c: 454:  INTLOG = ram[0x42];
+"448
+[; ;EMU8008.c: 448:  INTLOG = ram[0x42];
 [e = _INTLOG *U + &U _ram * -> -> -> 66 `i `ui `ux -> -> # *U &U _ram `ui `ux ]
-"455
-[; ;EMU8008.c: 455:  INT_PC = ram[0x41];
+"449
+[; ;EMU8008.c: 449:  INT_PC = ram[0x41];
 [e = _INT_PC *U + &U _ram * -> -> -> 65 `i `ui `ux -> -> # *U &U _ram `ui `ux ]
-"456
-[; ;EMU8008.c: 456:  RC5 = 1;
+"450
+[; ;EMU8008.c: 450:  RC5 = 1;
 [e = _RC5 -> -> 1 `i `b ]
-"457
-[; ;EMU8008.c: 457:     while(1);
+"451
+[; ;EMU8008.c: 451:     while(1);
 [e :U 2415 ]
 [e :U 2414 ]
 [e $U 2415  ]
 [e :U 2416 ]
-"458
-[; ;EMU8008.c: 458: }
+"452
+[; ;EMU8008.c: 452: }
 [e :UE 2410 ]
 }
 [v $root$_T1_ISR `(v ~T0 @X0 0 e ]
-"460
-[; ;EMU8008.c: 460: void __attribute__((picinterrupt(("irq(CLC1),base(8)")))) T1_ISR(){
+"454
+[; ;EMU8008.c: 454: void __attribute__((picinterrupt(("irq(CLC1),base(8)")))) T1_ISR(){
 [v _T1_ISR `(v ~T2 @X0 1 ef ]
 {
 [e :U _T1_ISR ]
 [f ]
-"462
-[; ;EMU8008.c: 462:  CLC1IF = 0;
+"456
+[; ;EMU8008.c: 456:  CLC1IF = 0;
 [e = _CLC1IF -> -> 0 `i `b ]
-"463
-[; ;EMU8008.c: 463:  WREG = PORTD;
+"457
+[; ;EMU8008.c: 457:  WREG = PORTD;
 [e = _WREG _PORTD ]
-"464
-[; ;EMU8008.c: 464:  TBLPTRL = WREG;
+"458
+[; ;EMU8008.c: 458:  TBLPTRL = WREG;
 [e = _TBLPTRL _WREG ]
-"465
-[; ;EMU8008.c: 465:  FSR0L = WREG;
+"459
+[; ;EMU8008.c: 459:  FSR0L = WREG;
 [e = _FSR0L _WREG ]
-"467
-[; ;EMU8008.c: 467:  while (!RB3);
+"461
+[; ;EMU8008.c: 461:  while (!RB3);
 [e $U 2418  ]
 [e :U 2419 ]
 [e :U 2418 ]
 [e $ ! _RB3 2419  ]
 [e :U 2420 ]
-"468
-[; ;EMU8008.c: 468:  while (RB3);
+"462
+[; ;EMU8008.c: 462:  while (RB3);
 [e $U 2421  ]
 [e :U 2422 ]
 [e :U 2421 ]
 [e $ _RB3 2422  ]
 [e :U 2423 ]
-"470
-[; ;EMU8008.c: 470:  WREG = PORTD;
+"464
+[; ;EMU8008.c: 464:  WREG = PORTD;
 [e = _WREG _PORTD ]
-"471
-[; ;EMU8008.c: 471:  T2_addr = WREG;
+"465
+[; ;EMU8008.c: 465:  T2_addr = WREG;
 [e = _T2_addr _WREG ]
-"472
-[; ;EMU8008.c: 472:  TBLPTRH = WREG & 0x3f;
+"466
+[; ;EMU8008.c: 466:  TBLPTRH = WREG & 0x3f;
 [e = _TBLPTRH -> & -> _WREG `i -> 63 `i `uc ]
-"473
-[; ;EMU8008.c: 473:  FSR0H = TBLPTRH + 6;
+"467
+[; ;EMU8008.c: 467:  FSR0H = TBLPTRH + 6;
 [e = _FSR0H -> + -> _TBLPTRH `i -> 6 `i `uc ]
-"475
-[; ;EMU8008.c: 475:  if (!(T2_addr & 0b01000000)){
+"469
+[; ;EMU8008.c: 469:  if (!(T2_addr & 0b01000000)){
 [e $ ! ! != & -> _T2_addr `i -> 64 `i -> 0 `i 2424  ]
 {
-"476
-[; ;EMU8008.c: 476:   if (TBLPTRH >= (0x1F00/0x100)){
+"470
+[; ;EMU8008.c: 470:   if (TBLPTRH >= (0x1F00/0x100)){
 [e $ ! >= -> _TBLPTRH `i / -> 7936 `i -> 256 `i 2425  ]
 {
-"477
-[; ;EMU8008.c: 477:    __asm("tblrd	*			\n" "movff	TABLAT,LATD	\n");
+"471
+[; ;EMU8008.c: 471:    __asm("tblrd	*			\n" "movff	TABLAT,LATD	\n");
 [; <" tblrd	*			 ;# ">
 [; <" movff	TABLAT,LATD	 ;# ">
-"479
-[; ;EMU8008.c: 479:   }
+"473
+[; ;EMU8008.c: 473:   }
 }
 [e $U 2426  ]
-"480
-[; ;EMU8008.c: 480:   else {
+"474
+[; ;EMU8008.c: 474:   else {
 [e :U 2425 ]
 {
-"481
-[; ;EMU8008.c: 481:    __asm("movff	indf0,LATD	\n");
+"475
+[; ;EMU8008.c: 475:    __asm("movff	indf0,LATD	\n");
 [; <" movff	indf0,LATD	 ;# ">
-"482
-[; ;EMU8008.c: 482:   }
+"476
+[; ;EMU8008.c: 476:   }
 }
 [e :U 2426 ]
-"484
-[; ;EMU8008.c: 484:   while (!RB5);
+"478
+[; ;EMU8008.c: 478:   while (!RB5);
 [e $U 2427  ]
 [e :U 2428 ]
 [e :U 2427 ]
 [e $ ! _RB5 2428  ]
 [e :U 2429 ]
-"486
-[; ;EMU8008.c: 486:   TRISD = 0x00;
+"480
+[; ;EMU8008.c: 480:   TRISD = 0x00;
 [e = _TRISD -> -> 0 `i `uc ]
-"487
-[; ;EMU8008.c: 487:   while (RB3);
+"481
+[; ;EMU8008.c: 481:   while (RB3);
 [e $U 2430  ]
 [e :U 2431 ]
 [e :U 2430 ]
 [e $ _RB3 2431  ]
 [e :U 2432 ]
-"488
-[; ;EMU8008.c: 488:   TRISD = 0xff;
+"482
+[; ;EMU8008.c: 482:   TRISD = 0xff;
 [e = _TRISD -> -> 255 `i `uc ]
-"489
-[; ;EMU8008.c: 489:  }
+"483
+[; ;EMU8008.c: 483:  }
 }
 [e $U 2433  ]
-"490
-[; ;EMU8008.c: 490:  else if (!(T2_addr & 0b10000000)){
+"484
+[; ;EMU8008.c: 484:  else if (!(T2_addr & 0b10000000)){
 [e :U 2424 ]
 [e $ ! ! != & -> _T2_addr `i -> 128 `i -> 0 `i 2434  ]
 {
-"492
-[; ;EMU8008.c: 492:   switch (T2_addr){
+"486
+[; ;EMU8008.c: 486:   switch (T2_addr){
 [e $U 2436  ]
 {
-"494
-[; ;EMU8008.c: 494:    case (0x41):
+"488
+[; ;EMU8008.c: 488:    case (0x41):
 [e :U 2437 ]
-"495
-[; ;EMU8008.c: 495:     LATD = PIR9;
+"489
+[; ;EMU8008.c: 489:     LATD = PIR9;
 [e = _LATD _PIR9 ]
-"497
-[; ;EMU8008.c: 497:     while (!RB5);
+"491
+[; ;EMU8008.c: 491:     while (!RB5);
 [e $U 2438  ]
 [e :U 2439 ]
 [e :U 2438 ]
 [e $ ! _RB5 2439  ]
 [e :U 2440 ]
-"499
-[; ;EMU8008.c: 499:     TRISD = 0x00;
+"493
+[; ;EMU8008.c: 493:     TRISD = 0x00;
 [e = _TRISD -> -> 0 `i `uc ]
-"500
-[; ;EMU8008.c: 500:     while (RB3);
+"494
+[; ;EMU8008.c: 494:     while (RB3);
 [e $U 2441  ]
 [e :U 2442 ]
 [e :U 2441 ]
 [e $ _RB3 2442  ]
 [e :U 2443 ]
-"501
-[; ;EMU8008.c: 501:     TRISD = 0xff;
+"495
+[; ;EMU8008.c: 495:     TRISD = 0xff;
 [e = _TRISD -> -> 255 `i `uc ]
-"502
-[; ;EMU8008.c: 502:     break;
+"496
+[; ;EMU8008.c: 496:     break;
 [e $U 2435  ]
-"504
-[; ;EMU8008.c: 504:    case (0x43):
+"498
+[; ;EMU8008.c: 498:    case (0x43):
 [e :U 2444 ]
-"505
-[; ;EMU8008.c: 505:     LATD = U3RXB;
+"499
+[; ;EMU8008.c: 499:     LATD = U3RXB;
 [e = _LATD _U3RXB ]
-"507
-[; ;EMU8008.c: 507:     while (!RB5);
+"501
+[; ;EMU8008.c: 501:     while (!RB5);
 [e $U 2445  ]
 [e :U 2446 ]
 [e :U 2445 ]
 [e $ ! _RB5 2446  ]
 [e :U 2447 ]
-"509
-[; ;EMU8008.c: 509:     TRISD = 0x00;
+"503
+[; ;EMU8008.c: 503:     TRISD = 0x00;
 [e = _TRISD -> -> 0 `i `uc ]
-"510
-[; ;EMU8008.c: 510:     while (RB3);
+"504
+[; ;EMU8008.c: 504:     while (RB3);
 [e $U 2448  ]
 [e :U 2449 ]
 [e :U 2448 ]
 [e $ _RB3 2449  ]
 [e :U 2450 ]
-"511
-[; ;EMU8008.c: 511:     TRISD = 0xff;
+"505
+[; ;EMU8008.c: 505:     TRISD = 0xff;
 [e = _TRISD -> -> 255 `i `uc ]
+"506
+[; ;EMU8008.c: 506:     break;
+[e $U 2435  ]
+"508
+[; ;EMU8008.c: 508:    case (0x51):
+[e :U 2451 ]
+"509
+[; ;EMU8008.c: 509:     RC5 = 1;
+[e = _RC5 -> -> 1 `i `b ]
+"510
+[; ;EMU8008.c: 510:     INT_PC = ram[0x41];
+[e = _INT_PC *U + &U _ram * -> -> -> 65 `i `ui `ux -> -> # *U &U _ram `ui `ux ]
+"511
+[; ;EMU8008.c: 511:     INTLOG = ram[0x42];
+[e = _INTLOG *U + &U _ram * -> -> -> 66 `i `ui `ux -> -> # *U &U _ram `ui `ux ]
 "512
 [; ;EMU8008.c: 512:     break;
 [e $U 2435  ]
 "514
-[; ;EMU8008.c: 514:    case (0x51):
-[e :U 2451 ]
-"515
-[; ;EMU8008.c: 515:     RC5 = 1;
-[e = _RC5 -> -> 1 `i `b ]
-"516
-[; ;EMU8008.c: 516:     INT_PC = ram[0x41];
-[e = _INT_PC *U + &U _ram * -> -> -> 65 `i `ui `ux -> -> # *U &U _ram `ui `ux ]
-"517
-[; ;EMU8008.c: 517:     INTLOG = ram[0x42];
-[e = _INTLOG *U + &U _ram * -> -> -> 66 `i `ui `ux -> -> # *U &U _ram `ui `ux ]
-"518
-[; ;EMU8008.c: 518:     break;
-[e $U 2435  ]
-"520
-[; ;EMU8008.c: 520:    case (0x53):
+[; ;EMU8008.c: 514:    case (0x53):
 [e :U 2452 ]
-"521
-[; ;EMU8008.c: 521:     RC5 = 0;
+"515
+[; ;EMU8008.c: 515:     RC5 = 0;
 [e = _RC5 -> -> 0 `i `b ]
+"516
+[; ;EMU8008.c: 516:     break;
+[e $U 2435  ]
+"518
+[; ;EMU8008.c: 518:    case (0x61):
+[e :U 2453 ]
+"519
+[; ;EMU8008.c: 519:     U3TXB = TBLPTRL;
+[e = _U3TXB _TBLPTRL ]
+"520
+[; ;EMU8008.c: 520:     break;
+[e $U 2435  ]
 "522
-[; ;EMU8008.c: 522:     break;
+[; ;EMU8008.c: 522:    default:
+[e :U 2454 ]
+"523
+[; ;EMU8008.c: 523:     break;
 [e $U 2435  ]
 "524
-[; ;EMU8008.c: 524:    case (0x61):
-[e :U 2453 ]
-"525
-[; ;EMU8008.c: 525:     U3TXB = TBLPTRL;
-[e = _U3TXB _TBLPTRL ]
-"526
-[; ;EMU8008.c: 526:     break;
-[e $U 2435  ]
-"528
-[; ;EMU8008.c: 528:    default:
-[e :U 2454 ]
-"529
-[; ;EMU8008.c: 529:     break;
-[e $U 2435  ]
-"530
-[; ;EMU8008.c: 530:   }
+[; ;EMU8008.c: 524:   }
 }
 [e $U 2435  ]
 [e :U 2436 ]
@@ -3671,274 +3671,274 @@ Version 4.0 HI-TECH Software Intermediate Code
  , $ -> 97 `i 2453
  2454 ]
 [e :U 2435 ]
-"531
-[; ;EMU8008.c: 531:  }
+"525
+[; ;EMU8008.c: 525:  }
 }
 [e $U 2455  ]
-"532
-[; ;EMU8008.c: 532:  else if (TBLPTRH < 0x1F00/0x100){
+"526
+[; ;EMU8008.c: 526:  else if (TBLPTRH < 0x1F00/0x100){
 [e :U 2434 ]
 [e $ ! < -> _TBLPTRH `i / -> 7936 `i -> 256 `i 2456  ]
 {
-"534
-[; ;EMU8008.c: 534:   while (!RB3);
+"528
+[; ;EMU8008.c: 528:   while (!RB3);
 [e $U 2457  ]
 [e :U 2458 ]
 [e :U 2457 ]
 [e $ ! _RB3 2458  ]
 [e :U 2459 ]
-"535
-[; ;EMU8008.c: 535:   while (RB3);
+"529
+[; ;EMU8008.c: 529:   while (RB3);
 [e $U 2460  ]
 [e :U 2461 ]
 [e :U 2460 ]
 [e $ _RB3 2461  ]
 [e :U 2462 ]
-"537
-[; ;EMU8008.c: 537:   __asm("movff	PORTD,indf0	\n");
+"531
+[; ;EMU8008.c: 531:   __asm("movff	PORTD,indf0	\n");
 [; <" movff	PORTD,indf0	 ;# ">
-"538
-[; ;EMU8008.c: 538:  }
+"532
+[; ;EMU8008.c: 532:  }
 }
 [e :U 2456 ]
 [e :U 2455 ]
 [e :U 2433 ]
-"539
-[; ;EMU8008.c: 539: }
+"533
+[; ;EMU8008.c: 533: }
 [e :UE 2417 ]
 }
 [v $root$_T1I_ISR `(v ~T0 @X0 0 e ]
-"541
-[; ;EMU8008.c: 541: void __attribute__((picinterrupt(("irq(CLC2),base(8)")))) T1I_ISR(){
+"535
+[; ;EMU8008.c: 535: void __attribute__((picinterrupt(("irq(CLC2),base(8)")))) T1I_ISR(){
 [v _T1I_ISR `(v ~T3 @X0 1 ef ]
 {
 [e :U _T1I_ISR ]
 [f ]
-"544
-[; ;EMU8008.c: 544:  CLC2IF = 0;
+"538
+[; ;EMU8008.c: 538:  CLC2IF = 0;
 [e = _CLC2IF -> -> 0 `i `b ]
-"545
-[; ;EMU8008.c: 545:  WREG = PORTD;
+"539
+[; ;EMU8008.c: 539:  WREG = PORTD;
 [e = _WREG _PORTD ]
-"546
-[; ;EMU8008.c: 546:  TBLPTRL = WREG;
+"540
+[; ;EMU8008.c: 540:  TBLPTRL = WREG;
 [e = _TBLPTRL _WREG ]
-"547
-[; ;EMU8008.c: 547:  FSR0L = WREG;
+"541
+[; ;EMU8008.c: 541:  FSR0L = WREG;
 [e = _FSR0L _WREG ]
-"548
-[; ;EMU8008.c: 548:  ram[INTLOG] = WREG;
+"542
+[; ;EMU8008.c: 542:  ram[INTLOG] = WREG;
 [e = *U + &U _ram * -> _INTLOG `ux -> -> # *U &U _ram `ui `ux _WREG ]
-"549
-[; ;EMU8008.c: 549:  INTLOG++;
+"543
+[; ;EMU8008.c: 543:  INTLOG++;
 [e ++ _INTLOG -> -> 1 `i `uc ]
-"551
-[; ;EMU8008.c: 551:  while (!RB3);
+"545
+[; ;EMU8008.c: 545:  while (!RB3);
 [e $U 2464  ]
 [e :U 2465 ]
 [e :U 2464 ]
 [e $ ! _RB3 2465  ]
 [e :U 2466 ]
-"552
-[; ;EMU8008.c: 552:  while (RB3);
+"546
+[; ;EMU8008.c: 546:  while (RB3);
 [e $U 2467  ]
 [e :U 2468 ]
 [e :U 2467 ]
 [e $ _RB3 2468  ]
 [e :U 2469 ]
-"554
-[; ;EMU8008.c: 554:  WREG = PORTD;
+"548
+[; ;EMU8008.c: 548:  WREG = PORTD;
 [e = _WREG _PORTD ]
-"555
-[; ;EMU8008.c: 555:  T2_addr = WREG;
+"549
+[; ;EMU8008.c: 549:  T2_addr = WREG;
 [e = _T2_addr _WREG ]
-"556
-[; ;EMU8008.c: 556:  TBLPTRH = WREG & 0x3f;
+"550
+[; ;EMU8008.c: 550:  TBLPTRH = WREG & 0x3f;
 [e = _TBLPTRH -> & -> _WREG `i -> 63 `i `uc ]
-"557
-[; ;EMU8008.c: 557:  FSR0H = TBLPTRH + 6;
+"551
+[; ;EMU8008.c: 551:  FSR0H = TBLPTRH + 6;
 [e = _FSR0H -> + -> _TBLPTRH `i -> 6 `i `uc ]
-"559
-[; ;EMU8008.c: 559:  if (!(T2_addr & 0b01000000)){
+"553
+[; ;EMU8008.c: 553:  if (!(T2_addr & 0b01000000)){
 [e $ ! ! != & -> _T2_addr `i -> 64 `i -> 0 `i 2470  ]
 {
-"561
-[; ;EMU8008.c: 561:   LATD = ram[INT_PC];
+"555
+[; ;EMU8008.c: 555:   LATD = ram[INT_PC];
 [e = _LATD *U + &U _ram * -> _INT_PC `ux -> -> # *U &U _ram `ui `ux ]
-"562
-[; ;EMU8008.c: 562:   INT_PC++;
+"556
+[; ;EMU8008.c: 556:   INT_PC++;
 [e ++ _INT_PC -> -> 1 `i `uc ]
-"564
-[; ;EMU8008.c: 564:   while (!RB5);
+"558
+[; ;EMU8008.c: 558:   while (!RB5);
 [e $U 2471  ]
 [e :U 2472 ]
 [e :U 2471 ]
 [e $ ! _RB5 2472  ]
 [e :U 2473 ]
-"566
-[; ;EMU8008.c: 566:   TRISD = 0x00;
+"560
+[; ;EMU8008.c: 560:   TRISD = 0x00;
 [e = _TRISD -> -> 0 `i `uc ]
-"567
-[; ;EMU8008.c: 567:   ram[INTLOG] = T2_addr;
+"561
+[; ;EMU8008.c: 561:   ram[INTLOG] = T2_addr;
 [e = *U + &U _ram * -> _INTLOG `ux -> -> # *U &U _ram `ui `ux _T2_addr ]
-"568
-[; ;EMU8008.c: 568:   INTLOG++;
+"562
+[; ;EMU8008.c: 562:   INTLOG++;
 [e ++ _INTLOG -> -> 1 `i `uc ]
-"569
-[; ;EMU8008.c: 569:   while (RB3);
+"563
+[; ;EMU8008.c: 563:   while (RB3);
 [e $U 2474  ]
 [e :U 2475 ]
 [e :U 2474 ]
 [e $ _RB3 2475  ]
 [e :U 2476 ]
-"570
-[; ;EMU8008.c: 570:   TRISD = 0xff;
+"564
+[; ;EMU8008.c: 564:   TRISD = 0xff;
 [e = _TRISD -> -> 255 `i `uc ]
-"571
-[; ;EMU8008.c: 571:  }
+"565
+[; ;EMU8008.c: 565:  }
 }
 [e $U 2477  ]
-"572
-[; ;EMU8008.c: 572:  else if (!(T2_addr & 0b10000000)){
+"566
+[; ;EMU8008.c: 566:  else if (!(T2_addr & 0b10000000)){
 [e :U 2470 ]
 [e $ ! ! != & -> _T2_addr `i -> 128 `i -> 0 `i 2478  ]
 {
-"574
-[; ;EMU8008.c: 574:   switch (T2_addr){
+"568
+[; ;EMU8008.c: 568:   switch (T2_addr){
 [e $U 2480  ]
 {
-"576
-[; ;EMU8008.c: 576:    case (0x41):
+"570
+[; ;EMU8008.c: 570:    case (0x41):
 [e :U 2481 ]
-"577
-[; ;EMU8008.c: 577:     LATD = PIR9;
+"571
+[; ;EMU8008.c: 571:     LATD = PIR9;
 [e = _LATD _PIR9 ]
-"579
-[; ;EMU8008.c: 579:     while (!RB5);
+"573
+[; ;EMU8008.c: 573:     while (!RB5);
 [e $U 2482  ]
 [e :U 2483 ]
 [e :U 2482 ]
 [e $ ! _RB5 2483  ]
 [e :U 2484 ]
-"581
-[; ;EMU8008.c: 581:     TRISD = 0x00;
+"575
+[; ;EMU8008.c: 575:     TRISD = 0x00;
 [e = _TRISD -> -> 0 `i `uc ]
-"582
-[; ;EMU8008.c: 582:     ram[INTLOG] = T2_addr;
+"576
+[; ;EMU8008.c: 576:     ram[INTLOG] = T2_addr;
 [e = *U + &U _ram * -> _INTLOG `ux -> -> # *U &U _ram `ui `ux _T2_addr ]
-"583
-[; ;EMU8008.c: 583:     INTLOG++;
+"577
+[; ;EMU8008.c: 577:     INTLOG++;
 [e ++ _INTLOG -> -> 1 `i `uc ]
-"584
-[; ;EMU8008.c: 584:     while (RB3);
+"578
+[; ;EMU8008.c: 578:     while (RB3);
 [e $U 2485  ]
 [e :U 2486 ]
 [e :U 2485 ]
 [e $ _RB3 2486  ]
 [e :U 2487 ]
-"585
-[; ;EMU8008.c: 585:     TRISD = 0xff;
+"579
+[; ;EMU8008.c: 579:     TRISD = 0xff;
 [e = _TRISD -> -> 255 `i `uc ]
-"586
-[; ;EMU8008.c: 586:     break;
+"580
+[; ;EMU8008.c: 580:     break;
 [e $U 2479  ]
-"588
-[; ;EMU8008.c: 588:    case (0x43):
+"582
+[; ;EMU8008.c: 582:    case (0x43):
 [e :U 2488 ]
-"589
-[; ;EMU8008.c: 589:     LATD = U3RXB;
+"583
+[; ;EMU8008.c: 583:     LATD = U3RXB;
 [e = _LATD _U3RXB ]
-"591
-[; ;EMU8008.c: 591:     while (!RB5);
+"585
+[; ;EMU8008.c: 585:     while (!RB5);
 [e $U 2489  ]
 [e :U 2490 ]
 [e :U 2489 ]
 [e $ ! _RB5 2490  ]
 [e :U 2491 ]
-"593
-[; ;EMU8008.c: 593:     TRISD = 0x00;
+"587
+[; ;EMU8008.c: 587:     TRISD = 0x00;
 [e = _TRISD -> -> 0 `i `uc ]
-"594
-[; ;EMU8008.c: 594:     ram[INTLOG] = T2_addr;
+"588
+[; ;EMU8008.c: 588:     ram[INTLOG] = T2_addr;
 [e = *U + &U _ram * -> _INTLOG `ux -> -> # *U &U _ram `ui `ux _T2_addr ]
-"595
-[; ;EMU8008.c: 595:     INTLOG++;
+"589
+[; ;EMU8008.c: 589:     INTLOG++;
 [e ++ _INTLOG -> -> 1 `i `uc ]
-"596
-[; ;EMU8008.c: 596:     while (RB3);
+"590
+[; ;EMU8008.c: 590:     while (RB3);
 [e $U 2492  ]
 [e :U 2493 ]
 [e :U 2492 ]
 [e $ _RB3 2493  ]
 [e :U 2494 ]
-"597
-[; ;EMU8008.c: 597:     TRISD = 0xff;
+"591
+[; ;EMU8008.c: 591:     TRISD = 0xff;
 [e = _TRISD -> -> 255 `i `uc ]
+"592
+[; ;EMU8008.c: 592:     break;
+[e $U 2479  ]
+"594
+[; ;EMU8008.c: 594:    case (0x51):
+[e :U 2495 ]
+"595
+[; ;EMU8008.c: 595:     ram[INTLOG] = T2_addr;
+[e = *U + &U _ram * -> _INTLOG `ux -> -> # *U &U _ram `ui `ux _T2_addr ]
+"596
+[; ;EMU8008.c: 596:     INTLOG++;
+[e ++ _INTLOG -> -> 1 `i `uc ]
+"597
+[; ;EMU8008.c: 597:     RC5 = 1;
+[e = _RC5 -> -> 1 `i `b ]
 "598
 [; ;EMU8008.c: 598:     break;
 [e $U 2479  ]
 "600
-[; ;EMU8008.c: 600:    case (0x51):
-[e :U 2495 ]
-"601
-[; ;EMU8008.c: 601:     ram[INTLOG] = T2_addr;
-[e = *U + &U _ram * -> _INTLOG `ux -> -> # *U &U _ram `ui `ux _T2_addr ]
-"602
-[; ;EMU8008.c: 602:     INTLOG++;
-[e ++ _INTLOG -> -> 1 `i `uc ]
-"603
-[; ;EMU8008.c: 603:     RC5 = 1;
-[e = _RC5 -> -> 1 `i `b ]
-"604
-[; ;EMU8008.c: 604:     break;
-[e $U 2479  ]
-"606
-[; ;EMU8008.c: 606:    case (0x53):
+[; ;EMU8008.c: 600:    case (0x53):
 [e :U 2496 ]
-"607
-[; ;EMU8008.c: 607:     RC5 = 0;
+"601
+[; ;EMU8008.c: 601:     RC5 = 0;
 [e = _RC5 -> -> 0 `i `b ]
-"608
-[; ;EMU8008.c: 608:     ram[INTLOG] = T2_addr;
+"602
+[; ;EMU8008.c: 602:     ram[INTLOG] = T2_addr;
 [e = *U + &U _ram * -> _INTLOG `ux -> -> # *U &U _ram `ui `ux _T2_addr ]
-"609
-[; ;EMU8008.c: 609:     INTLOG = ram[0x42];
+"603
+[; ;EMU8008.c: 603:     INTLOG = ram[0x42];
 [e = _INTLOG *U + &U _ram * -> -> -> 66 `i `ui `ux -> -> # *U &U _ram `ui `ux ]
-"610
-[; ;EMU8008.c: 610:     INT_PC = ram[0x41];
+"604
+[; ;EMU8008.c: 604:     INT_PC = ram[0x41];
 [e = _INT_PC *U + &U _ram * -> -> -> 65 `i `ui `ux -> -> # *U &U _ram `ui `ux ]
+"605
+[; ;EMU8008.c: 605:     break;
+[e $U 2479  ]
+"607
+[; ;EMU8008.c: 607:    case (0x61):
+[e :U 2497 ]
+"608
+[; ;EMU8008.c: 608:     U3TXB = TBLPTRL;
+[e = _U3TXB _TBLPTRL ]
+"609
+[; ;EMU8008.c: 609:     ram[INTLOG] = T2_addr;
+[e = *U + &U _ram * -> _INTLOG `ux -> -> # *U &U _ram `ui `ux _T2_addr ]
+"610
+[; ;EMU8008.c: 610:     INTLOG++;
+[e ++ _INTLOG -> -> 1 `i `uc ]
 "611
 [; ;EMU8008.c: 611:     break;
 [e $U 2479  ]
 "613
-[; ;EMU8008.c: 613:    case (0x61):
-[e :U 2497 ]
-"614
-[; ;EMU8008.c: 614:     U3TXB = TBLPTRL;
-[e = _U3TXB _TBLPTRL ]
-"615
-[; ;EMU8008.c: 615:     ram[INTLOG] = T2_addr;
-[e = *U + &U _ram * -> _INTLOG `ux -> -> # *U &U _ram `ui `ux _T2_addr ]
-"616
-[; ;EMU8008.c: 616:     INTLOG++;
-[e ++ _INTLOG -> -> 1 `i `uc ]
-"617
-[; ;EMU8008.c: 617:     break;
-[e $U 2479  ]
-"619
-[; ;EMU8008.c: 619:    default:
+[; ;EMU8008.c: 613:    default:
 [e :U 2498 ]
-"620
-[; ;EMU8008.c: 620:     ram[INTLOG] = T2_addr;
+"614
+[; ;EMU8008.c: 614:     ram[INTLOG] = T2_addr;
 [e = *U + &U _ram * -> _INTLOG `ux -> -> # *U &U _ram `ui `ux _T2_addr ]
-"621
-[; ;EMU8008.c: 621:     INTLOG++;
+"615
+[; ;EMU8008.c: 615:     INTLOG++;
 [e ++ _INTLOG -> -> 1 `i `uc ]
-"622
-[; ;EMU8008.c: 622:     break;
+"616
+[; ;EMU8008.c: 616:     break;
 [e $U 2479  ]
-"623
-[; ;EMU8008.c: 623:   }
+"617
+[; ;EMU8008.c: 617:   }
 }
 [e $U 2479  ]
 [e :U 2480 ]
@@ -3949,64 +3949,64 @@ Version 4.0 HI-TECH Software Intermediate Code
  , $ -> 97 `i 2497
  2498 ]
 [e :U 2479 ]
-"624
-[; ;EMU8008.c: 624:  }
+"618
+[; ;EMU8008.c: 618:  }
 }
 [e $U 2499  ]
-"625
-[; ;EMU8008.c: 625:  else if (TBLPTRH < 0x1F00/0x100){
+"619
+[; ;EMU8008.c: 619:  else if (TBLPTRH < 0x1F00/0x100){
 [e :U 2478 ]
 [e $ ! < -> _TBLPTRH `i / -> 7936 `i -> 256 `i 2500  ]
 {
-"627
-[; ;EMU8008.c: 627:   while (!RB3);
+"621
+[; ;EMU8008.c: 621:   while (!RB3);
 [e $U 2501  ]
 [e :U 2502 ]
 [e :U 2501 ]
 [e $ ! _RB3 2502  ]
 [e :U 2503 ]
-"628
-[; ;EMU8008.c: 628:   ram[INTLOG] = T2_addr;
+"622
+[; ;EMU8008.c: 622:   ram[INTLOG] = T2_addr;
 [e = *U + &U _ram * -> _INTLOG `ux -> -> # *U &U _ram `ui `ux _T2_addr ]
-"629
-[; ;EMU8008.c: 629:   INTLOG++;
+"623
+[; ;EMU8008.c: 623:   INTLOG++;
 [e ++ _INTLOG -> -> 1 `i `uc ]
-"630
-[; ;EMU8008.c: 630:   while (RB3);
+"624
+[; ;EMU8008.c: 624:   while (RB3);
 [e $U 2504  ]
 [e :U 2505 ]
 [e :U 2504 ]
 [e $ _RB3 2505  ]
 [e :U 2506 ]
-"632
-[; ;EMU8008.c: 632:   __asm("movff	PORTD,indf0	\n");
+"626
+[; ;EMU8008.c: 626:   __asm("movff	PORTD,indf0	\n");
 [; <" movff	PORTD,indf0	 ;# ">
-"633
-[; ;EMU8008.c: 633:  }
+"627
+[; ;EMU8008.c: 627:  }
 }
 [e $U 2507  ]
-"634
-[; ;EMU8008.c: 634:  else {
+"628
+[; ;EMU8008.c: 628:  else {
 [e :U 2500 ]
 {
-"635
-[; ;EMU8008.c: 635:   ram[INTLOG] = T2_addr;
+"629
+[; ;EMU8008.c: 629:   ram[INTLOG] = T2_addr;
 [e = *U + &U _ram * -> _INTLOG `ux -> -> # *U &U _ram `ui `ux _T2_addr ]
-"636
-[; ;EMU8008.c: 636:   INTLOG++;
+"630
+[; ;EMU8008.c: 630:   INTLOG++;
 [e ++ _INTLOG -> -> 1 `i `uc ]
-"637
-[; ;EMU8008.c: 637:  }
+"631
+[; ;EMU8008.c: 631:  }
 }
 [e :U 2507 ]
 [e :U 2499 ]
 [e :U 2477 ]
-"638
-[; ;EMU8008.c: 638: }
+"632
+[; ;EMU8008.c: 632: }
 [e :UE 2463 ]
 }
-"641
-[; ;EMU8008.c: 641: const unsigned char rom[] __attribute__((address(0x10000))) = {
+"635
+[; ;EMU8008.c: 635: const unsigned char rom[] __attribute__((address(0x10000))) = {
 [v _rom `Cuc ~T0 @X0 -> 14454 `i e@65536 ]
 [i _rom
 :U ..

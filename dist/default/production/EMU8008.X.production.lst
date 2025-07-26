@@ -1,7 +1,7 @@
 
 
 Microchip MPLAB XC8 Assembler V3.00 build 20241204225717 
-                                                                                               Sat Jul 26 12:24:21 2025
+                                                                                               Sat Jul 26 13:40:38 2025
 
 Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og9 
      1                           	processor	18F47Q43
@@ -16347,343 +16347,343 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og9
  16333   014124  6921               	setf	33,b	;volatile
  16334                           
  16335                           ; BSR set to: 4
- 16336                           ;EMU8008.c: 266:  ANSELB5 = 0;
+ 16336                           ;EMU8008.c: 260:  ANSELB5 = 0;
  16337   014126  9B08               	bcf	8,5,b	;volatile
  16338                           
  16339                           ; BSR set to: 4
- 16340                           ;EMU8008.c: 267:  TRISB5 = 0;
+ 16340                           ;EMU8008.c: 261:  TRISB5 = 0;
  16341   014128  9AC7               	bcf	1223,5,c	;volatile
  16342                           
- 16343                           ;EMU8008.c: 268:  RB5PPS = 0x18;
+ 16343                           ;EMU8008.c: 262:  RB5PPS = 0x18;
  16344   01412A  0E18               	movlw	24
  16345   01412C  0102               	movlb	2	; () banked
  16346   01412E  6F0E               	movwf	14,b	;volatile
  16347                           
  16348                           ; BSR set to: 2
- 16349                           ;EMU8008.c: 270:  ANSELB4 = 0;
+ 16349                           ;EMU8008.c: 264:  ANSELB4 = 0;
  16350   014130  0104               	movlb	4	; () banked
  16351   014132  9908               	bcf	8,4,b	;volatile
  16352                           
  16353                           ; BSR set to: 4
- 16354                           ;EMU8008.c: 271:  TRISB4 = 0;
+ 16354                           ;EMU8008.c: 265:  TRISB4 = 0;
  16355   014134  98C7               	bcf	1223,4,c	;volatile
  16356                           
- 16357                           ;EMU8008.c: 272:  RB4PPS = 0x1A;
+ 16357                           ;EMU8008.c: 266:  RB4PPS = 0x1A;
  16358   014136  0E1A               	movlw	26
  16359   014138  0102               	movlb	2	; () banked
  16360   01413A  6F0D               	movwf	13,b	;volatile
  16361                           
  16362                           ; BSR set to: 2
- 16363                           ;EMU8008.c: 274:  PWM1CON = 0x00;
+ 16363                           ;EMU8008.c: 268:  PWM1CON = 0x00;
  16364   01413C  6A69               	clrf	105,c	;volatile
  16365                           
  16366                           ; BSR set to: 2
- 16367                           ;EMU8008.c: 275:  PWM2CON = 0x00;
+ 16367                           ;EMU8008.c: 269:  PWM2CON = 0x00;
  16368   01413E  6A78               	clrf	120,c	;volatile
  16369                           
- 16370                           ;EMU8008.c: 276:  PWM1CLK = 0x02;
+ 16370                           ;EMU8008.c: 270:  PWM1CLK = 0x02;
  16371   014140  0E02               	movlw	2
  16372   014142  6E61               	movwf	97,c	;volatile
  16373                           
- 16374                           ;EMU8008.c: 277:  PWM2CLK = 0x02;
+ 16374                           ;EMU8008.c: 271:  PWM2CLK = 0x02;
  16375   014144  0E02               	movlw	2
  16376   014146  6E70               	movwf	112,c	;volatile
  16377                           
  16378                           ; BSR set to: 2
- 16379                           ;EMU8008.c: 278:  PWM1GIE = 0x00;
+ 16379                           ;EMU8008.c: 272:  PWM1GIE = 0x00;
  16380   014148  6A68               	clrf	104,c	;volatile
  16381                           
  16382                           ; BSR set to: 2
- 16383                           ;EMU8008.c: 279:  PWM2GIE = 0x00;
+ 16383                           ;EMU8008.c: 273:  PWM2GIE = 0x00;
  16384   01414A  6A77               	clrf	119,c	;volatile
  16385                           
  16386                           ; BSR set to: 2
- 16387                           ;EMU8008.c: 280:  PWM1S1CFG = 0x00;
+ 16387                           ;EMU8008.c: 274:  PWM1S1CFG = 0x00;
  16388   01414C  6A6A               	clrf	106,c	;volatile
  16389                           
  16390                           ; BSR set to: 2
- 16391                           ;EMU8008.c: 281:  PWM2S1CFG = 0x00;
+ 16391                           ;EMU8008.c: 275:  PWM2S1CFG = 0x00;
  16392   01414E  6A79               	clrf	121,c	;volatile
  16393                           
- 16394                           ;EMU8008.c: 288:  PWM1PR = 127;
+ 16394                           ;EMU8008.c: 282:  PWM1PR = 127;
  16395   014150  0E00               	movlw	0
  16396   014152  6E64               	movwf	100,c	;volatile
  16397   014154  0E7F               	movlw	127
  16398   014156  6E63               	movwf	99,c	;volatile
  16399                           
- 16400                           ;EMU8008.c: 289:  PWM1S1P1 = 44;
+ 16400                           ;EMU8008.c: 283:  PWM1S1P1 = 44;
  16401   014158  0E00               	movlw	0
  16402   01415A  6E6C               	movwf	108,c	;volatile
  16403   01415C  0E2C               	movlw	44
  16404   01415E  6E6B               	movwf	107,c	;volatile
  16405                           
- 16406                           ;EMU8008.c: 290:  PWM2S1P1 = 35;
+ 16406                           ;EMU8008.c: 284:  PWM2S1P1 = 35;
  16407   014160  0E00               	movlw	0
  16408   014162  6E7B               	movwf	123,c	;volatile
  16409   014164  0E23               	movlw	35
  16410   014166  6E7A               	movwf	122,c	;volatile
  16411                           
  16412                           ; BSR set to: 2
- 16413                           ;EMU8008.c: 293:  PWM2PR = PWM1PR;
+ 16413                           ;EMU8008.c: 287:  PWM2PR = PWM1PR;
  16414   014168  C463 F472          	movff	1123,1138	;volatile
  16415   01416C  C464 F473          	movff	1124,1139	;volatile
  16416                           
- 16417                           ;EMU8008.c: 294:  PWM1CON = 0x84;
+ 16417                           ;EMU8008.c: 288:  PWM1CON = 0x84;
  16418   014170  0E84               	movlw	132
  16419   014172  6E69               	movwf	105,c	;volatile
  16420                           
  16421                           ; BSR set to: 2
- 16422                           ;EMU8008.c: 295:  __nop();
+ 16422                           ;EMU8008.c: 289:  __nop();
  16423   014174  0000               	nop	
  16424                           
- 16425                           ;EMU8008.c: 296:  __nop();
+ 16425                           ;EMU8008.c: 290:  __nop();
  16426   014176  0000               	nop	
  16427                           
- 16428                           ;EMU8008.c: 297:  __nop();
+ 16428                           ;EMU8008.c: 291:  __nop();
  16429   014178  0000               	nop	
  16430                           
- 16431                           ;EMU8008.c: 298:  __nop();
+ 16431                           ;EMU8008.c: 292:  __nop();
  16432   01417A  0000               	nop	
  16433                           
- 16434                           ;EMU8008.c: 299:  __nop();
+ 16434                           ;EMU8008.c: 293:  __nop();
  16435   01417C  0000               	nop	
  16436                           
- 16437                           ;EMU8008.c: 300:  __nop();
+ 16437                           ;EMU8008.c: 294:  __nop();
  16438   01417E  0000               	nop	
  16439                           
- 16440                           ;EMU8008.c: 301:  __nop();
+ 16440                           ;EMU8008.c: 295:  __nop();
  16441   014180  0000               	nop	
  16442                           
- 16443                           ;EMU8008.c: 303:  __nop();
+ 16443                           ;EMU8008.c: 297:  __nop();
  16444   014182  0000               	nop	
  16445                           
- 16446                           ;EMU8008.c: 304:  __nop();
+ 16446                           ;EMU8008.c: 298:  __nop();
  16447   014184  0000               	nop	
  16448                           
- 16449                           ;EMU8008.c: 305:  __nop();
+ 16449                           ;EMU8008.c: 299:  __nop();
  16450   014186  0000               	nop	
  16451                           
- 16452                           ;EMU8008.c: 306:  __nop();
+ 16452                           ;EMU8008.c: 300:  __nop();
  16453   014188  0000               	nop	
  16454                           
- 16455                           ;EMU8008.c: 307:  __nop();
+ 16455                           ;EMU8008.c: 301:  __nop();
  16456   01418A  0000               	nop	
  16457                           
- 16458                           ;EMU8008.c: 308:  __nop();
+ 16458                           ;EMU8008.c: 302:  __nop();
  16459   01418C  0000               	nop	
  16460                           
- 16461                           ;EMU8008.c: 309:  __nop();
+ 16461                           ;EMU8008.c: 303:  __nop();
  16462   01418E  0000               	nop	
  16463                           
- 16464                           ;EMU8008.c: 310:  __nop();
+ 16464                           ;EMU8008.c: 304:  __nop();
  16465   014190  0000               	nop	
  16466                           
- 16467                           ;EMU8008.c: 312:  PWM2CON = 0x84;
+ 16467                           ;EMU8008.c: 306:  PWM2CON = 0x84;
  16468   014192  0E84               	movlw	132
  16469   014194  6E78               	movwf	120,c	;volatile
  16470                           
- 16471                           ;EMU8008.c: 316:  CLCIN0PPS = 0x00;
+ 16471                           ;EMU8008.c: 310:  CLCIN0PPS = 0x00;
  16472   014196  0102               	movlb	2	; () banked
  16473   014198  6B61               	clrf	97,b	;volatile
  16474                           
- 16475                           ;EMU8008.c: 317:  CLCIN1PPS = 0x01;
+ 16475                           ;EMU8008.c: 311:  CLCIN1PPS = 0x01;
  16476   01419A  0E01               	movlw	1
  16477   01419C  6F62               	movwf	98,b	;volatile
  16478                           
- 16479                           ;EMU8008.c: 318:  CLCIN2PPS = 0x0C;
+ 16479                           ;EMU8008.c: 312:  CLCIN2PPS = 0x0C;
  16480   01419E  0E0C               	movlw	12
  16481   0141A0  6F63               	movwf	99,b	;volatile
  16482                           
- 16483                           ;EMU8008.c: 319:  CLCIN3PPS = 0x0D;
+ 16483                           ;EMU8008.c: 313:  CLCIN3PPS = 0x0D;
  16484   0141A2  0E0D               	movlw	13
  16485   0141A4  6F64               	movwf	100,b	;volatile
  16486                           
- 16487                           ;EMU8008.c: 320:  CLCIN4PPS = 0x02;
+ 16487                           ;EMU8008.c: 314:  CLCIN4PPS = 0x02;
  16488   0141A6  0E02               	movlw	2
  16489   0141A8  6F65               	movwf	101,b	;volatile
  16490                           
- 16491                           ;EMU8008.c: 322:  CLCIN6PPS = 0x0B;
+ 16491                           ;EMU8008.c: 316:  CLCIN6PPS = 0x0B;
  16492   0141AA  0E0B               	movlw	11
  16493   0141AC  6F67               	movwf	103,b	;volatile
  16494                           
  16495                           ; BSR set to: 2
- 16496                           ;EMU8008.c: 326:     CLCSELECT = 0;
+ 16496                           ;EMU8008.c: 320:     CLCSELECT = 0;
  16497   0141AE  0100               	movlb	0	; () banked
  16498   0141B0  6BD5               	clrf	213,b	;volatile
  16499                           
- 16500                           ;EMU8008.c: 328:  CLCnSEL0 = 6;
+ 16500                           ;EMU8008.c: 322:  CLCnSEL0 = 6;
  16501   0141B2  0E06               	movlw	6
  16502   0141B4  6FD8               	movwf	216,b	;volatile
  16503                           
- 16504                           ;EMU8008.c: 329:  CLCnSEL1 = 2;
+ 16504                           ;EMU8008.c: 323:  CLCnSEL1 = 2;
  16505   0141B6  0E02               	movlw	2
  16506   0141B8  6FD9               	movwf	217,b	;volatile
  16507                           
- 16508                           ;EMU8008.c: 330:  CLCnSEL2 = 53;
+ 16508                           ;EMU8008.c: 324:  CLCnSEL2 = 53;
  16509   0141BA  0E35               	movlw	53
  16510   0141BC  6FDA               	movwf	218,b	;volatile
  16511                           
- 16512                           ;EMU8008.c: 331:  CLCnSEL3 = 127;
+ 16512                           ;EMU8008.c: 325:  CLCnSEL3 = 127;
  16513   0141BE  0E7F               	movlw	127
  16514   0141C0  6FDB               	movwf	219,b	;volatile
  16515                           
- 16516                           ;EMU8008.c: 333:  CLCnGLS0 = 1 + 4;
+ 16516                           ;EMU8008.c: 327:  CLCnGLS0 = 1 + 4;
  16517   0141C2  0E05               	movlw	5
  16518   0141C4  6FDC               	movwf	220,b	;volatile
  16519                           
- 16520                           ;EMU8008.c: 334:  CLCnGLS1 = 0x20;
+ 16520                           ;EMU8008.c: 328:  CLCnGLS1 = 0x20;
  16521   0141C6  0E20               	movlw	32
  16522   0141C8  6FDD               	movwf	221,b	;volatile
  16523                           
  16524                           ; BSR set to: 0
- 16525                           ;EMU8008.c: 335:  CLCnGLS2 = 0;
+ 16525                           ;EMU8008.c: 329:  CLCnGLS2 = 0;
  16526   0141CA  6BDE               	clrf	222,b	;volatile
  16527                           
  16528                           ; BSR set to: 0
- 16529                           ;EMU8008.c: 336:  CLCnGLS3 = 0;
+ 16529                           ;EMU8008.c: 330:  CLCnGLS3 = 0;
  16530   0141CC  6BDF               	clrf	223,b	;volatile
  16531                           
  16532                           ; BSR set to: 0
- 16533                           ;EMU8008.c: 338:  CLCnPOL = 0x00;
+ 16533                           ;EMU8008.c: 332:  CLCnPOL = 0x00;
  16534   0141CE  6BD7               	clrf	215,b	;volatile
  16535                           
- 16536                           ;EMU8008.c: 339:  CLCnCON = 0x94;
+ 16536                           ;EMU8008.c: 333:  CLCnCON = 0x94;
  16537   0141D0  0E94               	movlw	148
  16538   0141D2  6FD6               	movwf	214,b	;volatile
  16539                           
- 16540                           ;EMU8008.c: 342:  CLCSELECT = 1;
+ 16540                           ;EMU8008.c: 336:  CLCSELECT = 1;
  16541   0141D4  0E01               	movlw	1
  16542   0141D6  6FD5               	movwf	213,b	;volatile
  16543                           
- 16544                           ;EMU8008.c: 344:  CLCnSEL0 = 6;
+ 16544                           ;EMU8008.c: 338:  CLCnSEL0 = 6;
  16545   0141D8  0E06               	movlw	6
  16546   0141DA  6FD8               	movwf	216,b	;volatile
  16547                           
- 16548                           ;EMU8008.c: 345:  CLCnSEL1 = 2;
+ 16548                           ;EMU8008.c: 339:  CLCnSEL1 = 2;
  16549   0141DC  0E02               	movlw	2
  16550   0141DE  6FD9               	movwf	217,b	;volatile
  16551                           
- 16552                           ;EMU8008.c: 346:  CLCnSEL2 = 54;
+ 16552                           ;EMU8008.c: 340:  CLCnSEL2 = 54;
  16553   0141E0  0E36               	movlw	54
  16554   0141E2  6FDA               	movwf	218,b	;volatile
  16555                           
- 16556                           ;EMU8008.c: 347:  CLCnSEL3 = 127;
+ 16556                           ;EMU8008.c: 341:  CLCnSEL3 = 127;
  16557   0141E4  0E7F               	movlw	127
  16558   0141E6  6FDB               	movwf	219,b	;volatile
  16559                           
- 16560                           ;EMU8008.c: 349:  CLCnGLS0 = 1 + 4;
+ 16560                           ;EMU8008.c: 343:  CLCnGLS0 = 1 + 4;
  16561   0141E8  0E05               	movlw	5
  16562   0141EA  6FDC               	movwf	220,b	;volatile
  16563                           
- 16564                           ;EMU8008.c: 350:  CLCnGLS1 = 0x20;
+ 16564                           ;EMU8008.c: 344:  CLCnGLS1 = 0x20;
  16565   0141EC  0E20               	movlw	32
  16566   0141EE  6FDD               	movwf	221,b	;volatile
  16567                           
  16568                           ; BSR set to: 0
- 16569                           ;EMU8008.c: 351:  CLCnGLS2 = 0;
+ 16569                           ;EMU8008.c: 345:  CLCnGLS2 = 0;
  16570   0141F0  6BDE               	clrf	222,b	;volatile
  16571                           
  16572                           ; BSR set to: 0
- 16573                           ;EMU8008.c: 352:  CLCnGLS3 = 0;
+ 16573                           ;EMU8008.c: 346:  CLCnGLS3 = 0;
  16574   0141F2  6BDF               	clrf	223,b	;volatile
  16575                           
  16576                           ; BSR set to: 0
- 16577                           ;EMU8008.c: 354:  CLCnPOL = 0x00;
+ 16577                           ;EMU8008.c: 348:  CLCnPOL = 0x00;
  16578   0141F4  6BD7               	clrf	215,b	;volatile
  16579                           
- 16580                           ;EMU8008.c: 355:  CLCnCON = 0x94;
+ 16580                           ;EMU8008.c: 349:  CLCnCON = 0x94;
  16581   0141F6  0E94               	movlw	148
  16582   0141F8  6FD6               	movwf	214,b	;volatile
  16583                           
- 16584                           ;EMU8008.c: 358:     CLCSELECT = 2;
+ 16584                           ;EMU8008.c: 352:     CLCSELECT = 2;
  16585   0141FA  0E02               	movlw	2
  16586   0141FC  6FD5               	movwf	213,b	;volatile
  16587                           
  16588                           ; BSR set to: 0
- 16589                           ;EMU8008.c: 360:  CLCnSEL0 = 0;
+ 16589                           ;EMU8008.c: 354:  CLCnSEL0 = 0;
  16590   0141FE  6BD8               	clrf	216,b	;volatile
  16591                           
- 16592                           ;EMU8008.c: 361:  CLCnSEL1 = 1;
+ 16592                           ;EMU8008.c: 355:  CLCnSEL1 = 1;
  16593   014200  0E01               	movlw	1
  16594   014202  6FD9               	movwf	217,b	;volatile
  16595                           
- 16596                           ;EMU8008.c: 362:  CLCnSEL2 = 4;
+ 16596                           ;EMU8008.c: 356:  CLCnSEL2 = 4;
  16597   014204  0E04               	movlw	4
  16598   014206  6FDA               	movwf	218,b	;volatile
  16599                           
- 16600                           ;EMU8008.c: 363:  CLCnSEL3 = 127;
+ 16600                           ;EMU8008.c: 357:  CLCnSEL3 = 127;
  16601   014208  0E7F               	movlw	127
  16602   01420A  6FDB               	movwf	219,b	;volatile
  16603                           
- 16604                           ;EMU8008.c: 365:  CLCnGLS0 = 1;
+ 16604                           ;EMU8008.c: 359:  CLCnGLS0 = 1;
  16605   01420C  0E01               	movlw	1
  16606   01420E  6FDC               	movwf	220,b	;volatile
  16607                           
- 16608                           ;EMU8008.c: 366:  CLCnGLS1 = 8;
+ 16608                           ;EMU8008.c: 360:  CLCnGLS1 = 8;
  16609   014210  0E08               	movlw	8
  16610   014212  6FDD               	movwf	221,b	;volatile
  16611                           
- 16612                           ;EMU8008.c: 367:  CLCnGLS2 = 0x10;
+ 16612                           ;EMU8008.c: 361:  CLCnGLS2 = 0x10;
  16613   014214  0E10               	movlw	16
  16614   014216  6FDE               	movwf	222,b	;volatile
  16615                           
- 16616                           ;EMU8008.c: 368:  CLCnGLS3 = 0x40;
+ 16616                           ;EMU8008.c: 362:  CLCnGLS3 = 0x40;
  16617   014218  0E40               	movlw	64
  16618   01421A  6FDF               	movwf	223,b	;volatile
  16619                           
  16620                           ; BSR set to: 0
- 16621                           ;EMU8008.c: 370:  CLCnPOL = 0x00;
+ 16621                           ;EMU8008.c: 364:  CLCnPOL = 0x00;
  16622   01421C  6BD7               	clrf	215,b	;volatile
  16623                           
- 16624                           ;EMU8008.c: 371:  CLCnCON = 0x82;
+ 16624                           ;EMU8008.c: 365:  CLCnCON = 0x82;
  16625   01421E  0E82               	movlw	130
  16626   014220  6FD6               	movwf	214,b	;volatile
  16627                           
- 16628                           ;EMU8008.c: 374:  CLCSELECT = 3;
+ 16628                           ;EMU8008.c: 368:  CLCSELECT = 3;
  16629   014222  0E03               	movlw	3
  16630   014224  6FD5               	movwf	213,b	;volatile
  16631                           
  16632                           ; BSR set to: 0
- 16633                           ;EMU8008.c: 376:  CLCnSEL0 = 0;
+ 16633                           ;EMU8008.c: 370:  CLCnSEL0 = 0;
  16634   014226  6BD8               	clrf	216,b	;volatile
  16635                           
- 16636                           ;EMU8008.c: 377:  CLCnSEL1 = 1;
+ 16636                           ;EMU8008.c: 371:  CLCnSEL1 = 1;
  16637   014228  0E01               	movlw	1
  16638   01422A  6FD9               	movwf	217,b	;volatile
  16639                           
- 16640                           ;EMU8008.c: 378:  CLCnSEL2 = 4;
+ 16640                           ;EMU8008.c: 372:  CLCnSEL2 = 4;
  16641   01422C  0E04               	movlw	4
  16642   01422E  6FDA               	movwf	218,b	;volatile
  16643                           
- 16644                           ;EMU8008.c: 379:  CLCnSEL3 = 127;
+ 16644                           ;EMU8008.c: 373:  CLCnSEL3 = 127;
  16645   014230  0E7F               	movlw	127
  16646   014232  6FDB               	movwf	219,b	;volatile
  16647                           
- 16648                           ;EMU8008.c: 381:  CLCnGLS0 = 1;
+ 16648                           ;EMU8008.c: 375:  CLCnGLS0 = 1;
  16649   014234  0E01               	movlw	1
  16650   014236  6FDC               	movwf	220,b	;volatile
  16651                           
- 16652                           ;EMU8008.c: 382:  CLCnGLS1 = 8;
+ 16652                           ;EMU8008.c: 376:  CLCnGLS1 = 8;
  16653   014238  0E08               	movlw	8
  16654   01423A  6FDD               	movwf	221,b	;volatile
  16655                           
- 16656                           ;EMU8008.c: 383:  CLCnGLS2 = 0x20;
+ 16656                           ;EMU8008.c: 377:  CLCnGLS2 = 0x20;
  16657   01423C  0E20               	movlw	32
  16658   01423E  6FDE               	movwf	222,b	;volatile
  16659                           
- 16660                           ;EMU8008.c: 384:  CLCnGLS3 = 0x40;
+ 16660                           ;EMU8008.c: 378:  CLCnGLS3 = 0x40;
  16661   014240  0E40               	movlw	64
  16662   014242  6FDF               	movwf	223,b	;volatile
  16663                           
  16664                           ; BSR set to: 0
- 16665                           ;EMU8008.c: 386:  CLCnPOL = 0x00;
+ 16665                           ;EMU8008.c: 380:  CLCnPOL = 0x00;
  16666   014244  6BD7               	clrf	215,b	;volatile
  16667                           
- 16668                           ;EMU8008.c: 387:  CLCnCON = 0x82;
+ 16668                           ;EMU8008.c: 381:  CLCnCON = 0x82;
  16669   014246  0E82               	movlw	130
  16670   014248  6FD6               	movwf	214,b	;volatile
  16671                           
- 16672                           ;EMU8008.c: 391:  U3BRG = 416;
+ 16672                           ;EMU8008.c: 385:  U3BRG = 416;
  16673   01424A  0E01               	movlw	1
  16674   01424C  0102               	movlb	2	; () banked
  16675   01424E  6FD5               	movwf	213,b	;volatile
@@ -16691,51 +16691,51 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og9
  16677   014252  6FD4               	movwf	212,b	;volatile
  16678                           
  16679                           ; BSR set to: 2
- 16680                           ;EMU8008.c: 392:  U3RXEN = 1;
+ 16680                           ;EMU8008.c: 386:  U3RXEN = 1;
  16681   014254  89D1               	bsf	209,4,b	;volatile
  16682                           
  16683                           ; BSR set to: 2
- 16684                           ;EMU8008.c: 393:  U3TXEN = 1;
+ 16684                           ;EMU8008.c: 387:  U3TXEN = 1;
  16685   014256  8BD1               	bsf	209,5,b	;volatile
  16686                           
  16687                           ; BSR set to: 2
- 16688                           ;EMU8008.c: 396:  ANSELA7 = 0;
+ 16688                           ;EMU8008.c: 390:  ANSELA7 = 0;
  16689   014258  0104               	movlb	4	; () banked
  16690   01425A  9F00               	bcf	0,7,b	;volatile
  16691                           
  16692                           ; BSR set to: 4
- 16693                           ;EMU8008.c: 397:  TRISA7 = 1;
+ 16693                           ;EMU8008.c: 391:  TRISA7 = 1;
  16694   01425C  8EC6               	bsf	1222,7,c	;volatile
  16695                           
- 16696                           ;EMU8008.c: 398:  U3RXPPS = 0x07;
+ 16696                           ;EMU8008.c: 392:  U3RXPPS = 0x07;
  16697   01425E  0E07               	movlw	7
  16698   014260  0102               	movlb	2	; () banked
  16699   014262  6F76               	movwf	118,b	;volatile
  16700                           
  16701                           ; BSR set to: 2
- 16702                           ;EMU8008.c: 401:  ANSELA6 = 0;
+ 16702                           ;EMU8008.c: 395:  ANSELA6 = 0;
  16703   014264  0104               	movlb	4	; () banked
  16704   014266  9D00               	bcf	0,6,b	;volatile
  16705                           
  16706                           ; BSR set to: 4
- 16707                           ;EMU8008.c: 402:  LATA6 = 1;
+ 16707                           ;EMU8008.c: 396:  LATA6 = 1;
  16708   014268  8CBE               	bsf	1214,6,c	;volatile
  16709                           
  16710                           ; BSR set to: 4
- 16711                           ;EMU8008.c: 403:  TRISA6 = 0;
+ 16711                           ;EMU8008.c: 397:  TRISA6 = 0;
  16712   01426A  9CC6               	bcf	1222,6,c	;volatile
  16713                           
- 16714                           ;EMU8008.c: 404:  RA6PPS = 0x26;
+ 16714                           ;EMU8008.c: 398:  RA6PPS = 0x26;
  16715   01426C  0E26               	movlw	38
  16716   01426E  0102               	movlb	2	; () banked
  16717   014270  6F07               	movwf	7,b	;volatile
  16718                           
  16719                           ; BSR set to: 2
- 16720                           ;EMU8008.c: 406:  U3ON = 1;
+ 16720                           ;EMU8008.c: 400:  U3ON = 1;
  16721   014272  8FD2               	bsf	210,7,b	;volatile
  16722                           
  16723                           ; BSR set to: 2
- 16724                           ;EMU8008.c: 408:  printf("\r\nEMU8008 clock speed %3.0fkHz\r\n",(float)64000/(PWM1PR+1))
+ 16724                           ;EMU8008.c: 402:  printf("\r\nEMU8008 clock speed %3.0fkHz\r\n",(float)64000/(PWM1PR+1))
       +                          ;
  16725   014274  0E00               	movlw	0
  16726   014276  6E11               	movwf	___fldiv@b^(0+1280),c
@@ -16768,7 +16768,7 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og9
  16753   0142C0  C513  F5F1         	movff	?___fldiv+2,_main$1027+2
  16754   0142C4  C514  F5F2         	movff	?___fldiv+3,_main$1027+3
  16755                           
- 16756                           ;EMU8008.c: 408:  printf("\r\nEMU8008 clock speed %3.0fkHz\r\n",(float)64000/(PWM1PR+1))
+ 16756                           ;EMU8008.c: 402:  printf("\r\nEMU8008 clock speed %3.0fkHz\r\n",(float)64000/(PWM1PR+1))
       +                          ;
  16757   0142C8  0E51               	movlw	low STR_1
  16758   0142CA  6E5B               	movwf	printf@fmt^(0+1280),c
@@ -16778,7 +16778,7 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og9
  16762   0142D8  C5F2  F55F         	movff	_main$1027+3,?_printf+4
  16763   0142DC  ECF3  F0AC         	call	_printf	;wreg free
  16764                           
- 16765                           ;EMU8008.c: 409:  printf("PWM1 -> RB5 -> PHI1 width %3.0f nsec\r\n",(float)PWM1S1P1*15.6
+ 16765                           ;EMU8008.c: 403:  printf("PWM1 -> RB5 -> PHI1 width %3.0f nsec\r\n",(float)PWM1S1P1*15.6
       +                          25);
  16766   0142E0  C46B F503          	movff	1131,___xxtofl@val	;volatile
  16767   0142E4  C46C F504          	movff	1132,___xxtofl@val+1	;volatile
@@ -16804,7 +16804,7 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og9
  16787   01431E  C513  F5F5         	movff	?___flmul+2,_main$1028+2
  16788   014322  C514  F5F6         	movff	?___flmul+3,_main$1028+3
  16789                           
- 16790                           ;EMU8008.c: 409:  printf("PWM1 -> RB5 -> PHI1 width %3.0f nsec\r\n",(float)PWM1S1P1*15.6
+ 16790                           ;EMU8008.c: 403:  printf("PWM1 -> RB5 -> PHI1 width %3.0f nsec\r\n",(float)PWM1S1P1*15.6
       +                          25);
  16791   014326  0E2A               	movlw	low STR_2
  16792   014328  6E5B               	movwf	printf@fmt^(0+1280),c
@@ -16814,7 +16814,7 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og9
  16796   014336  C5F6  F55F         	movff	_main$1028+3,?_printf+4
  16797   01433A  ECF3  F0AC         	call	_printf	;wreg free
  16798                           
- 16799                           ;EMU8008.c: 410:  printf("PWM2 -> RB4 -> PHI2 width %3.0f nsec\r\n\r\n",(float)PWM2S1P1*
+ 16799                           ;EMU8008.c: 404:  printf("PWM2 -> RB4 -> PHI2 width %3.0f nsec\r\n\r\n",(float)PWM2S1P1*
       +                          15.625);
  16800   01433E  C47A F503          	movff	1146,___xxtofl@val	;volatile
  16801   014342  C47B F504          	movff	1147,___xxtofl@val+1	;volatile
@@ -16840,7 +16840,7 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og9
  16821   01437C  C513  F5F5         	movff	?___flmul+2,_main$1028+2
  16822   014380  C514  F5F6         	movff	?___flmul+3,_main$1028+3
  16823                           
- 16824                           ;EMU8008.c: 410:  printf("PWM2 -> RB4 -> PHI2 width %3.0f nsec\r\n\r\n",(float)PWM2S1P1*
+ 16824                           ;EMU8008.c: 404:  printf("PWM2 -> RB4 -> PHI2 width %3.0f nsec\r\n\r\n",(float)PWM2S1P1*
       +                          15.625);
  16825   014384  0E01               	movlw	low STR_3
  16826   014386  6E5B               	movwf	printf@fmt^(0+1280),c
@@ -16850,7 +16850,7 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og9
  16830   014394  C5F6  F55F         	movff	_main$1028+3,?_printf+4
  16831   014398  ECF3  F0AC         	call	_printf	;wreg free
  16832                           
- 16833                           ;EMU8008.c: 412:  for(i = 0; i < 0x1F00; i++) {
+ 16833                           ;EMU8008.c: 406:  for(i = 0; i < 0x1F00; i++) {
  16834   01439C  0E00               	movlw	0
  16835   01439E  0105               	movlb	5	; () banked
  16836   0143A0  6F6D               	movwf	(_i+1)& (0+255),b
@@ -16859,7 +16859,7 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og9
  16839   0143A6                     l3709:
  16840                           
  16841                           ; BSR set to: 5
- 16842                           ;EMU8008.c: 413:   ram[i] = rom[i];
+ 16842                           ;EMU8008.c: 407:   ram[i] = rom[i];
  16843   0143A6  0E00               	movlw	0
  16844   0143A8  256C               	addwf	_i& (0+255),w,b
  16845   0143AA  6EF6               	movwf	tblptrl,c
@@ -16879,7 +16879,7 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og9
  16859   0143C6  C4F5 F4DF          	movff	tablat,indf2
  16860                           
  16861                           ; BSR set to: 5
- 16862                           ;EMU8008.c: 414:  }
+ 16862                           ;EMU8008.c: 408:  }
  16863   0143CA  4B6C               	infsnz	_i& (0+255),f,b
  16864   0143CC  2B6D               	incf	(_i+1)& (0+255),f,b
  16865                           
@@ -16890,20 +16890,20 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og9
  16870   0143D4  D7E8               	goto	l3709
  16871                           
  16872                           ; BSR set to: 5
- 16873                           ;EMU8008.c: 417:     IVTLOCK = 0x55;
+ 16873                           ;EMU8008.c: 411:     IVTLOCK = 0x55;
  16874   0143D6  0E55               	movlw	85
  16875   0143D8  0104               	movlb	4	; () banked
  16876   0143DA  6F59               	movwf	89,b	;volatile
  16877                           
- 16878                           ;EMU8008.c: 418:     IVTLOCK = 0xAA;
+ 16878                           ;EMU8008.c: 412:     IVTLOCK = 0xAA;
  16879   0143DC  0EAA               	movlw	170
  16880   0143DE  6F59               	movwf	89,b	;volatile
  16881                           
  16882                           ; BSR set to: 4
- 16883                           ;EMU8008.c: 419:     IVTLOCKbits.IVTLOCKED = 0x00;
+ 16883                           ;EMU8008.c: 413:     IVTLOCKbits.IVTLOCKED = 0x00;
  16884   0143E0  9159               	bcf	89,0,b	;volatile
  16885                           
- 16886                           ;EMU8008.c: 422:     IVTBASE = 0x000008;
+ 16886                           ;EMU8008.c: 416:     IVTBASE = 0x000008;
  16887   0143E2  0E08               	movlw	8
  16888   0143E4  6F5D               	movwf	93,b	;volatile
  16889   0143E6  0E00               	movlw	0
@@ -16911,109 +16911,109 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og9
  16891   0143EA  0E00               	movlw	0
  16892   0143EC  6F5F               	movwf	95,b	;volatile
  16893                           
- 16894                           ;EMU8008.c: 425:     IVTLOCK = 0x55;
+ 16894                           ;EMU8008.c: 419:     IVTLOCK = 0x55;
  16895   0143EE  0E55               	movlw	85
  16896   0143F0  6F59               	movwf	89,b	;volatile
  16897                           
- 16898                           ;EMU8008.c: 426:     IVTLOCK = 0xAA;
+ 16898                           ;EMU8008.c: 420:     IVTLOCK = 0xAA;
  16899   0143F2  0EAA               	movlw	170
  16900   0143F4  6F59               	movwf	89,b	;volatile
  16901                           
  16902                           ; BSR set to: 4
- 16903                           ;EMU8008.c: 427:     IVTLOCKbits.IVTLOCKED = 0x01;
+ 16903                           ;EMU8008.c: 421:     IVTLOCKbits.IVTLOCKED = 0x01;
  16904   0143F6  8159               	bsf	89,0,b	;volatile
  16905                           
  16906                           ; BSR set to: 4
- 16907                           ;EMU8008.c: 430:     CLC1IF = 0;
+ 16907                           ;EMU8008.c: 424:     CLC1IF = 0;
  16908   0143F8  9AAE               	bcf	1198,5,c	;volatile
  16909                           
  16910                           ; BSR set to: 4
- 16911                           ;EMU8008.c: 431:     CLC2IF = 0;
+ 16911                           ;EMU8008.c: 425:     CLC2IF = 0;
  16912   0143FA  92B4               	bcf	1204,1,c	;volatile
  16913                           
  16914                           ; BSR set to: 4
- 16915                           ;EMU8008.c: 432:     CLC3IF = 0;
+ 16915                           ;EMU8008.c: 426:     CLC3IF = 0;
  16916   0143FC  9AB5               	bcf	1205,5,c	;volatile
  16917                           
  16918                           ; BSR set to: 4
- 16919                           ;EMU8008.c: 433:     CLC4IF = 0;
+ 16919                           ;EMU8008.c: 427:     CLC4IF = 0;
  16920   0143FE  9AB7               	bcf	1207,5,c	;volatile
  16921                           
  16922                           ; BSR set to: 4
- 16923                           ;EMU8008.c: 434:     CLC5IF = 0;
+ 16923                           ;EMU8008.c: 428:     CLC5IF = 0;
  16924   014400  92B8               	bcf	1208,1,c	;volatile
  16925                           
  16926                           ; BSR set to: 4
- 16927                           ;EMU8008.c: 435:     CLC6IF = 0;
+ 16927                           ;EMU8008.c: 429:     CLC6IF = 0;
  16928   014402  92B9               	bcf	1209,1,c	;volatile
  16929                           
  16930                           ; BSR set to: 4
- 16931                           ;EMU8008.c: 436:     CLC7IF = 0;
+ 16931                           ;EMU8008.c: 430:     CLC7IF = 0;
  16932   014404  92BC               	bcf	1212,1,c	;volatile
  16933                           
  16934                           ; BSR set to: 4
- 16935                           ;EMU8008.c: 437:     CLC8IF = 0;
+ 16935                           ;EMU8008.c: 431:     CLC8IF = 0;
  16936   014406  92BD               	bcf	1213,1,c	;volatile
  16937                           
  16938                           ; BSR set to: 4
- 16939                           ;EMU8008.c: 439:     CLC1IE = 1;
+ 16939                           ;EMU8008.c: 433:     CLC1IE = 1;
  16940   014408  8A9E               	bsf	1182,5,c	;volatile
  16941                           
  16942                           ; BSR set to: 4
- 16943                           ;EMU8008.c: 440:     CLC2IE = 1;
+ 16943                           ;EMU8008.c: 434:     CLC2IE = 1;
  16944   01440A  82A4               	bsf	1188,1,c	;volatile
  16945                           
  16946                           ; BSR set to: 4
- 16947                           ;EMU8008.c: 441:     CLC3IE = 0;
+ 16947                           ;EMU8008.c: 435:     CLC3IE = 0;
  16948   01440C  9AA5               	bcf	1189,5,c	;volatile
  16949                           
  16950                           ; BSR set to: 4
- 16951                           ;EMU8008.c: 442:     CLC4IE = 0;
+ 16951                           ;EMU8008.c: 436:     CLC4IE = 0;
  16952   01440E  9AA7               	bcf	1191,5,c	;volatile
  16953                           
  16954                           ; BSR set to: 4
- 16955                           ;EMU8008.c: 443:     CLC5IE = 0;
+ 16955                           ;EMU8008.c: 437:     CLC5IE = 0;
  16956   014410  92A8               	bcf	1192,1,c	;volatile
  16957                           
  16958                           ; BSR set to: 4
- 16959                           ;EMU8008.c: 444:     CLC6IE = 0;
+ 16959                           ;EMU8008.c: 438:     CLC6IE = 0;
  16960   014412  92A9               	bcf	1193,1,c	;volatile
  16961                           
  16962                           ; BSR set to: 4
- 16963                           ;EMU8008.c: 445:     CLC7IE = 0;
+ 16963                           ;EMU8008.c: 439:     CLC7IE = 0;
  16964   014414  92AC               	bcf	1196,1,c	;volatile
  16965                           
  16966                           ; BSR set to: 4
- 16967                           ;EMU8008.c: 446:     CLC8IE = 0;
+ 16967                           ;EMU8008.c: 440:     CLC8IE = 0;
  16968   014416  92AD               	bcf	1197,1,c	;volatile
  16969                           
  16970                           ; BSR set to: 4
- 16971                           ;EMU8008.c: 448:     GIE = 1;
+ 16971                           ;EMU8008.c: 442:     GIE = 1;
  16972   014418  8ED6               	bsf	1238,7,c	;volatile
  16973                           
  16974                           ; BSR set to: 4
- 16975                           ;EMU8008.c: 449:     BSR = 0;
+ 16975                           ;EMU8008.c: 443:     BSR = 0;
  16976   01441A  6AE0               	clrf	224,c	;volatile
  16977                           
- 16978                           ;EMU8008.c: 450:     TBLPTRU = 1;
+ 16978                           ;EMU8008.c: 444:     TBLPTRU = 1;
  16979   01441C  0E01               	movlw	1
  16980   01441E  6EF8               	movwf	248,c	;volatile
  16981                           
  16982                           ; BSR set to: 4
- 16983                           ;EMU8008.c: 451:     CLCSELECT = 0;
+ 16983                           ;EMU8008.c: 445:     CLCSELECT = 0;
  16984   014420  0100               	movlb	0	; () banked
  16985   014422  6BD5               	clrf	213,b	;volatile
  16986                           
  16987                           ; BSR set to: 0
- 16988                           ;EMU8008.c: 454:  INTLOG = ram[0x42];
+ 16988                           ;EMU8008.c: 448:  INTLOG = ram[0x42];
  16989   014424  C642 F502          	movff	1602,1282
  16990                           
  16991                           ; BSR set to: 0
- 16992                           ;EMU8008.c: 455:  INT_PC = ram[0x41];
+ 16992                           ;EMU8008.c: 449:  INT_PC = ram[0x41];
  16993   014428  C641 F501          	movff	1601,1281
  16994                           
  16995                           ; BSR set to: 0
- 16996                           ;EMU8008.c: 456:  RC5 = 1;
+ 16996                           ;EMU8008.c: 450:  RC5 = 1;
  16997   01442C  8AD0               	bsf	1232,5,c	;volatile
  16998   01442E                     l242:
  16999   01442E  D7FF               	goto	l242
@@ -22011,7 +22011,7 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og9
  21855                           
  21856 ;; *************** function _T1_ISR *****************
  21857 ;; Defined at:
- 21858 ;;		line 460 in file "EMU8008.c"
+ 21858 ;;		line 454 in file "EMU8008.c"
  21859 ;; Parameters:    Size  Location     Type
  21860 ;;		None
  21861 ;; Auto vars:     Size  Location     Type
@@ -22044,18 +22044,18 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og9
  21888   015534                     _T1_ISR:
  21889                           	callstack 118
  21890                           
- 21891                           ;EMU8008.c: 462:  CLC1IF = 0;
+ 21891                           ;EMU8008.c: 456:  CLC1IF = 0;
  21892                           
  21893                           ;incstack = 0
  21894   015534  9AAE               	bcf	1198,5,c	;volatile
  21895                           
- 21896                           ;EMU8008.c: 463:  WREG = PORTD;
+ 21896                           ;EMU8008.c: 457:  WREG = PORTD;
  21897   015536  50D1               	movf	209,w,c	;volatile
  21898                           
- 21899                           ;EMU8008.c: 464:  TBLPTRL = WREG;
+ 21899                           ;EMU8008.c: 458:  TBLPTRL = WREG;
  21900   015538  6EF6               	movwf	246,c	;volatile
  21901                           
- 21902                           ;EMU8008.c: 465:  FSR0L = WREG;
+ 21902                           ;EMU8008.c: 459:  FSR0L = WREG;
  21903   01553A  6EE9               	movwf	233,c	;volatile
  21904   01553C                     i2l250:
  21905   01553C  A6CF               	btfss	1231,3,c	;volatile
@@ -22064,33 +22064,33 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og9
  21908   015540  B6CF               	btfsc	1231,3,c	;volatile
  21909   015542  D7FE               	goto	i2u177_40
  21910                           
- 21911                           ;EMU8008.c: 470:  WREG = PORTD;
+ 21911                           ;EMU8008.c: 464:  WREG = PORTD;
  21912   015544  50D1               	movf	209,w,c	;volatile
  21913                           
- 21914                           ;EMU8008.c: 471:  T2_addr = WREG;
+ 21914                           ;EMU8008.c: 465:  T2_addr = WREG;
  21915   015546  6E00               	movwf	0,c
  21916                           
- 21917                           ;EMU8008.c: 472:  TBLPTRH = WREG & 0x3f;
+ 21917                           ;EMU8008.c: 466:  TBLPTRH = WREG & 0x3f;
  21918   015548  0B3F               	andlw	63
  21919   01554A  6EF7               	movwf	247,c	;volatile
  21920                           
- 21921                           ;EMU8008.c: 473:  FSR0H = TBLPTRH + 6;
+ 21921                           ;EMU8008.c: 467:  FSR0H = TBLPTRH + 6;
  21922   01554C  50F7               	movf	247,w,c	;volatile
  21923   01554E  0F06               	addlw	6
  21924   015550  6EEA               	movwf	234,c	;volatile
  21925                           
- 21926                           ;EMU8008.c: 475:  if (!(T2_addr & 0b01000000)){
+ 21926                           ;EMU8008.c: 469:  if (!(T2_addr & 0b01000000)){
  21927   015552  BC00               	btfsc	0,6,c
  21928   015554  D010               	goto	i2l256
  21929                           
- 21930                           ;EMU8008.c: 476:   if (TBLPTRH >= (0x1F00/0x100)){
+ 21930                           ;EMU8008.c: 470:   if (TBLPTRH >= (0x1F00/0x100)){
  21931   015556  0E1E               	movlw	30
  21932   015558  64F7               	cpfsgt	247,c	;volatile
  21933   01555A  D004               	goto	i2l257
  21934   01555C  0008               	tblrd		*	;# 
  21935   01555E  C4F5 F4C1          	movff	tablat,1217	;# 
  21936                           
- 21937                           ;EMU8008.c: 479:   }
+ 21937                           ;EMU8008.c: 473:   }
  21938   015562  D002               	goto	i2l259
  21939   015564                     i2l257:
  21940   015564  C4EF F4C1          	movff	indf0,1217	;# 
@@ -22098,17 +22098,17 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og9
  21942   015568  AACF               	btfss	1231,5,c	;volatile
  21943   01556A  D7FE               	goto	i2l259
  21944                           
- 21945                           ;EMU8008.c: 486:   TRISD = 0x00;
+ 21945                           ;EMU8008.c: 480:   TRISD = 0x00;
  21946   01556C  6AC9               	clrf	201,c	;volatile
  21947   01556E                     i2l262:
  21948   01556E  B6CF               	btfsc	1231,3,c	;volatile
  21949   015570  D7FE               	goto	i2l262
  21950   015572                     i2u182_40:
  21951                           
- 21952                           ;EMU8008.c: 488:   TRISD = 0xff;
+ 21952                           ;EMU8008.c: 482:   TRISD = 0xff;
  21953   015572  68C9               	setf	201,c	;volatile
  21954                           
- 21955                           ;EMU8008.c: 489:  }
+ 21955                           ;EMU8008.c: 483:  }
  21956   015574  0011               	retfie		f
  21957   015576                     i2l256:
  21958   015576  AE00               	btfss	0,7,c
@@ -22116,13 +22116,13 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og9
  21960   01557A  D02C               	goto	i2l2461
  21961   01557C                     i2l268:
  21962                           
- 21963                           ;EMU8008.c: 495:     LATD = PIR9;
+ 21963                           ;EMU8008.c: 489:     LATD = PIR9;
  21964   01557C  C4B7 F4C1          	movff	1207,1217	;volatile
  21965   015580                     i2l269:
  21966   015580  AACF               	btfss	1231,5,c	;volatile
  21967   015582  D7FE               	goto	i2l269
  21968                           
- 21969                           ;EMU8008.c: 499:     TRISD = 0x00;
+ 21969                           ;EMU8008.c: 493:     TRISD = 0x00;
  21970   015584  6AC9               	clrf	201,c	;volatile
  21971   015586                     i2l272:
  21972   015586  A6CF               	btfss	1231,3,c	;volatile
@@ -22130,13 +22130,13 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og9
  21974   01558A  D7FD               	goto	i2l272
  21975   01558C                     i2l276:
  21976                           
- 21977                           ;EMU8008.c: 505:     LATD = U3RXB;
+ 21977                           ;EMU8008.c: 499:     LATD = U3RXB;
  21978   01558C  C2C7 F4C1          	movff	711,1217	;volatile
  21979   015590                     i2l277:
  21980   015590  AACF               	btfss	1231,5,c	;volatile
  21981   015592  D7FE               	goto	i2l277
  21982                           
- 21983                           ;EMU8008.c: 509:     TRISD = 0x00;
+ 21983                           ;EMU8008.c: 503:     TRISD = 0x00;
  21984   015594  6AC9               	clrf	201,c	;volatile
  21985   015596                     i2l280:
  21986   015596  A6CF               	btfss	1231,3,c	;volatile
@@ -22144,30 +22144,30 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og9
  21988   01559A  D7FD               	goto	i2l280
  21989   01559C                     i2l283:
  21990                           
- 21991                           ;EMU8008.c: 515:     RC5 = 1;
+ 21991                           ;EMU8008.c: 509:     RC5 = 1;
  21992   01559C  8AD0               	bsf	1232,5,c	;volatile
  21993                           
- 21994                           ;EMU8008.c: 516:     INT_PC = ram[0x41];
+ 21994                           ;EMU8008.c: 510:     INT_PC = ram[0x41];
  21995   01559E  C641 F501          	movff	1601,1281
  21996                           
- 21997                           ;EMU8008.c: 517:     INTLOG = ram[0x42];
+ 21997                           ;EMU8008.c: 511:     INTLOG = ram[0x42];
  21998   0155A2  C642 F502          	movff	1602,1282
  21999                           
- 22000                           ;EMU8008.c: 518:     break;
+ 22000                           ;EMU8008.c: 512:     break;
  22001   0155A6  0011               	retfie		f
  22002   0155A8                     i2l284:
  22003                           
- 22004                           ;EMU8008.c: 521:     RC5 = 0;
+ 22004                           ;EMU8008.c: 515:     RC5 = 0;
  22005   0155A8  9AD0               	bcf	1232,5,c	;volatile
  22006                           
- 22007                           ;EMU8008.c: 522:     break;
+ 22007                           ;EMU8008.c: 516:     break;
  22008   0155AA  0011               	retfie		f
  22009   0155AC                     i2l285:
  22010                           
- 22011                           ;EMU8008.c: 525:     U3TXB = TBLPTRL;
+ 22011                           ;EMU8008.c: 519:     U3TXB = TBLPTRL;
  22012   0155AC  C4F6 F2C9          	movff	tblptrl,713	;volatile
  22013                           
- 22014                           ;EMU8008.c: 526:     break;
+ 22014                           ;EMU8008.c: 520:     break;
  22015   0155B0  0011               	retfie		f
  22016   0155B2                     i2l2459:
  22017   0155B2  5000               	movf	0,w,c
@@ -22211,7 +22211,7 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og9
  22055                           
  22056 ;; *************** function _T1I_ISR *****************
  22057 ;; Defined at:
- 22058 ;;		line 541 in file "EMU8008.c"
+ 22058 ;;		line 535 in file "EMU8008.c"
  22059 ;; Parameters:    Size  Location     Type
  22060 ;;		None
  22061 ;; Auto vars:     Size  Location     Type
@@ -22244,21 +22244,21 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og9
  22088   01505C                     _T1I_ISR:
  22089                           	callstack 118
  22090                           
- 22091                           ;EMU8008.c: 544:  CLC2IF = 0;
+ 22091                           ;EMU8008.c: 538:  CLC2IF = 0;
  22092                           
  22093                           ;incstack = 0
  22094   01505C  92B4               	bcf	1204,1,c	;volatile
  22095                           
- 22096                           ;EMU8008.c: 545:  WREG = PORTD;
+ 22096                           ;EMU8008.c: 539:  WREG = PORTD;
  22097   01505E  50D1               	movf	209,w,c	;volatile
  22098                           
- 22099                           ;EMU8008.c: 546:  TBLPTRL = WREG;
+ 22099                           ;EMU8008.c: 540:  TBLPTRL = WREG;
  22100   015060  6EF6               	movwf	246,c	;volatile
  22101                           
- 22102                           ;EMU8008.c: 547:  FSR0L = WREG;
+ 22102                           ;EMU8008.c: 541:  FSR0L = WREG;
  22103   015062  6EE9               	movwf	233,c	;volatile
  22104                           
- 22105                           ;EMU8008.c: 548:  ram[INTLOG] = WREG;
+ 22105                           ;EMU8008.c: 542:  ram[INTLOG] = WREG;
  22106   015064  0E00               	movlw	0
  22107   015066  2402               	addwf	2,w,c
  22108   015068  6ED9               	movwf	fsr2l,c
@@ -22267,7 +22267,7 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og9
  22111   01506E  22DA               	addwfc	fsr2h,f,c
  22112   015070  C4E8 F4DF          	movff	wreg,indf2	;volatile
  22113                           
- 22114                           ;EMU8008.c: 549:  INTLOG++;
+ 22114                           ;EMU8008.c: 543:  INTLOG++;
  22115   015074  2A02               	incf	2,f,c
  22116   015076                     i2l300:
  22117   015076  A6CF               	btfss	1231,3,c	;volatile
@@ -22276,26 +22276,26 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og9
  22120   01507A  B6CF               	btfsc	1231,3,c	;volatile
  22121   01507C  D7FE               	goto	i2u191_40
  22122                           
- 22123                           ;EMU8008.c: 554:  WREG = PORTD;
+ 22123                           ;EMU8008.c: 548:  WREG = PORTD;
  22124   01507E  50D1               	movf	209,w,c	;volatile
  22125                           
- 22126                           ;EMU8008.c: 555:  T2_addr = WREG;
+ 22126                           ;EMU8008.c: 549:  T2_addr = WREG;
  22127   015080  6E00               	movwf	0,c
  22128                           
- 22129                           ;EMU8008.c: 556:  TBLPTRH = WREG & 0x3f;
+ 22129                           ;EMU8008.c: 550:  TBLPTRH = WREG & 0x3f;
  22130   015082  0B3F               	andlw	63
  22131   015084  6EF7               	movwf	247,c	;volatile
  22132                           
- 22133                           ;EMU8008.c: 557:  FSR0H = TBLPTRH + 6;
+ 22133                           ;EMU8008.c: 551:  FSR0H = TBLPTRH + 6;
  22134   015086  50F7               	movf	247,w,c	;volatile
  22135   015088  0F06               	addlw	6
  22136   01508A  6EEA               	movwf	234,c	;volatile
  22137                           
- 22138                           ;EMU8008.c: 559:  if (!(T2_addr & 0b01000000)){
+ 22138                           ;EMU8008.c: 553:  if (!(T2_addr & 0b01000000)){
  22139   01508C  BC00               	btfsc	0,6,c
  22140   01508E  D019               	goto	i2l306
  22141                           
- 22142                           ;EMU8008.c: 561:   LATD = ram[INT_PC];
+ 22142                           ;EMU8008.c: 555:   LATD = ram[INT_PC];
  22143   015090  0E00               	movlw	0
  22144   015092  2401               	addwf	1,w,c
  22145   015094  6ED9               	movwf	fsr2l,c
@@ -22305,16 +22305,16 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og9
  22149   01509C  50DF               	movf	indf2,w,c
  22150   01509E  6EC1               	movwf	193,c	;volatile
  22151                           
- 22152                           ;EMU8008.c: 562:   INT_PC++;
+ 22152                           ;EMU8008.c: 556:   INT_PC++;
  22153   0150A0  2A01               	incf	1,f,c
  22154   0150A2                     i2l307:
  22155   0150A2  AACF               	btfss	1231,5,c	;volatile
  22156   0150A4  D7FE               	goto	i2l307
  22157                           
- 22158                           ;EMU8008.c: 566:   TRISD = 0x00;
+ 22158                           ;EMU8008.c: 560:   TRISD = 0x00;
  22159   0150A6  6AC9               	clrf	201,c	;volatile
  22160                           
- 22161                           ;EMU8008.c: 567:   ram[INTLOG] = T2_addr;
+ 22161                           ;EMU8008.c: 561:   ram[INTLOG] = T2_addr;
  22162   0150A8  0E00               	movlw	0
  22163   0150AA  2402               	addwf	2,w,c
  22164   0150AC  6ED9               	movwf	fsr2l,c
@@ -22323,17 +22323,17 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og9
  22167   0150B2  22DA               	addwfc	fsr2h,f,c
  22168   0150B4  C500 F4DF          	movff	1280,indf2
  22169                           
- 22170                           ;EMU8008.c: 568:   INTLOG++;
+ 22170                           ;EMU8008.c: 562:   INTLOG++;
  22171   0150B8  2A02               	incf	2,f,c
  22172   0150BA                     i2l310:
  22173   0150BA  B6CF               	btfsc	1231,3,c	;volatile
  22174   0150BC  D7FE               	goto	i2l310
  22175   0150BE                     i2u195_40:
  22176                           
- 22177                           ;EMU8008.c: 570:   TRISD = 0xff;
+ 22177                           ;EMU8008.c: 564:   TRISD = 0xff;
  22178   0150BE  68C9               	setf	201,c	;volatile
  22179                           
- 22180                           ;EMU8008.c: 571:  }
+ 22180                           ;EMU8008.c: 565:  }
  22181   0150C0  0011               	retfie		f
  22182   0150C2                     i2l306:
  22183   0150C2  AE00               	btfss	0,7,c
@@ -22341,16 +22341,16 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og9
  22185   0150C6  D058               	goto	i2l2529
  22186   0150C8                     i2l316:
  22187                           
- 22188                           ;EMU8008.c: 577:     LATD = PIR9;
+ 22188                           ;EMU8008.c: 571:     LATD = PIR9;
  22189   0150C8  C4B7 F4C1          	movff	1207,1217	;volatile
  22190   0150CC                     i2l317:
  22191   0150CC  AACF               	btfss	1231,5,c	;volatile
  22192   0150CE  D7FE               	goto	i2l317
  22193                           
- 22194                           ;EMU8008.c: 581:     TRISD = 0x00;
+ 22194                           ;EMU8008.c: 575:     TRISD = 0x00;
  22195   0150D0  6AC9               	clrf	201,c	;volatile
  22196                           
- 22197                           ;EMU8008.c: 582:     ram[INTLOG] = T2_addr;
+ 22197                           ;EMU8008.c: 576:     ram[INTLOG] = T2_addr;
  22198   0150D2  0E00               	movlw	0
  22199   0150D4  2402               	addwf	2,w,c
  22200   0150D6  6ED9               	movwf	fsr2l,c
@@ -22359,7 +22359,7 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og9
  22203   0150DC  22DA               	addwfc	fsr2h,f,c
  22204   0150DE  C500 F4DF          	movff	1280,indf2
  22205                           
- 22206                           ;EMU8008.c: 583:     INTLOG++;
+ 22206                           ;EMU8008.c: 577:     INTLOG++;
  22207   0150E2  2A02               	incf	2,f,c
  22208   0150E4                     i2l320:
  22209   0150E4  A6CF               	btfss	1231,3,c	;volatile
@@ -22367,16 +22367,16 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og9
  22211   0150E8  D7FD               	goto	i2l320
  22212   0150EA                     i2l324:
  22213                           
- 22214                           ;EMU8008.c: 589:     LATD = U3RXB;
+ 22214                           ;EMU8008.c: 583:     LATD = U3RXB;
  22215   0150EA  C2C7 F4C1          	movff	711,1217	;volatile
  22216   0150EE                     i2l325:
  22217   0150EE  AACF               	btfss	1231,5,c	;volatile
  22218   0150F0  D7FE               	goto	i2l325
  22219                           
- 22220                           ;EMU8008.c: 593:     TRISD = 0x00;
+ 22220                           ;EMU8008.c: 587:     TRISD = 0x00;
  22221   0150F2  6AC9               	clrf	201,c	;volatile
  22222                           
- 22223                           ;EMU8008.c: 594:     ram[INTLOG] = T2_addr;
+ 22223                           ;EMU8008.c: 588:     ram[INTLOG] = T2_addr;
  22224   0150F4  0E00               	movlw	0
  22225   0150F6  2402               	addwf	2,w,c
  22226   0150F8  6ED9               	movwf	fsr2l,c
@@ -22385,7 +22385,7 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og9
  22229   0150FE  22DA               	addwfc	fsr2h,f,c
  22230   015100  C500 F4DF          	movff	1280,indf2
  22231                           
- 22232                           ;EMU8008.c: 595:     INTLOG++;
+ 22232                           ;EMU8008.c: 589:     INTLOG++;
  22233   015104  2A02               	incf	2,f,c
  22234   015106                     i2l328:
  22235   015106  A6CF               	btfss	1231,3,c	;volatile
@@ -22393,7 +22393,7 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og9
  22237   01510A  D7FD               	goto	i2l328
  22238   01510C                     i2l2505:
  22239                           
- 22240                           ;EMU8008.c: 601:     ram[INTLOG] = T2_addr;
+ 22240                           ;EMU8008.c: 595:     ram[INTLOG] = T2_addr;
  22241   01510C  0E00               	movlw	0
  22242   01510E  2402               	addwf	2,w,c
  22243   015110  6ED9               	movwf	fsr2l,c
@@ -22402,20 +22402,20 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og9
  22246   015116  22DA               	addwfc	fsr2h,f,c
  22247   015118  C500 F4DF          	movff	1280,indf2
  22248                           
- 22249                           ;EMU8008.c: 602:     INTLOG++;
+ 22249                           ;EMU8008.c: 596:     INTLOG++;
  22250   01511C  2A02               	incf	2,f,c
  22251                           
- 22252                           ;EMU8008.c: 603:     RC5 = 1;
+ 22252                           ;EMU8008.c: 597:     RC5 = 1;
  22253   01511E  8AD0               	bsf	1232,5,c	;volatile
  22254                           
- 22255                           ;EMU8008.c: 604:     break;
+ 22255                           ;EMU8008.c: 598:     break;
  22256   015120  0011               	retfie		f
  22257   015122                     i2l332:
  22258                           
- 22259                           ;EMU8008.c: 607:     RC5 = 0;
+ 22259                           ;EMU8008.c: 601:     RC5 = 0;
  22260   015122  9AD0               	bcf	1232,5,c	;volatile
  22261                           
- 22262                           ;EMU8008.c: 608:     ram[INTLOG] = T2_addr;
+ 22262                           ;EMU8008.c: 602:     ram[INTLOG] = T2_addr;
  22263   015124  0E00               	movlw	0
  22264   015126  2402               	addwf	2,w,c
  22265   015128  6ED9               	movwf	fsr2l,c
@@ -22424,21 +22424,21 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og9
  22268   01512E  22DA               	addwfc	fsr2h,f,c
  22269   015130  C500 F4DF          	movff	1280,indf2
  22270                           
- 22271                           ;EMU8008.c: 609:     INTLOG = ram[0x42];
+ 22271                           ;EMU8008.c: 603:     INTLOG = ram[0x42];
  22272   015134  C642 F502          	movff	1602,1282
  22273                           
- 22274                           ;EMU8008.c: 610:     INT_PC = ram[0x41];
+ 22274                           ;EMU8008.c: 604:     INT_PC = ram[0x41];
  22275   015138  C641 F501          	movff	1601,1281
  22276                           
- 22277                           ;EMU8008.c: 611:     break;
+ 22277                           ;EMU8008.c: 605:     break;
  22278   01513C  0011               	retfie		f
  22279   01513E                     i2l333:
  22280                           
- 22281                           ;EMU8008.c: 614:     U3TXB = TBLPTRL;
+ 22281                           ;EMU8008.c: 608:     U3TXB = TBLPTRL;
  22282   01513E  C4F6 F2C9          	movff	tblptrl,713	;volatile
  22283   015142                     i2l2517:
  22284                           
- 22285                           ;EMU8008.c: 615:     ram[INTLOG] = T2_addr;
+ 22285                           ;EMU8008.c: 609:     ram[INTLOG] = T2_addr;
  22286   015142  0E00               	movlw	0
  22287   015144  2402               	addwf	2,w,c
  22288   015146  6ED9               	movwf	fsr2l,c
@@ -22447,10 +22447,10 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og9
  22291   01514C  22DA               	addwfc	fsr2h,f,c
  22292   01514E  C500 F4DF          	movff	1280,indf2
  22293                           
- 22294                           ;EMU8008.c: 616:     INTLOG++;
+ 22294                           ;EMU8008.c: 610:     INTLOG++;
  22295   015152  2A02               	incf	2,f,c
  22296                           
- 22297                           ;EMU8008.c: 617:     break;
+ 22297                           ;EMU8008.c: 611:     break;
  22298   015154  0011               	retfie		f
  22299   015156                     i2l2527:
  22300   015156  5000               	movf	0,w,c
@@ -22485,7 +22485,7 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og9
  22329   01517E  A6CF               	btfss	1231,3,c	;volatile
  22330   015180  D7FE               	goto	i2u201_40
  22331                           
- 22332                           ;EMU8008.c: 628:   ram[INTLOG] = T2_addr;
+ 22332                           ;EMU8008.c: 622:   ram[INTLOG] = T2_addr;
  22333   015182  0E00               	movlw	0
  22334   015184  2402               	addwf	2,w,c
  22335   015186  6ED9               	movwf	fsr2l,c
@@ -22494,14 +22494,14 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og9
  22338   01518C  22DA               	addwfc	fsr2h,f,c
  22339   01518E  C500 F4DF          	movff	1280,indf2
  22340                           
- 22341                           ;EMU8008.c: 629:   INTLOG++;
+ 22341                           ;EMU8008.c: 623:   INTLOG++;
  22342   015192  2A02               	incf	2,f,c
  22343   015194                     i2l340:
  22344   015194  B6CF               	btfsc	1231,3,c	;volatile
  22345   015196  D7FE               	goto	i2l340
  22346   015198  C4D1 F4EF          	movff	1233,indf0	;# 
  22347                           
- 22348                           ;EMU8008.c: 633:  }
+ 22348                           ;EMU8008.c: 627:  }
  22349   01519C  0011               	retfie		f
  22350   01519E                     __end_of_T1I_ISR:
  22351                           	callstack 0
@@ -23384,7 +23384,7 @@ DATA                 0      0     244      0.0%
 
 
 Microchip Technology PIC18 Macro Assembler V3.00 build 20241204225717 
-Symbol Table                                                                                   Sat Jul 26 12:24:21 2025
+Symbol Table                                                                                   Sat Jul 26 13:40:38 2025
 
               ___fldiv@aexp 0529                ___fldiv@bexp 0528                           _i 056C  
               ___fldiv@sign 0521                         LATD 04C1                         l242 442E  
