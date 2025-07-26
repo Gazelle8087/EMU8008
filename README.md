@@ -106,7 +106,7 @@ TK-80の7SEG LEDと同様の操作性を目指します。
 
 ## ライセンス
 
-PICのファームウエアはMITとします。
+PICのファームウエアと基板設計データはMITとします。
 
 SCELBAL BASICに関しては私が改変した部分につきましてはMITライセンスとします。  
 元のSCELBALに関しては非商用に限り利用可のようです  
@@ -145,6 +145,11 @@ https://github.com/ryomuk/tangnano-5V/tree/main/applications/TangNano8008MEM
 電脳伝説さん制作のZ80をPICで駆動するSBCで本製作の発想のベースとなってます。
 https://vintagechips.wordpress.com/2022/03/05/emuz80_reference/
 
+## 基板頒布について
+
+ご興味があり送付先開示しても問題ない方はご連絡いただければ
+普通郵便でよろしければ差し上げます。在庫4枚あります。
+競合した場合（ないと思いますが）は先着順とさせていただきます。
 
 ## 変更履歴
 2025/07/26 Rev. 1.00 初回公開  
