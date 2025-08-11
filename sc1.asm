@@ -34,6 +34,9 @@
 ;https://www.willegal.net/scelbi/the8008andScelbi.html
 ;
 ;2025/07/26 Rev. 1.00 Initial release
+;2025/08/11 Rev. 1.10 remove SAVE LOAD command
+;                     EXIT command implement (Return to DOS if run on emulator)
+;                     MON  command implement (switch to Serial monitor)
 ;
 ;;; This is the Scelbi Basic Program from 1974 known as
 ;;; SCELBAL by Mark G. Arnold (MGA) and Nat Wadsworth  
@@ -86,9 +89,13 @@
 ;;; downloaded, distributed, posted or disemenated.
 
 		CPU	8008new
-		page	0,100
+		page	0
 
-ENDPGRAM	EQU	1fh	;055o	;MGA 4/10/12 as in orig; for his ROMable Loboyko said 077       [077]
+hi		FUNCTION hex4, hex4/256		;midified by Gazelle
+lo		FUNCTION hex4, hex4&0ffh	;modified by Gazelle
+
+
+ENDPGRAM	EQU	1eh	;055o	;MGA 4/10/12 as in orig; for his ROMable Loboyko said 077       [077]
 BGNPGRAM	EQU	6h	;033o	;MGA 4/10/12 as in orig; for his ROMable Loboyko said 044       [044]
 code_start	EQU	2000h
 INT_PTR		EQU	41h	; DO NOT change, Should match to PIC firmware
@@ -104,37 +111,81 @@ OUT_DATA	EQU 	10h	; DO NOT change, Should match to PIC firmware
 ;;; seem to be.
 
 PG01		EQU	2	;OLDPG1:	EQU	001#000
+ORG_PG01	EQU	3D00H
 PG26		EQU	3	;OLDPG26:	EQU	026#000
+ORG_PG26	EQU	3E00H
 PG27		EQU	4	;OLDPG27:	EQU	027#000
+ORG_PG27	EQU	3F00H
 PG57		EQU	5	;OLDPG57:	EQU	057#000
 
 ;;; Page zero will contain the I/O Routines.  These are actually
 ;;; just as suggested by Scelbal Manual for Serial I/O.
 
-		org	0
-		JMP	HAJIME		;inturrupt procedure
-		OUT	9		;DO NOT delete this "OUT 9" need to exit from INT procedure
+		org	code_start
 
-		org	INT_PTR		;PIC fetch inturrupt code from ram[INT_PTR]
-		db	0		;Power on INT code stored in ram[0]
-		db	80h		;Inturrupt log will be stored in ram[0x80]-
-
-		org	100h
+		JMP	HAJIME
 OPN:		db	OPN_MSG1 - OPN_MSG
 OPN_MSG:	db	"Faster SCELBAL (2012)",0dh,0ah
 		db	"Code Relocation, IO and start up code by Gazelle 2025",0dh,0ah
+		db	"Rev. 1.10 Assembled on ",DATE," at ",TIME,0dh,0ah
 OPN_MSG1:	db	0
 
 HAJIME:		MVI	H,OPN / 256
 		MVI	L,OPN - OPN/256*256
 		CALL	TEXTC
+
+		MVI	D,ORG_PG01/256
+		MVI	E,PG01
+		MVI	L,0
+LOOP_PG01:	MOV	H,D
+		MOV	A,M
+		MOV	H,E
+		MOV	M,A
+		INR	L
+		JNZ	LOOP_PG01
+
+		MVI	D,ORG_PG26/256
+		MVI	E,PG26
+		MVI	L,0
+LOOP_PG26:	MOV	H,D
+		MOV	A,M
+		MOV	H,E
+		MOV	M,A
+		INR	L
+		JNZ	LOOP_PG26
+
+		MVI	D,ORG_PG27/256
+		MVI	E,PG27
+		MVI	L,0
+LOOP_PG27:	MOV	H,D
+		MOV	A,M
+		MOV	H,E
+		MOV	M,A
+		INR	L
+		JNZ	LOOP_PG27
+
 		JMP	ENTRY_SCR
 ;---------------------------------------------------------------------
 ;		HARDWARE DEPENDENT ROUTINE
-SAVE:
-LOAD:		OUT	1FH	; Exit from emulator.
-UDEFX:		JMP	EXEC
+EXIT:
+		OUT	1FH	; Exit from emulator.
+
 ;;; no user defined functions yet, stop here if we see one.
+UDEFX		JMP	exec
+
+JMP_ADDR	equ 1EFCH
+
+MON:		MVI H,hi(JMP_ADDR)
+		MVI L,lo(JMP_ADDR)
+		MVI M,55H	; store "OUT 10" instruction at 'jmp_addr'  
+		INR L
+		MVI M,44H	; store "JMP" instruction at 'jmp_addr'+1
+		INR L
+		MVI M,00H	; store "00H" (the lo byte of address 2000H) at 'jmp_addr'+2
+		INR L
+		MVI M,20H	; store "20H" (the hi byte of address 2000H) at 'jmp_addr'+3
+		MVI A,00H	; ROM access offset(=00) for first 8K of ROM area
+		JMP JMP_ADDR 	; jump to the beginning monitor the first bank 8K of ROM
 
 CINP:		IN	IN_STATUS
 		ANI	1
@@ -187,373 +238,7 @@ CP_BS3:		IN	IN_STATUS
 		OUT	OUT_DATA
 		RET
 
-;------------------------------------------------------------------------
-
-;;; THE ABOVE MUST CONCLUDE BEFORE BY PAGE 1 STARTS
-
-;;; Page one has many constants and variables.
-
-		ORG	PG01 * 0100h	;001#000
-
-		db	0,0,0,0		;DATA *4
-		db	0,0,100o,1	;DATA 000,000,100,001	; STORES FLOATING POINT CONSTANT +1.0
-		db	0,0,0		;DATA *3
-		db	0		;DATA 000		; EXPONENT COUNTER
-		db	0,0,0,0		;DATA 000,000,000,000	; STORES FLOATING POINT NUMBER TEMPORARILLY
-		db	0,0,0,0		;DATA *4
-		db	0,0,300o,1	;DATA 000,000,300,001	; STORES FLOATING POINT CONSTANT -1.0
-		db	0,0,0,0		;DATA 000,000,000,000	; SCRATCH PAD AREA (16 BYTES)
-		db	0,0,0,0		;DATA 000,000,000,000
-		db	0,0,0,0		;DATA 000,000,000,000
-		db	0,0,0,0		;DATA 000,000,000,000
-		db	1,120o,162o,2o	;DATA 001,120,162,002	; STORES RANDOM NUMBER GENERATOR CONSTANT VALUE
-		db	0,0,0,0		;DATA *4
-		db	3,150o,157o,14o	;DATA 003,150,157,014	; STORES RANDOM NUMBER GENERATOR CONSTANT VALUE
-		db	0,0,0,0		;DATA 000,000,000,000	; SCRATCH PAD AREA (12 BYTES) (01 064-077)
-		db	0,0,0,0		;DATA 000,000,000,000
-		db	0,0,0,0		;DATA 000,000,000,000
-		db	0,0		;DATA 000,000		; SIGN INDICATOR
-		db	0		;DATA 000		; BITS COUNTER
-		db	0,0		;DATA 000,000		; SIGN INDICATOR
-IN_DIGIT_CC_L0	db	0		;DATA 000		; INPUT DIGIT COUNTER
-IN_DIGIT_CC_L	equ	105o
-		db	0		;DATA 000		; TEMP STORATE
-		db	0		;DATA 000		; OUTPUT DIGIT COUNTER
-		db	0		;DATA 000 		; FP MODE INDICATOR
-		db	0,0,0,0,0,0,0	;DATA *7		; NOT ASSIGNED (SHOULD BE 01 111-117)
-		db	0,0,0,0		;DATA 000,000,000,000	; FPACC EXTENSION
-		db	0,0,0,0		;DATA 000,000,000,000	; FPACC LSW, NSW, MSW, EXPONENT
-		db	0,0,0,0		;DATA 000,000,000,000	; FPOP  Extension
-		db	0,0,0,0		;DATA 000,000,000,000	; FPOP  LSW, NSW, MSW, EXPONENT
-		db	0,0,0,0		;DATA 000,000,000,000	; FLOATING POINT WORKING AREA
-		db	0,0,0,0		;DATA 000,000,000,000	; (SHOULD BE AT 01 140-01-167)
-		db	0,0,0,0		;DATA 000,000,000,000
-		db	0,0,0,0		;DATA 000,000,000,000
-		db	0,0,0,0		;DATA 000,000,000,000
-		db	0,0,0,0		;DATA 000,000,000,000
-		db	0,0,0,0,0,0,0,0	;DATA *8		; NOT ASSIGNED (SHOULD BE 01 170-01 177)
-		db	0,0,0,0		;DATA 000,000,000,000	; TEMPORARY REGISTER STORAGE AREA (D,E,H&L)
-		db	0,0,0,0		;DATA *4		; NOT ASSIGNED (01 204-01 207)
-		db	0,0,120o,4	;DATA 000,000,120,004	; STORES FLOATING POINT CONSTANT +10.0
-		db	147o,146o,146o,375o	;DATA 147,146,146,375	; STORES FLOATING POINT CONSTANT +0.1
-		db	0		;DATA 000		; GETINP COUNTER
-		db	0,0,0,0,0,0	;DATA *6		; NOT ASSIGNED (01 221-01 226)
-		db	0		;DATA 000		; ARITHMETIC STACK POINTER (01 227)
-		db	0		;DATA 000		; ARITHMETIC STACK (NOT CLEAR HOW LONG)
-
-		ORG	PG01 * 0100h + 0bah	;001#272
-		db	4		;DATA 004		; CC FOR SAVE
-;		db	"SAVE"		;DATA "SAVE"
-		db	"S"+80h
-		db	"A"+80h
-		db	"V"+80h
-		db	"E"+80h
-		db	4		;DATA 004		; CC FOR LOAD
-;		db	"LOAD"		;DATA "LOAD"
-		db	"L"+80h
-		db	"O"+80h
-		db	"A"+80h
-		db	"D"+80h
-		db	0,0,0,0		;DATA 000,000,000,000	; UNCLEAR WHAT THIS IS (01 304-01 317) ZEROS
-		db	0,0,0,0		;DATA 000,000,000,000	; (PROBABLY STEP, FOR/NEXT, AND ARRAY PTR TEMP)
-		db	0,0,0,0		;DATA 000,000,000,000
-					;; AT THIS POINT WE SHOULD BE AT LOCATION 01 320 01d0h
-		db	4		;DATA 4
-;		db	"THEN"		;DATA "THEN"
-		db	"T"+80h
-		db	"H"+80h
-		db	"E"+80h
-		db	"N"+80h
-		db	2		;DATA 2
-;		db	"TO"		;DATA "TO"
-		db	"T"+80h
-		db	"O"+80h
-		db	4		;DATA 4
-;		db	"STEP"		;DATA "STEP"
-		db	"S"+80h
-		db	"T"+80h
-		db	"E"+80h
-		db	"P"+80h
-		db	4		;DATA 4
-;		db	"LIST"		;DATA "LIST"
-		db	"L"+80h
-		db	"I"+80h
-		db	"S"+80h
-		db	"T"+80h
-		db	3		;DATA 3
-;		db	"RUN"		;DATA "RUN"
-		db	"R"+80h
-		db	"U"+80h
-		db	"N"+80h
-		db	3		;DATA 3
-;		db	"SCR"		;DATA "SCR
-		db	"S"+80h
-		db	"C"+80h
-		db	"R"+80h
-		db	013o		;DATA 013		; CC FOR "READY" MESSAGE
-		db	224o,215o,212o	;DATA 224,215,212	; CTRL-T, CARRIAGE RETURN, LINE FEED
-;		db	"READY"		;DATA "READY"
-		db	"R"+80h
-		db	"E"+80h
-		db	"A"+80h
-		db	"D"+80h
-		db	"Y"+80h
-		db	215o,212o,212o	;DATA 215,212,212	; CARRIAGE RETURN, LINE FEED, LINE FEED;
-		db	011o		;DATA 011
-;		db	" AT LINE "	;DATA " AT LINE "
-		db	" "+80h
-		db	"A"+80h
-		db	"T"+80h
-		db	" "+80h
-		db	"L"+80h
-		db	"I"+80h
-		db	"N"+80h
-		db	"E"+80h
-		db	" "+80h
-
-	;; THIS SHOULD BE THE END OF PAGE 01
-
-	ORG	PG26 * 100h	;026#000
-
-	db	0		;DATA 000		; CC FOR INPUT LINE BUFFER
-	db	79 dup (0)	;DATA *79 		; THE INPUT LINE BUFFER
-	db	0,0,0,0		;DATA 000,000,000,000	; THESE ARE SYMBOL BUFFER STORAGE
-	db	0,0,0,0		;DATA 000,000,000,000
-	db	0,0,0,0		;DATA 000,000,000,000	; SHOULD BE 26-120 TO 26 143
-	db	0,0,0,0		;DATA 000,000,000,000
-	db	0,0,0,0		;DATA 000,000,000,000
-	db	0,0,0,0		;DATA 000,000,000,000	; THESE LOCATIONS ARE AUXILIARY SYMBOL BUFFER
-	db	0,0,0,0		;DATA 000,000,000,000
-	db	0,0,0,0		;DATA 000,000,000,000	; SHOULD BE 26 144 TO 26 175
-	db	0,0,0,0		;DATA 000,000,000,000
-	db	0,0,0,0		;DATA 000,000,000,000
-	db	0,0,0,0		;DATA 000,000,000,000
-	db	0,0		;DATA 000,000
-	db	0		;DATA 000		; TEMP SCAN STORAGE REGISTER
-	db	0		;DATA 000		; TAB FLAG
-	db	0		;DATA 000		; EVAL CURRENT TEMP REG.
-	db	0		;DATA 000		; SYNTAX LINE NUMBER
-	db	0		;DATA 000		; SCAN TEMPORARY REGISTER
-	db	0		;DATA 000		; STATEMENT TOKEN
-	db	0,0		;DATA 000,000		; TEMPORARY WORKING REGISTERS
-	db	0,0		;DATA 000,000		; ARRAY POINTERS
-;;; NOW WE SHOULD BE UP TO 26 210 1688h
-	db	0		;DATA 000		; OPERATOR STACK POINTER
-	db	15 dup (0)	;DATA *15		; OPERATOR STACK
-	db	0		;DATA 000		; FUN/ARRAY STACK POINTER
-	db	7 dup (0)	;DATA *7			; FUNCTION/ARRAY STACK
-;;; THE LAST BYTE SHOULD HAVE BEEN 26 237 169fh
-
-
-	;; HEIRARCHY TABLE (FOR OUT OF STACK OPS)
-	;; USED BY PARSER ROUTINE.
-;;; This SHOULD START AT 26 240
-	db	0		;DATA 000		; EOS
-	db	3		;DATA 003		; PLUS SIGN
-	db	3		;DATA 003		; MINUS SIGN
-	db	4		;DATA 004		; MULTIPLICATION SIGN
-	db	4		;DATA 004		; DIVISION SIGN
-	db	5		;DATA 005		; EXPONENT SIGN
-	db	6		;DATA 006		; LEFT PARENTHESIS
-	db	1		;DATA 001		; RIGHT PARENTHESIS
-	db	2		;DATA 002		; NOT ASSIGNED
-	db	2		;DATA 002		; LESS THAN SIGN
-	db	2		;DATA 002		; Equal sign
-	db	2		;DATA 002		; GREATER THAN SIGN
-	db	2		;DATA 002		; LESS THAN OR EQUAL COMBO
-	db	2		;DATA 002		; EQUAL OR GREATER THAN
-	db	2		;DATA 002		; LESS THAN OR GREATER THAN
-
-	;; HEIRARCHY TABLE (FOR INTO STACK OPS)
-	;; USED BY PARSER ROUTINE.
-;;; This SHOULD START AT 26 257 16afh
-	db	0		;DATA 000		; EOS
-	db	3		;DATA 003		; PLUS SIGN
-	db	3		;DATA 003		; MINUS SIGN
-	db	4		;DATA 004		; MULTIPLICATION SIGN
-	db	4		;DATA 004		; DIVISION SIGN
-	db	5		;DATA 005		; EXPONENTIATION SIGN
-	db	1		;DATA 001		; LEFT PARENTHESIS
-	db	1		;DATA 001		; RIGHT PARENTHESIS
-	db	2		;DATA 002		; NOT ASSIGNED
-	db	2		;DATA 002		; LESS THAN SIGN
-	db	2		;DATA 002		; EQUAL SIGN
-	db	2		;DATA 002		; GREATER THAN SIGN
-	db	2		;DATA 002		; LESS THAN OR EQUAL SIGN
-	db	2		;DATA 002		; EQUAL TO OR GREATER THAN
-	db	2		;DATA 002		; LESS THAN OR GREATER THAN
-
-	db	0		;DATA 000		; EVAL START POINTER
-	db	0		;DATA 000		; EVAL FINISH POINTER
-
-	;; FUNCTION NAMES TABLE
-;;; This SHOULD START AT 26 300 16c0h
-
-	db	3		;DATA 3
-;	db	"INT"		;DATA "INT"
-	db	"I"+80h
-	db	"N"+80h
-	db	"T"+80h
-	db	3		;DATA 3
-;	db	"SGN"		;DATA "SGN"
-	db	"S"+80h
-	db	"G"+80h
-	db	"N"+80h
-	db	3		;DATA 3
-;	db	"ABS"		;DATA "ABS"
-	db	"A"+80h
-	db	"B"+80h
-	db	"S"+80h
-	db	3		;DATA 3
-;	db	"SQR"		;DATA "SQR"
-	db	"S"+80h
-	db	"Q"+80h
-	db	"R"+80h
-	db	3		;DATA 3
-;	db	"TAB"		;DATA "TAB"
-	db	"T"+80h
-	db	"A"+80h
-	db	"B"+80h
-	db	3		;DATA 3
-;	db	"RND"		;DATA "RND"
-	db	"R"+80h
-	db	"N"+80h
-	db	"D"+80h
-	db	3		;DATA 3
-;	db	"CHR"		;DATA "CHR"
-	db	"C"+80h
-	db	"H"+80h
-	db	"R"+80h
-	db	3		;DATA 3
-;	db	"UDF"		;DATA "UDF"
-	db	"U"+80h
-	db	"D"+80h
-	db	"F"+80h
-	db	0,0,0,0		;DATA 000,000,000,000	; LINE NUMBER BUFFER STORAGE
-	db	0,0,0,0		;DATA 000,000,000,000	; (SHOULD BE 340-347)
-	db	0,0,0,0		;DATA 000,000,000,000	; AUX LINE NUMBER BUFFER
-	db	0,0,0,0		;DATA 000,000,000,000	; (SHOULD BE 350-357)
-;;; The following data is a change in page 3 of Scelbal update issue 4
-;;; which apparently makes the "INSERT" command work correctly, the
-;;; first time (later SCR commands load 33 into this spot) 
-	db	033o		;DATA 033 		; USER PGM LINE PTR (PG)
-	db	0		;DATA 000 		; USER PGM LINE PTR (LOW)
-	db	0		;DATA 000 		; AUX PGM LINE PTR (PG)
-	db	0		;DATA 000 		; AUX PGM LINE PTR (LOW)
-	db	0		;DATA 000 		; END OF USER PGM BUFFER PTR (PG)
-	db	0		;DATA 000 		; END OF USER PGM BUFFER PTR (LOW)
-	db	0		;DATA 000		; PARENTHESIS COUNTER (366)
-	db	0		;DATA 000		; QUOTE INDICATOR
-	db	0		;DATA 000		; TABLE COUNTER (370)
-;;; locations 371-377 NOT ASSIGNED
-
-	org	PG27 * 100h		;ORG 027#000
-	db	3		;DATA 3
-;	db	"REM"		;DATA "REM"
-	db	"R"+80h
-	db	"E"+80h
-	db	"M"+80h
-	db	2		;DATA 2
-;	db	"IF"		;DATA "IF"
-	db	"I"+80h
-	db	"F"+80h
-	db	3		;DATA 3
-;	db	"LET"		;DATA "LET"
-	db	"L"+80h
-	db	"E"+80h
-	db	"T"+80h
-	db	4		;DATA 4
-;	db	"GOTO"		;DATA "GOTO"
-	db	"G"+80h
-	db	"O"+80h
-	db	"T"+80h
-	db	"O"+80h
-	db	5		;DATA 5
-;	db	"PRINT"		;DATA "PRINT"
-	db	"P"+80h
-	db	"R"+80h
-	db	"I"+80h
-	db	"N"+80h
-	db	"T"+80h
-	db	5		;DATA 5
-;	db	"INPUT"		;DATA "INPUT"
-	db	"I"+80h
-	db	"N"+80h
-	db	"P"+80h
-	db	"U"+80h
-	db	"T"+80h
-	db	3		;DATA 3
-;	db	"FOR"		;DATA "FOR"
-	db	"F"+80h
-	db	"O"+80h
-	db	"R"+80h
-	db	4		;DATA 4
-;	db	"NEXT"		;DATA "NEXT"
-	db	"N"+80h
-	db	"E"+80h
-	db	"X"+80h
-	db	"T"+80h
-	db	5		;DATA 5
-;	db	"GOSUB"		;DATA "GOSUB"
-	db	"G"+80h
-	db	"O"+80h
-	db	"S"+80h
-	db	"U"+80h
-	db	"B"+80h
-	db	6		;DATA 6
-;	db	"RETURN"	;DATA "RETURN"
-	db	"R"+80h
-	db	"E"+80h
-	db	"T"+80h
-	db	"U"+80h
-	db	"R"+80h
-	db	"N"+80h
-	db	3		;DATA 3
-;	db	"DIM"		;DATA "DIM"
-	db	"D"+80h
-	db	"I"+80h
-	db	"M"+80h
-	db	3		;DATA 3
-;	db	"END"		;DATA "END"
-	db	"E"+80h
-	db	"N"+80h
-	db	"D"+80h
-	db	0		;DATA 0
-
-	; END OF TABLE, SHOULD BE 072 3ah
-
-	db	0		;DATA 000		; GOSUB STACK POINTER
-	db	0		;DATA *1			; NOT ASSIGNED;
-	db	0		;DATA 000		; NUMBER OF ARRAYS COUNTER
-	db	0		;DATA 000		; ARRAY POINTER
-	db	0		;DATA 000		; VARIABLES COUNTER SHOULD BE 077
-	db	0,0,0,0		;DATA 000,000,000,000	; USED AS THE GOSUB STACK 100-117
-	db	0,0,0,0		;DATA 000,000,000,000
-	db	0,0,0,0		;DATA 000,000,000,000
-	db	0,0,0,0		;DATA 000,000,000,000
-	db	0,0,0,0		;DATA 000,000,000,000	; USED AS ARRAY VARIABLES TABLE
-	db	0,0,0,0		;DATA 000,000,000,000	; SHOULD BE 120-137
-	db	0,0,0,0		;DATA 000,000,000,000
-	db	0,0,0,0		;DATA 000,000,000,000
-
-	db	0,0,0,0		;DATA 000,000,000,000	; USED FOR FOR/NEXT STACK STORAGE
-	db	0,0,0,0		;DATA 000,000,000,000	; SHOULD BE 140 TO 177
-	db	0,0,0,0		;DATA 000,000,000,000
-	db	0,0,0,0		;DATA 000,000,000,000
-	db	0,0,0,0		;DATA 000,000,000,000
-	db	0,0,0,0		;DATA 000,000,000,000
-	db	0,0,0,0		;DATA 000,000,000,000
-	db	0,0,0,0		;DATA 000,000,000,000
-	db	0		;DATA 000		; FOR/NEXT STACK POINTER
-	db	0		;DATA 000		; ARRAY/VARIABLE FLAG
-	db	0		;DATA 000  		; STOSYM COUNTER
-	db	0		;DATA 000		; FUN/ARRAY STACK POINTER (203
-	db	0		;DATA 000		; ARRAY VALUES POINTER
-	db	0,0,0		;DATA *3			; NOT USED (SHOULD BE 205-207)
-	db	0		;DATA 000		; USED AS VARIABLES SYMBOL TABLE
-	db	119 dup (0)	;DATA *119		; (SHOULD BE 211-377 RESERVED)
-
-           ORG	code_start	;002#000		; START PAGE 02, THE CODE
+;           ORG	code_start	;002#000		; START PAGE 02, THE CODE
 
 SYNTAX:    CALL	CLESYM		;Clear the SYMBOL BUFFER area
            MVI	L,0e0h	;340o	;Set L to start of LINE NUMBER BUFFER
@@ -1632,13 +1317,13 @@ NOSCR:     MVI	E, 272o               ;Load E with address of SAVE in look up tab
            MVI	H,PG26 ;\HB\OLDPG26   ;Load H with page of input line buffer
            MVI	L, 000                ;Set L to start of input line buffer
            CALL	STRCP              ;Call string compare subroutine to see if first word in
-           JZ	SAVE               ;tt Input buffer is SAVE. If so, go to user's SAVE rtn
+           JZ	EXIT               ;tt Input buffer is SAVE. If so, go to user's SAVE rtn
            MVI	L, 277o               ;If not SAVE then load L with address of LOAD in look
            MVI	H,PG01 ;\HB\OLDPG1    ;Up table and load H with page of look up table
            MVI	D,PG26 ;\HB\OLDPG26   ;Load D with page of input line buffer
            MVI	E, 000                ;And L to start of input line buffer
            CALL	STRCP              ;Call string compare subroutine to see if first word in
-           JZ	LOAD               ;tt Input buffer is LOAD. If so, go to user's LOAD rtn
+           JZ	MON                ;tt Input buffer is LOAD. If so, go to user's LOAD rtn
            MVI	L, 360o               ;If not LOAD then set pointer to address of storage loc
            MVI	H,PG26 ;\HB\OLDPG26   ;** For USER PROGRAM BUFFER pointer. Initialize this
            MVI	M, BGNPGRAM           ;tt Pointer to the starting address of the program buffer.
@@ -4307,6 +3992,373 @@ DIMERR:    MVI	A, 304o               ;On error condition, load ASCII code for le
            MVI	C, 305o               ;And ASCII code for letter E in CPU register C
            JMP	ERROR              ;Go display the Dirnension Error (DE) message.
 
-;##################################################################################################
+;------------------------------------------------------------------------
 
+;;; THE ABOVE MUST CONCLUDE BEFORE BY PAGE 1 STARTS
+
+;;; Page one has many constants and variables.
+
+;		ORG	PG01 * 0100h	;001#000
+		ORG	ORG_PG01
+
+		db	0,0,0,0		;DATA *4
+		db	0,0,100o,1	;DATA 000,000,100,001	; STORES FLOATING POINT CONSTANT +1.0
+		db	0,0,0		;DATA *3
+		db	0		;DATA 000		; EXPONENT COUNTER
+		db	0,0,0,0		;DATA 000,000,000,000	; STORES FLOATING POINT NUMBER TEMPORARILLY
+		db	0,0,0,0		;DATA *4
+		db	0,0,300o,1	;DATA 000,000,300,001	; STORES FLOATING POINT CONSTANT -1.0
+		db	0,0,0,0		;DATA 000,000,000,000	; SCRATCH PAD AREA (16 BYTES)
+		db	0,0,0,0		;DATA 000,000,000,000
+		db	0,0,0,0		;DATA 000,000,000,000
+		db	0,0,0,0		;DATA 000,000,000,000
+		db	1,120o,162o,2o	;DATA 001,120,162,002	; STORES RANDOM NUMBER GENERATOR CONSTANT VALUE
+		db	0,0,0,0		;DATA *4
+		db	3,150o,157o,14o	;DATA 003,150,157,014	; STORES RANDOM NUMBER GENERATOR CONSTANT VALUE
+		db	0,0,0,0		;DATA 000,000,000,000	; SCRATCH PAD AREA (12 BYTES) (01 064-077)
+		db	0,0,0,0		;DATA 000,000,000,000
+		db	0,0,0,0		;DATA 000,000,000,000
+		db	0,0		;DATA 000,000		; SIGN INDICATOR
+		db	0		;DATA 000		; BITS COUNTER
+		db	0,0		;DATA 000,000		; SIGN INDICATOR
+IN_DIGIT_CC_L0	db	0		;DATA 000		; INPUT DIGIT COUNTER
+IN_DIGIT_CC_L	equ	105o
+		db	0		;DATA 000		; TEMP STORATE
+		db	0		;DATA 000		; OUTPUT DIGIT COUNTER
+		db	0		;DATA 000 		; FP MODE INDICATOR
+		db	0,0,0,0,0,0,0	;DATA *7		; NOT ASSIGNED (SHOULD BE 01 111-117)
+		db	0,0,0,0		;DATA 000,000,000,000	; FPACC EXTENSION
+		db	0,0,0,0		;DATA 000,000,000,000	; FPACC LSW, NSW, MSW, EXPONENT
+		db	0,0,0,0		;DATA 000,000,000,000	; FPOP  Extension
+		db	0,0,0,0		;DATA 000,000,000,000	; FPOP  LSW, NSW, MSW, EXPONENT
+		db	0,0,0,0		;DATA 000,000,000,000	; FLOATING POINT WORKING AREA
+		db	0,0,0,0		;DATA 000,000,000,000	; (SHOULD BE AT 01 140-01-167)
+		db	0,0,0,0		;DATA 000,000,000,000
+		db	0,0,0,0		;DATA 000,000,000,000
+		db	0,0,0,0		;DATA 000,000,000,000
+		db	0,0,0,0		;DATA 000,000,000,000
+		db	0,0,0,0,0,0,0,0	;DATA *8		; NOT ASSIGNED (SHOULD BE 01 170-01 177)
+		db	0,0,0,0		;DATA 000,000,000,000	; TEMPORARY REGISTER STORAGE AREA (D,E,H&L)
+		db	0,0,0,0		;DATA *4		; NOT ASSIGNED (01 204-01 207)
+		db	0,0,120o,4	;DATA 000,000,120,004	; STORES FLOATING POINT CONSTANT +10.0
+		db	147o,146o,146o,375o	;DATA 147,146,146,375	; STORES FLOATING POINT CONSTANT +0.1
+		db	0		;DATA 000		; GETINP COUNTER
+		db	0,0,0,0,0,0	;DATA *6		; NOT ASSIGNED (01 221-01 226)
+		db	0		;DATA 000		; ARITHMETIC STACK POINTER (01 227)
+		db	0		;DATA 000		; ARITHMETIC STACK (NOT CLEAR HOW LONG)
+
+;		ORG	PG01 * 0100h + 0bah	;001#272
+		ORG	ORG_PG01 + 0bah	;001#272
+		db	4		;DATA 004		; CC FOR SAVE
+;		db	"SAVE"		;DATA "SAVE"
+		db	"E"+80h
+		db	"X"+80h
+		db	"I"+80h
+		db	"T"+80h
+		db	3		;DATA 004		; CC FOR LOAD
+;		db	"LOAD"		;DATA "LOAD"
+		db	"M"+80h
+		db	"O"+80h
+		db	"N"+80h
+		db	" "+80h
+		db	0,0,0,0		;DATA 000,000,000,000	; UNCLEAR WHAT THIS IS (01 304-01 317) ZEROS
+		db	0,0,0,0		;DATA 000,000,000,000	; (PROBABLY STEP, FOR/NEXT, AND ARRAY PTR TEMP)
+		db	0,0,0,0		;DATA 000,000,000,000
+					;; AT THIS POINT WE SHOULD BE AT LOCATION 01 320 01d0h
+		db	4		;DATA 4
+;		db	"THEN"		;DATA "THEN"
+		db	"T"+80h
+		db	"H"+80h
+		db	"E"+80h
+		db	"N"+80h
+		db	2		;DATA 2
+;		db	"TO"		;DATA "TO"
+		db	"T"+80h
+		db	"O"+80h
+		db	4		;DATA 4
+;		db	"STEP"		;DATA "STEP"
+		db	"S"+80h
+		db	"T"+80h
+		db	"E"+80h
+		db	"P"+80h
+		db	4		;DATA 4
+;		db	"LIST"		;DATA "LIST"
+		db	"L"+80h
+		db	"I"+80h
+		db	"S"+80h
+		db	"T"+80h
+		db	3		;DATA 3
+;		db	"RUN"		;DATA "RUN"
+		db	"R"+80h
+		db	"U"+80h
+		db	"N"+80h
+		db	3		;DATA 3
+;		db	"SCR"		;DATA "SCR
+		db	"S"+80h
+		db	"C"+80h
+		db	"R"+80h
+		db	013o		;DATA 013		; CC FOR "READY" MESSAGE
+		db	224o,215o,212o	;DATA 224,215,212	; CTRL-T, CARRIAGE RETURN, LINE FEED
+;		db	"READY"		;DATA "READY"
+		db	"R"+80h
+		db	"E"+80h
+		db	"A"+80h
+		db	"D"+80h
+		db	"Y"+80h
+		db	215o,212o,212o	;DATA 215,212,212	; CARRIAGE RETURN, LINE FEED, LINE FEED;
+		db	011o		;DATA 011
+;		db	" AT LINE "	;DATA " AT LINE "
+		db	" "+80h
+		db	"A"+80h
+		db	"T"+80h
+		db	" "+80h
+		db	"L"+80h
+		db	"I"+80h
+		db	"N"+80h
+		db	"E"+80h
+		db	" "+80h
+
+	;; THIS SHOULD BE THE END OF PAGE 01
+
+;	ORG	PG26 * 100h	;026#000
+	ORG	ORG_PG26	;026#000
+
+	db	0		;DATA 000		; CC FOR INPUT LINE BUFFER
+	db	79 dup (0)	;DATA *79 		; THE INPUT LINE BUFFER
+	db	0,0,0,0		;DATA 000,000,000,000	; THESE ARE SYMBOL BUFFER STORAGE
+	db	0,0,0,0		;DATA 000,000,000,000
+	db	0,0,0,0		;DATA 000,000,000,000	; SHOULD BE 26-120 TO 26 143
+	db	0,0,0,0		;DATA 000,000,000,000
+	db	0,0,0,0		;DATA 000,000,000,000
+	db	0,0,0,0		;DATA 000,000,000,000	; THESE LOCATIONS ARE AUXILIARY SYMBOL BUFFER
+	db	0,0,0,0		;DATA 000,000,000,000
+	db	0,0,0,0		;DATA 000,000,000,000	; SHOULD BE 26 144 TO 26 175
+	db	0,0,0,0		;DATA 000,000,000,000
+	db	0,0,0,0		;DATA 000,000,000,000
+	db	0,0,0,0		;DATA 000,000,000,000
+	db	0,0		;DATA 000,000
+	db	0		;DATA 000		; TEMP SCAN STORAGE REGISTER
+	db	0		;DATA 000		; TAB FLAG
+	db	0		;DATA 000		; EVAL CURRENT TEMP REG.
+	db	0		;DATA 000		; SYNTAX LINE NUMBER
+	db	0		;DATA 000		; SCAN TEMPORARY REGISTER
+	db	0		;DATA 000		; STATEMENT TOKEN
+	db	0,0		;DATA 000,000		; TEMPORARY WORKING REGISTERS
+	db	0,0		;DATA 000,000		; ARRAY POINTERS
+;;; NOW WE SHOULD BE UP TO 26 210 1688h
+	db	0		;DATA 000		; OPERATOR STACK POINTER
+	db	15 dup (0)	;DATA *15		; OPERATOR STACK
+	db	0		;DATA 000		; FUN/ARRAY STACK POINTER
+	db	7 dup (0)	;DATA *7			; FUNCTION/ARRAY STACK
+;;; THE LAST BYTE SHOULD HAVE BEEN 26 237 169fh
+
+
+	;; HEIRARCHY TABLE (FOR OUT OF STACK OPS)
+	;; USED BY PARSER ROUTINE.
+;;; This SHOULD START AT 26 240
+	db	0		;DATA 000		; EOS
+	db	3		;DATA 003		; PLUS SIGN
+	db	3		;DATA 003		; MINUS SIGN
+	db	4		;DATA 004		; MULTIPLICATION SIGN
+	db	4		;DATA 004		; DIVISION SIGN
+	db	5		;DATA 005		; EXPONENT SIGN
+	db	6		;DATA 006		; LEFT PARENTHESIS
+	db	1		;DATA 001		; RIGHT PARENTHESIS
+	db	2		;DATA 002		; NOT ASSIGNED
+	db	2		;DATA 002		; LESS THAN SIGN
+	db	2		;DATA 002		; Equal sign
+	db	2		;DATA 002		; GREATER THAN SIGN
+	db	2		;DATA 002		; LESS THAN OR EQUAL COMBO
+	db	2		;DATA 002		; EQUAL OR GREATER THAN
+	db	2		;DATA 002		; LESS THAN OR GREATER THAN
+
+	;; HEIRARCHY TABLE (FOR INTO STACK OPS)
+	;; USED BY PARSER ROUTINE.
+;;; This SHOULD START AT 26 257 16afh
+	db	0		;DATA 000		; EOS
+	db	3		;DATA 003		; PLUS SIGN
+	db	3		;DATA 003		; MINUS SIGN
+	db	4		;DATA 004		; MULTIPLICATION SIGN
+	db	4		;DATA 004		; DIVISION SIGN
+	db	5		;DATA 005		; EXPONENTIATION SIGN
+	db	1		;DATA 001		; LEFT PARENTHESIS
+	db	1		;DATA 001		; RIGHT PARENTHESIS
+	db	2		;DATA 002		; NOT ASSIGNED
+	db	2		;DATA 002		; LESS THAN SIGN
+	db	2		;DATA 002		; EQUAL SIGN
+	db	2		;DATA 002		; GREATER THAN SIGN
+	db	2		;DATA 002		; LESS THAN OR EQUAL SIGN
+	db	2		;DATA 002		; EQUAL TO OR GREATER THAN
+	db	2		;DATA 002		; LESS THAN OR GREATER THAN
+
+	db	0		;DATA 000		; EVAL START POINTER
+	db	0		;DATA 000		; EVAL FINISH POINTER
+
+	;; FUNCTION NAMES TABLE
+;;; This SHOULD START AT 26 300 16c0h
+
+	db	3		;DATA 3
+;	db	"INT"		;DATA "INT"
+	db	"I"+80h
+	db	"N"+80h
+	db	"T"+80h
+	db	3		;DATA 3
+;	db	"SGN"		;DATA "SGN"
+	db	"S"+80h
+	db	"G"+80h
+	db	"N"+80h
+	db	3		;DATA 3
+;	db	"ABS"		;DATA "ABS"
+	db	"A"+80h
+	db	"B"+80h
+	db	"S"+80h
+	db	3		;DATA 3
+;	db	"SQR"		;DATA "SQR"
+	db	"S"+80h
+	db	"Q"+80h
+	db	"R"+80h
+	db	3		;DATA 3
+;	db	"TAB"		;DATA "TAB"
+	db	"T"+80h
+	db	"A"+80h
+	db	"B"+80h
+	db	3		;DATA 3
+;	db	"RND"		;DATA "RND"
+	db	"R"+80h
+	db	"N"+80h
+	db	"D"+80h
+	db	3		;DATA 3
+;	db	"CHR"		;DATA "CHR"
+	db	"C"+80h
+	db	"H"+80h
+	db	"R"+80h
+	db	3		;DATA 3
+;	db	"UDF"		;DATA "UDF"
+	db	"U"+80h
+	db	"D"+80h
+	db	"F"+80h
+	db	0,0,0,0		;DATA 000,000,000,000	; LINE NUMBER BUFFER STORAGE
+	db	0,0,0,0		;DATA 000,000,000,000	; (SHOULD BE 340-347)
+	db	0,0,0,0		;DATA 000,000,000,000	; AUX LINE NUMBER BUFFER
+	db	0,0,0,0		;DATA 000,000,000,000	; (SHOULD BE 350-357)
+;;; The following data is a change in page 3 of Scelbal update issue 4
+;;; which apparently makes the "INSERT" command work correctly, the
+;;; first time (later SCR commands load 33 into this spot) 
+	db	033o		;DATA 033 		; USER PGM LINE PTR (PG)
+	db	0		;DATA 000 		; USER PGM LINE PTR (LOW)
+	db	0		;DATA 000 		; AUX PGM LINE PTR (PG)
+	db	0		;DATA 000 		; AUX PGM LINE PTR (LOW)
+	db	0		;DATA 000 		; END OF USER PGM BUFFER PTR (PG)
+	db	0		;DATA 000 		; END OF USER PGM BUFFER PTR (LOW)
+	db	0		;DATA 000		; PARENTHESIS COUNTER (366)
+	db	0		;DATA 000		; QUOTE INDICATOR
+	db	0		;DATA 000		; TABLE COUNTER (370)
+;;; locations 371-377 NOT ASSIGNED
+
+	org	PG27 * 100h		;ORG 027#000
+	org	ORG_PG27		;ORG 027#000
+	db	3		;DATA 3
+;	db	"REM"		;DATA "REM"
+	db	"R"+80h
+	db	"E"+80h
+	db	"M"+80h
+	db	2		;DATA 2
+;	db	"IF"		;DATA "IF"
+	db	"I"+80h
+	db	"F"+80h
+	db	3		;DATA 3
+;	db	"LET"		;DATA "LET"
+	db	"L"+80h
+	db	"E"+80h
+	db	"T"+80h
+	db	4		;DATA 4
+;	db	"GOTO"		;DATA "GOTO"
+	db	"G"+80h
+	db	"O"+80h
+	db	"T"+80h
+	db	"O"+80h
+	db	5		;DATA 5
+;	db	"PRINT"		;DATA "PRINT"
+	db	"P"+80h
+	db	"R"+80h
+	db	"I"+80h
+	db	"N"+80h
+	db	"T"+80h
+	db	5		;DATA 5
+;	db	"INPUT"		;DATA "INPUT"
+	db	"I"+80h
+	db	"N"+80h
+	db	"P"+80h
+	db	"U"+80h
+	db	"T"+80h
+	db	3		;DATA 3
+;	db	"FOR"		;DATA "FOR"
+	db	"F"+80h
+	db	"O"+80h
+	db	"R"+80h
+	db	4		;DATA 4
+;	db	"NEXT"		;DATA "NEXT"
+	db	"N"+80h
+	db	"E"+80h
+	db	"X"+80h
+	db	"T"+80h
+	db	5		;DATA 5
+;	db	"GOSUB"		;DATA "GOSUB"
+	db	"G"+80h
+	db	"O"+80h
+	db	"S"+80h
+	db	"U"+80h
+	db	"B"+80h
+	db	6		;DATA 6
+;	db	"RETURN"	;DATA "RETURN"
+	db	"R"+80h
+	db	"E"+80h
+	db	"T"+80h
+	db	"U"+80h
+	db	"R"+80h
+	db	"N"+80h
+	db	3		;DATA 3
+;	db	"DIM"		;DATA "DIM"
+	db	"D"+80h
+	db	"I"+80h
+	db	"M"+80h
+	db	3		;DATA 3
+;	db	"END"		;DATA "END"
+	db	"E"+80h
+	db	"N"+80h
+	db	"D"+80h
+	db	0		;DATA 0
+
+	; END OF TABLE, SHOULD BE 072 3ah
+
+	db	0		;DATA 000		; GOSUB STACK POINTER
+	db	0		;DATA *1			; NOT ASSIGNED;
+	db	0		;DATA 000		; NUMBER OF ARRAYS COUNTER
+	db	0		;DATA 000		; ARRAY POINTER
+	db	0		;DATA 000		; VARIABLES COUNTER SHOULD BE 077
+	db	0,0,0,0		;DATA 000,000,000,000	; USED AS THE GOSUB STACK 100-117
+	db	0,0,0,0		;DATA 000,000,000,000
+	db	0,0,0,0		;DATA 000,000,000,000
+	db	0,0,0,0		;DATA 000,000,000,000
+	db	0,0,0,0		;DATA 000,000,000,000	; USED AS ARRAY VARIABLES TABLE
+	db	0,0,0,0		;DATA 000,000,000,000	; SHOULD BE 120-137
+	db	0,0,0,0		;DATA 000,000,000,000
+	db	0,0,0,0		;DATA 000,000,000,000
+
+	db	0,0,0,0		;DATA 000,000,000,000	; USED FOR FOR/NEXT STACK STORAGE
+	db	0,0,0,0		;DATA 000,000,000,000	; SHOULD BE 140 TO 177
+	db	0,0,0,0		;DATA 000,000,000,000
+	db	0,0,0,0		;DATA 000,000,000,000
+	db	0,0,0,0		;DATA 000,000,000,000
+	db	0,0,0,0		;DATA 000,000,000,000
+	db	0,0,0,0		;DATA 000,000,000,000
+	db	0,0,0,0		;DATA 000,000,000,000
+	db	0		;DATA 000		; FOR/NEXT STACK POINTER
+	db	0		;DATA 000		; ARRAY/VARIABLE FLAG
+	db	0		;DATA 000  		; STOSYM COUNTER
+	db	0		;DATA 000		; FUN/ARRAY STACK POINTER (203
+	db	0		;DATA 000		; ARRAY VALUES POINTER
+	db	0,0,0		;DATA *3			; NOT USED (SHOULD BE 205-207)
+	db	0		;DATA 000		; USED AS VARIABLES SYMBOL TABLE
+	db	119 dup (0)	;DATA *119		; (SHOULD BE 211-377 RESERVED)
 
