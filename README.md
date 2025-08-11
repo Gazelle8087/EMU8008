@@ -17,7 +17,7 @@ Compiler: MPLAB XC8 v3.0
 Macro assembler  AS V1.42 Beta [Bld 290]  
 
 PICのファームウエアのビルドに必要なファイルは  
-EMU8008.c sc1.txt monitror.txt のみです。
+EMU8008.c、 sc1.txt、 monitror.txt のみです。
 
 ## プリント基板
 
@@ -108,7 +108,7 @@ OUT 0Fh にて Aレジスタの値をPUSH IN 07hにて AレジスタにPOPしま
 緩和できます。
 
 【7SEG LEDへの8008からの簡単アクセス】  
-アドレス(048h-04Fh)をVRAMとみなし、PICの割込み待ち時間を使って  
+アドレス(48h-4Fh)をVRAMとみなし、PICの割込み待ち時間を使って  
 7SEG LEDにSPIにてデータ転送し8008から7SEG LED表示を簡単にできるように  
 しました。TK-80の7SEG LEDと同様の操作性を目指します。  
 
@@ -158,6 +158,10 @@ https://www.willegal.net/scelbi/the8008andScelbi.html
 Ryo MukaiさんがTangNanoで8008を動作させています。  
 ASCIIARTのBASICソースもこちらからいただきました。  
 https://github.com/ryomuk/tangnano-5V/tree/main/applications/TangNano8008MEM
+
+Jim Loos のシリアルモニタをほぼそのまま流用し  
+細部をEMU8008に合わせて改変しました。  
+https://github.com/jim11662418/Intel_8008_Single_Board_Computer
 
 ## EMUZ80について
 
