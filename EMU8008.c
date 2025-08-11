@@ -30,6 +30,7 @@
  * Repsitory https://github.com/Gazelle8087/EMU8008
  *
  * 2025/07/26 Rev. 1.00 Initial release
+ * 2005/08/11 Rev. 1.10 integrate Serial monitor and SCELBAL
  */
 
 // CONFIG1
@@ -197,7 +198,20 @@ int getch(void) {
 	while(!U3RXIF);		// Wait for Rx interrupt flag set
 	return U3RXB;		// Read data
 }
-// ======================  wiring define  ======================================
+// ===================== 7SEG LED ====================================
+void led_7seg_write(char r, char c) {
+
+	while(!SPI2STATUSbits.TXBE);	// TX buffer empty?
+	while(SPI2CON2bits.BUSY);		// BUSY?
+	SPI2TCNT = 2;
+	while(!SPI2STATUSbits.TXBE);	// TX buffer empty?
+	while(SPI2CON2bits.BUSY);		// BUSY?
+	SPI2TXB = r;
+	while(!SPI2STATUSbits.TXBE);	// TX buffer empty?
+	while(SPI2CON2bits.BUSY);		// BUSY?
+	SPI2TXB = c;
+}
+// ======================  wiring define  ============================
 
 #define		S0		RA0
 #define		S1		RA1
@@ -208,23 +222,60 @@ int getch(void) {
 #define		PHI1	RB5
 #define		INT		RC5
 
-// ======================  Global ram and rom  =================================
-//8008 RAM equivalent
+// ======================  Global ram and rom  =======================
+// 7 segment hex font
+const unsigned char led_font[16]={
+	0b00011101, // 0
+	0b00110000, // 1
+	0b01101101, // 2
+	0b01111001, // 3
+	0b00110011, // 4
+	0b01011011, // 5
+	0b01011111, // 6
+	0b01110000, // 7
+	0b01111111, // 8
+	0b01111011, // 9
+	0b01110111, // A
+	0b00011111, // b
+	0b01001110, // C
+	0b00111101, // d
+	0b01001111, // E
+	0b01000111  // F
+};
+
 #ifdef _18F47Q43
 #define RAM_SIZE	0x1F00
 #else
-#define RAM_SIZE	0x3000
+#define RAM_SIZE	0x2000
 #endif
 
-#define	INT_PTR		0x41					// ram[0x41]:initial value of INT pointer
-#define	INTLOG_PTR	0x42					// ram[0x42]:initial value of INTLOG pointer
-
 #define	RAM_start	6
+#define	INT_PTR		0x41		// ram[0x41] initial value of INT pointer
+#define	INTLOG_PTR	0x42		// ram[0x42] initial value of INTLOG pointer
+#define HLT_vector	0x50
+#define INTLOG00	0x80
+
+const unsigned char rom[] __at(0x10000) = {
+#include "monitor.txt"	
+};
+
+const unsigned char bank_rom[] __at(0x14000) = {
+#include "sc1.txt"	
+};
+
 unsigned char		ram[RAM_SIZE] __at(RAM_start * 0x100);	// RAM
-const unsigned char rom[] __at(0x10000);
-unsigned char		T2_addr __at(0x500);	// Processor status during T2
-unsigned char		INT_PC __at(0x501);		// Instruction pointer for INT controler
-unsigned char		INTLOG __at(0x502);		// Inturrpt log pointer
+
+// willing to place work area into access bank(0x500-0x55f)
+unsigned char		T2_addr		__at(0x500);	// Processor status during T2
+unsigned char		INT_PC		__at(0x501);	// Instruction pointer for INT controler
+unsigned char		INTLOG		__at(0x502);	// Inturrpt log pointer
+unsigned char		ROM_offset	__at(0x503);	// ROM read offset (ROM bank function)
+unsigned char		data_SP		__at(0x504);	// data stack pointer
+unsigned char		data_put1	__at(0x505);	// data temporary save port
+unsigned char		data_put2	__at(0x506);	// data temporary save port
+unsigned char		data_put3	__at(0x507);	// data temporary save port
+unsigned char		break_l		__at(0x508);	// break_address lower byte
+unsigned char		break_h		__at(0x509);	// break_address higher byte
 unsigned int		i;
 // ======================  main routine  =======================================
 void main(void) {
@@ -380,6 +431,38 @@ void main(void) {
 	CLCnPOL		= 0x00;		// Not inverted
 	CLCnCON		= 0x82;		// 4 input AND, no interrupt
 
+//========== Latch HLT ==========
+    CLCSELECT	= 4;		// select CLC5
+
+	CLCnSEL0	= 6;		// CLCIN6PPS <- SYNC
+	CLCnSEL1	= 2;		// CLCIN2PPS <- PHI2
+	CLCnSEL2	= 57;		// CLC7(HLT decode)
+	CLCnSEL3	= 127;		// NC
+
+	CLCnGLS0	= 1 + 4;	// C <- PHI2 invert or SYNC invert
+	CLCnGLS1	= 0x20;		// D <- CLC3 no invert
+	CLCnGLS2	= 0;		// R <- 0
+	CLCnGLS3	= 0;		// S <- 0
+
+	CLCnPOL		= 0x00;		// Q no invert D no invert CLK no invert
+	CLCnCON		= 0x94;		// D-FF, positive edge interrupt
+
+//========== decode HLT S0=1 S1=1 S2=0 ==========
+	CLCSELECT	= 6;		// select CLC7
+
+	CLCnSEL0	= 0;		// CLCIN0PPS <- S0
+	CLCnSEL1	= 1;		// CLCIN1PPS <- S1
+	CLCnSEL2	= 4;		// CLCIN4PPS <- S2
+	CLCnSEL3	= 127;		// NC
+
+	CLCnGLS0	= 2;		// S0 no invert
+	CLCnGLS1	= 8;		// S1 no invert
+	CLCnGLS2	= 0x10;		// S2 invert
+	CLCnGLS3	= 0x40;		// 1(0 inv)
+
+	CLCnPOL		= 0x00;		// Not inverted
+	CLCnCON		= 0x82;		// 4 input AND, no interrupt
+
 //=====================================================
 	// UART3 initialize
 	U3BRG		= 416;		// 9600bps @ 64MHz
@@ -396,8 +479,38 @@ void main(void) {
 	LATA6		= 1;		// Default level
 	TRISA6		= 0;		// TX set as output
 	RA6PPS		= 0x26;		// RA6->UART3:TX3;
-
 	U3ON		= 1;		// Serial port enable
+//======= SPI setup =======================================
+	SPI2CON0	= 0x03;		// EN=0, LSBF=0; MST=1, BMODE=1
+	SPI2CON1	= 0xc4;		// SMP=1, CKE=1, CKP=0, FST=0, SSP=1, SDOP=0, SDIO=0
+	SPI2CON2	= 0x02;		// SSET=0, TXR=1, RXR=0
+	SPI2CLK		= 0;		// Clock source Fosc
+	SPI2BAUD	= 3;		// bauid rate 8MHz 64MHz/(2(SPIBAUD+1))	
+	SPI2TWIDTH	= 0;		// 8bit
+	SPI2CON0bits.EN = 1;	// EN=1
+
+	RB0PPS		= 0x34;		// SPI2SCK
+	RB1PPS		= 0x35;		// SPI2SDO
+	RA4PPS		= 0x36;		// SPI2SS
+	TRISB0		= 0;
+	TRISB1		= 0;
+	TRISA4		= 0;
+
+	led_7seg_write(0x0f,0);	// display test , normal operation
+	led_7seg_write(0x0a,0);	// Intensity , Duty Cycle 0x00=1/32 .. 0x0F=31/32
+	led_7seg_write(0x0b,7);	// scan limit , display 0 to 7
+	led_7seg_write(0x0c,1);	// shutdown mode register , normal operation
+	led_7seg_write(0x09,0);	// No decode for digits 0-7
+
+	led_7seg_write(0x01,0xff);
+	led_7seg_write(0x02,0xff);
+	led_7seg_write(0x03,0xff);
+	led_7seg_write(0x04,0xff);
+	led_7seg_write(0x05,0xff);
+	led_7seg_write(0x06,0xff);
+	led_7seg_write(0x07,0xff);
+	led_7seg_write(0x08,0xff);
+//==============================================
 
 	printf("\r\nEMU8008 clock speed %3.0fkHz\r\n",(float)64000/(PWM1PR+1));
 	printf("PWM1 -> RB5 -> PHI1 width %3.0f nsec\r\n",(float)PWM1S1P1*15.625);
@@ -406,6 +519,8 @@ void main(void) {
 	for(i = 0; i < RAM_SIZE; i++) {
 		ram[i] = rom[i];
 	}
+
+	ram[0x40] = 0x55;		// identify 8008 real chip and emulator(it's 0xaa)
 
     // Unlock IVT
     IVTLOCK	= 0x55;
@@ -421,39 +536,51 @@ void main(void) {
     IVTLOCKbits.IVTLOCKED = 0x01;
 
     // CLC VI enable
-    CLC1IF = 0;		// Clear the CLC1 interrupt flag
-    CLC2IF = 0;		// Clear the CLC2 interrupt flag
-    CLC3IF = 0;		// Clear the CLC3 interrupt flag
-    CLC4IF = 0;		// Clear the CLC4 interrupt flag
-    CLC5IF = 0;		// Clear the CLC5 interrupt flag
-    CLC6IF = 0;		// Clear the CLC6 interrupt flag
-    CLC7IF = 0;		// Clear the CLC7 interrupt flag
-    CLC8IF = 0;		// Clear the CLC8 interrupt flag
+    CLC1IF 		= 0;	// Clear the CLC1 interrupt flag
+    CLC2IF 		= 0;	// Clear the CLC2 interrupt flag
+    CLC3IF 		= 0;	// Clear the CLC3 interrupt flag
+    CLC4IF 		= 0;	// Clear the CLC4 interrupt flag
+    CLC5IF 		= 0;	// Clear the CLC5 interrupt flag
+    CLC6IF		= 0;	// Clear the CLC6 interrupt flag
+    CLC7IF		= 0;	// Clear the CLC7 interrupt flag
+    CLC8IF		= 0;	// Clear the CLC8 interrupt flag
 
-    CLC1IE = 1;		// Enable CLC1 interrupt T1
-    CLC2IE = 1;		// Enable CLC2 interrupt T1I
-    CLC3IE = 0;		//
-    CLC4IE = 0;		//
-    CLC5IE = 0;		//
-    CLC6IE = 0;		//
-    CLC7IE = 0;		//
-    CLC8IE = 0;		//
+    CLC1IE		= 1;	// Enable CLC1 T1  interrupt
+    CLC2IE		= 1;	// Enable CLC2 T1I interrupt
+    CLC3IE		= 0;	//
+    CLC4IE		= 0;	//
+    CLC5IE		= 1;	// Enable CLC5 HLT interrupt
+    CLC6IE		= 0;	//
+    CLC7IE		= 0;	//
+    CLC8IE		= 0;	//
 
     GIE			= 1;	// Global interrupt enable
     BSR			= 0;	// BSR 0 fixed
     TBLPTRU 	= 1;	// TBLTPU always 1 fixed (8008ROM at 10000h)
     CLCSELECT	= 0;	// CLCSELECT usually 0
+	ROM_offset	= 0;	// ROM bank offset = 0
+	data_SP		= 0;	// set data stack pointer 0
 
     // 8008 start
 	INTLOG		= ram[INTLOG_PTR];	// initial value of INTLOG pointer
 	INT_PC		= ram[INT_PTR];		// initial value of INT_PC counter
 	INT	= 1;						// INT=H and start 8008
-    while(1);
+
+    while(1){
+		led_7seg_write(8,ram[0x48]);
+		led_7seg_write(7,ram[0x49]);
+		led_7seg_write(6,ram[0x4a]);
+		led_7seg_write(5,ram[0x4b]);
+		led_7seg_write(4,ram[0x4c]);
+		led_7seg_write(3,ram[0x4d]);
+		led_7seg_write(2,ram[0x4e]);
+		led_7seg_write(1,ram[0x4f]);
+		_delay(200);
+	}
 }
 //==============================================================================
 void __interrupt(irq(CLC1),base(8)) T1_ISR(){
 
-	CLC1IF	= 0;							// clear CLC1 interrupt flag
 	WREG	= PORTD;						// data bus shows lower byte of instruction code or data
 	TBLPTRL	= WREG;							// Set TBLPTRL in advance
 	FSR0L	= WREG;							// Set FSR0L in advance
@@ -466,8 +593,17 @@ void __interrupt(irq(CLC1),base(8)) T1_ISR(){
 	TBLPTRH = WREG & 0x3f;					// mask upper 2bit(CPU status) and set TBLPTRH
 	FSR0H	= TBLPTRH + RAM_start;			// mask upper 2bit(CPU status) and set FSR0H
 
-	if (!(T2_addr & 0b01000000)){			// memory read
+	if ((T2_addr == break_h)&&(TBLPTRL == break_l)){	// if It's Break point
+		LATD	= 0xff;						// insert HLT op code
+		while (!PHI1);						// wait for T3 DATA IN timing
+		TRISD	= 0x00;						// port OUT
+		while (SYNC);						// wait for SYNC = 0
+		TRISD	= 0xff;						// port IN
+		CLC1IF	= 0;						// clear CLC1 interrupt flag
+	}
+	else if (!(T2_addr & 0b01000000)){			// memory read
 		if (TBLPTRH >= (RAM_SIZE/0x100)){	// address >= RAM_SIZE then ROM read
+			TBLPTRH += ROM_offset;			// add ROM bank offset
 			asm("tblrd	*			\n"		// Table read
 				"movff	TABLAT,LATD	\n");	// LATD = rom[TBLPTR]
 		}
@@ -480,48 +616,242 @@ void __interrupt(irq(CLC1),base(8)) T1_ISR(){
 		TRISD	= 0x00;						// port OUT
 		while (SYNC);						// wait for SYNC = 0
 		TRISD	= 0xff;						// port IN
+		CLC1IF	= 0;						// clear CLC1 interrupt flag
 	}
 	else if (!(T2_addr & 0b10000000)){		// IO operation
 
-		switch (T2_addr){					// data bus shows OP code its self qin case of I/O
+		switch (T2_addr){					// data bus shows OP code its self in case of I/O
 
-			case (0x41):					// IN 00
-				LATD	= PIR9;				// check status
+		case (0x41):						// IN 00
+			LATD	= PIR9;					// check status
 
-				while (!PHI1);				// wait for T3 DATA IN timing
+			while (!PHI1);					// wait for T3 DATA IN timing
 
-				TRISD	= 0x00;				// PORTD OUT
-				while (SYNC);				// wait for SYNC = 0
-				TRISD	= 0xff;				// PORTD IN
-				break;
+			TRISD	= 0x00;					// PORTD OUT
+			while (SYNC);					// wait for SYNC = 0
+			TRISD	= 0xff;					// PORTD IN
+			break;
 
-			case (0x43):					// IN 01
-				LATD	= U3RXB;			// UART receive
+		case (0x43):						// IN 01
+			LATD	= U3RXB;				// UART receive
 
-				while (!PHI1);				// wait for T3 DATA IN timing
+			while (!PHI1);					// wait for T3 DATA IN timing
 
-				TRISD	= 0x00;				// PORTD OUT
-				while (SYNC);				// wait for SYNC = 0
-				TRISD	= 0xff;				// PORTD IN
-				break;
+			TRISD	= 0x00;					// PORTD OUT
+			while (SYNC);					// wait for SYNC = 0
+			TRISD	= 0xff;					// PORTD IN
+			break;
 
-			case (0x51):					// OUT 08h
-				INT		= 1;				// set INT signal and let CPU enter INT procedure
-				INT_PC	= ram[INT_PTR];		// set INT_PC
-				INTLOG	= ram[INTLOG_PTR];
-				break;
+		case (0x45):						// IN 02
+			FSR0L	= TBLPTRL;				// read Areg indexed RAM through IO
+			FSR0H	= RAM_start;			// 
+			asm("movff	indf0,LATD	\n"); 	// LATD = ram[A]
 
-			case (0x53):					// OUT 09h
-				INT		= 0;				// reset INT signal
-				break;
+			while (!PHI1);					// wait for T3 DATA IN timing
 
-			case (0x61):					// OUT 10h
-				U3TXB	= TBLPTRL;			// UART send
-				break;
+			TRISD	= 0x00;					// PORTD OUT
+			while (SYNC);					// wait for SYNC = 0
+			TRISD	= 0xff;					// PORTD IN
+			break;
 
-			default:
-				break;
+		case (0x47):						// IN 03
+			LATD	= data_put1;			// get temporary data(put1)
+
+			while (!PHI1);					// wait for T3 DATA IN timing
+
+			TRISD	= 0x00;					// PORTD OUT
+			while (SYNC);					// wait for SYNC = 0
+			TRISD	= 0xff;					// PORTD IN
+
+			while (!SYNC);					// wait for T4
+			while (SYNC)					// wait for T4 flag out
+			ram[0x43]	= PORTD & 0x0f;
+			break;
+
+		case (0x49):						// IN 04
+			LATD	= data_put2;			// get temporary data(put2)
+
+			while (!PHI1);					// wait for T3 DATA IN timing
+
+			TRISD	= 0x00;					// PORTD OUT
+			while (SYNC);					// wait for SYNC = 0
+			TRISD	= 0xff;					// PORTD IN
+			break;
+
+		case (0x4b):						// IN 05
+			LATD	= data_put3;			// get temporary data(put3)
+
+			while (!PHI1);					// wait for T3 DATA IN timing
+
+			TRISD	= 0x00;					// PORTD OUT
+			while (SYNC);					// wait for SYNC = 0
+			TRISD	= 0xff;					// PORTD IN
+			break;
+
+		case (0x4d):						// IN 06
+			LATD	= data_SP;				// read data stack pointer
+
+			while (!PHI1);					// wait for T3 DATA IN timing
+
+			TRISD	= 0x00;					// PORTD OUT
+			while (SYNC);					// wait for SYNC = 0
+			TRISD	= 0xff;					// PORTD IN
+			break;
+
+		case (0x4f):						// IN 07
+			FSR0L	= data_SP;				// POP A from data stack
+			FSR0H	= RAM_start;
+			asm("movff	indf0,LATD	\n");	// LATD = ram[data_SP]
+			data_SP++;
+
+			while (!SYNC);					// wait for T3 DATA IN timing
+//			while (!PHI1);					// wait for T3 DATA IN timing
+
+			TRISD	= 0x00;					// PORTD OUT
+			while (SYNC);					// wait for SYNC = 0
+			TRISD	= 0xff;					// PORTD IN
+			break;
+
+		case (0x51):						// OUT 08h
+			INT_PC	= ram[INT_PTR];			// set INT_PC
+			INTLOG	= ram[INTLOG_PTR];
+			INT		= 1;					// set INT signal and let CPU enter INT procedure
+			break;
+
+		case (0x53):						// OUT 09h
+			INT		= 0;					// reset INT signal
+			INTLOG	= ram[INTLOG_PTR];		// restore INTLOG
+			INT_PC	= ram[INT_PTR];			// restore INT_PC
+			break;
+
+		case (0x55):						// OUT 0ah
+			ROM_offset	= TBLPTRL;			// ROM read offset
+			break;
+
+		case (0x57):						// OUT 0bh
+			data_put1	= TBLPTRL;			// temporary put1
+			break;
+
+		case (0x59):						// OUT 0ch
+			data_put2	= TBLPTRL;			// temporary put2
+			break;
+
+		case (0x5b):						// OUT 0dh
+			data_put3	= TBLPTRL;			// temporary put3
+			break;
+
+		case (0x5d):						// OUT 0eh
+			data_SP		= TBLPTRL;			// set data stack pointer
+			break;
+
+		case (0x5f):						// OUT 0fh
+			data_SP--;						// PUSH A to data stack
+			FSR0L	= data_SP;
+			FSR0H	= RAM_start;
+			asm("movff	TBLPTRL,indf0	\n"); // ram[data_SP] = A
+			break;
+
+		case (0x61):						// OUT 10h
+			U3TXB		= TBLPTRL;			// UART send
+			break;
+
+		case (0x63):
+			FSR0L	= 0x41;					// IO mapped memory
+			FSR0H	= RAM_start;
+			asm("movff	TBLPTRL,indf0	\n");
+			break;
+
+		case (0x65):
+			FSR0L	= 0x42;
+			FSR0H	= RAM_start;
+			asm("movff	TBLPTRL,indf0	\n");
+			break;
+
+		case (0x67):
+			FSR0L	= 0x43;
+			FSR0H	= RAM_start;
+			asm("movff	TBLPTRL,indf0	\n");
+			break;
+
+		case (0x69):						// OUT 14h
+			break_l	= TBLPTRL;				// set break point L
+			FSR0L	= 0x44;					// copy to ram[0x44]
+			FSR0H	= RAM_start;
+			asm("movff	TBLPTRL,indf0	\n");
+			break_l	= TBLPTRL;
+			break;
+
+		case (0x6b):						// OUT 15h
+			break_h	= TBLPTRL;				// set break point H
+			FSR0L	= 0x45;					// copy to ram[0x45]
+			FSR0H	= RAM_start;
+			asm("movff	TBLPTRL,indf0	\n");
+			break;
+
+		case (0x6d):
+			FSR0L	= 0x46;
+			FSR0H	= RAM_start;
+			asm("movff	TBLPTRL,indf0	\n");
+			break;
+
+		case (0x6f):
+			FSR0L	= 0x47;
+			FSR0H	= RAM_start;
+			asm("movff	TBLPTRL,indf0	\n");
+			break;
+
+		case (0x71):
+			FSR0L	= 0x48;
+			FSR0H	= RAM_start;
+			asm("movff	TBLPTRL,indf0	\n");
+			break;
+
+		case (0x73):
+			FSR0L	= 0x49;
+			FSR0H	= RAM_start;
+			asm("movff	TBLPTRL,indf0	\n");
+			break;
+
+		case (0x75):
+			FSR0L	= 0x4a;
+			FSR0H	= RAM_start;
+			asm("movff	TBLPTRL,indf0	\n");
+			break;
+
+		case (0x77):
+			FSR0L	= 0x4b;
+			FSR0H	= RAM_start;
+			asm("movff	TBLPTRL,indf0	\n");
+			break;
+
+		case (0x79):
+			FSR0L	= 0x4c;
+			FSR0H	= RAM_start;
+			asm("movff	TBLPTRL,indf0	\n");
+			break;
+
+		case (0x7b):
+			FSR0L	= 0x4d;
+			FSR0H	= RAM_start;
+			asm("movff	TBLPTRL,indf0	\n");
+			break;
+
+		case (0x7d):
+			FSR0L	= 0x4e;
+			FSR0H	= RAM_start;
+			asm("movff	TBLPTRL,indf0	\n");
+			break;
+
+		case (0x7f):
+			FSR0L	= 0x4f;
+			FSR0H	= RAM_start;
+			asm("movff	TBLPTRL,indf0	\n");
+			break;
+
+		default:
+			break;
 		}
+		CLC1IF	= 0;						// clear CLC1 interrupt flag
 	}
 	else if (TBLPTRH < RAM_SIZE/0x100){		// RAM write
 
@@ -529,114 +859,300 @@ void __interrupt(irq(CLC1),base(8)) T1_ISR(){
 		while (SYNC);						// wait for SYNC = 0
 
 		asm("movff	PORTD,indf0	\n");		// ram[FSR0] = PORTD
+		CLC1IF	= 0;						// clear CLC1 interrupt flag
+	}
+	else{
+		CLC1IF	= 0;
 	}
 }
 //==============================================================================
 void __interrupt(irq(CLC2),base(8)) T1I_ISR(){
 
 //	INT		= 0;							// INT signal should be reset by 8008 instruction OUT 09h
-	CLC2IF		= 0;						// clear CLC2 interrupt flag
-	WREG		= PORTD;					// data bus shows lower byte of instruction code or data
-	TBLPTRL		= WREG;						// Set TBLPTRL in advance
-	FSR0L		= WREG;						// Set FSR0L in advance
-	ram[INTLOG]	= WREG;
+	TBLPTRL	= PORTD;						// save TBLPTRL
+
+	FSR0H	= RAM_start;
+	FSR0L	= INTLOG;
+	asm("movff	TBLPTRL,indf0	\n"); 		// logging ram[INTLOG] = address L
 	INTLOG++;
 
 	while (!SYNC);							// wait for T2
 	while (SYNC);							// wait for T2 OUT DATA ready
 
-	WREG	= PORTD;						// data bus shows higher byte of instruction code or data
-	T2_addr	= WREG;
-	TBLPTRH = WREG & 0x3f;					// mask upper 2bit(CPU status) and set TBLPTRH
-	FSR0H	= TBLPTRH + RAM_start;			// mask upper 2bit(CPU status) and set FSR0H
+	T2_addr	= PORTD;
+
+//	FSR0H	= RAM_start;					// FSR0H not changed
+	FSR0L	= INTLOG;
+	asm("movff	_T2_addr,indf0	\n"); 		// logging ram[INTLOG] = address H
+	INTLOG++;
 
 	if (!(T2_addr & 0b01000000)){			// memory read
 
-		LATD	= ram[INT_PC];				// fetch INT instruction at ram[INT_PC]
+//		FSR0H	= RAM_start;				// FSR0H not changed
+		FSR0L	= INT_PC;
+		asm("movff	indf0,LATD	\n"); 		// execution code LATD = ram[INT_PC]
 		INT_PC++;							// increment INT PC
 
 		while (!PHI1);						// wait for T3 DATA IN timing
-
 		TRISD	= 0x00;						// port OUT
-		ram[INTLOG]	= T2_addr;
-		INTLOG++;
 		while (SYNC);						// wait for SYNC = 0
 		TRISD	= 0xff;						// port IN
+		CLC2IF	= 0;						// clear CLC2 interrupt flag
 	}
 	else if (!(T2_addr & 0b10000000)){		// IO operation
 
-		switch (T2_addr){
+		switch (T2_addr){					// data bus shows OP code its self in case of I/O
 
-			case (0x41):					// IN 00
-				LATD	= PIR9;				// check status
+		case (0x41):						// IN 00
+			LATD	= PIR9;					// check status
 
-				while (!PHI1);				// wait for T3 DATA IN timing
+			while (!PHI1);					// wait for T3 DATA IN timing
 
-				TRISD	= 0x00;				// PORTD OUT
-				ram[INTLOG]	= T2_addr;
-				INTLOG++;
-				while (SYNC);				// wait for SYNC = 0
-				TRISD	= 0xff;				// PORTD IN
-				break;
+			TRISD	= 0x00;					// PORTD OUT
+			while (SYNC);					// wait for SYNC = 0
+			TRISD	= 0xff;					// PORTD IN
+			break;
 
-			case (0x43):					// IN 01
-				LATD	= U3RXB;			// UART receive
+		case (0x43):						// IN 01
+			LATD	= U3RXB;				// UART receive
 
-				while (!PHI1);				// wait for T3 DATA IN timing
+			while (!PHI1);					// wait for T3 DATA IN timing
 
-				TRISD	= 0x00;				// PORTD OUT
-				ram[INTLOG]	= T2_addr;
-				INTLOG++;
-				while (SYNC);				// wait for SYNC = 0
-				TRISD	= 0xff;				// PORTD IN
-				break;
+			TRISD	= 0x00;					// PORTD OUT
+			while (SYNC);					// wait for SYNC = 0
+			TRISD	= 0xff;					// PORTD IN
+			break;
 
-			case (0x51):					// OUT 08h
-				ram[INTLOG]	= T2_addr;
-				INTLOG++;
-				INT		= 1;				// set INT signal
-				break;
+		case (0x45):						// IN 02
+			FSR0L	= TBLPTRL;				// read Areg indexed RAM through IO
+			FSR0H	= RAM_start;			// 
+			asm("movff	indf0,LATD	\n"); 	// LATD = ram[A]
 
-			case (0x53):					// OUT 09h and exit INT procedure
-				INT		= 0;				// reset INT signal
-				ram[INTLOG]	= T2_addr;
-				INTLOG	= ram[INTLOG_PTR];
-				INT_PC	= ram[INT_PTR];		// set INT_PC
-				break;
+			while (!PHI1);					// wait for T3 DATA IN timing
 
-			case (0x61):					// OUT 10h
-				U3TXB	= TBLPTRL;			// UART send
-				ram[INTLOG]	= T2_addr;
-				INTLOG++;
-				break;
+			TRISD	= 0x00;					// PORTD OUT
+			while (SYNC);					// wait for SYNC = 0
+			TRISD	= 0xff;					// PORTD IN
+			break;
 
-			default:
-				ram[INTLOG]	= T2_addr;
-				INTLOG++;
-				break;
+		case (0x47):						// IN 03
+			LATD	= data_put1;			// get temporary data(put1)
+
+			while (!PHI1);					// wait for T3 DATA IN timing
+
+			TRISD	= 0x00;					// PORTD OUT
+			while (SYNC);					// wait for SYNC = 0
+			TRISD	= 0xff;					// PORTD IN
+			break;
+
+		case (0x49):						// IN 04
+			LATD	= data_put2;			// get temporary data(put2)
+
+			while (!PHI1);					// wait for T3 DATA IN timing
+
+			TRISD	= 0x00;					// PORTD OUT
+			while (SYNC);					// wait for SYNC = 0
+			TRISD	= 0xff;					// PORTD IN
+			break;
+
+		case (0x4b):						// IN 05
+			LATD	= data_put3;			// get temporary data(put3)
+
+			while (!PHI1);					// wait for T3 DATA IN timing
+
+			TRISD	= 0x00;					// PORTD OUT
+			while (SYNC);					// wait for SYNC = 0
+			TRISD	= 0xff;					// PORTD IN
+			break;
+
+		case (0x4d):						// IN 06
+			LATD	= data_SP;				// read data stack pointer
+
+			while (!PHI1);					// wait for T3 DATA IN timing
+
+			TRISD	= 0x00;					// PORTD OUT
+			while (SYNC);					// wait for SYNC = 0
+			TRISD	= 0xff;					// PORTD IN
+			break;
+
+		case (0x4f):						// IN 07
+			FSR0L	= data_SP;				// POP A from data stack
+			FSR0H	= RAM_start;
+			asm("movff	indf0,LATD	\n");	// LATD = ram[data_SP]
+			data_SP++;
+
+			while (!SYNC);					// wait for T3 DATA IN timing
+//			while (!PHI1);					// wait for T3 DATA IN timing
+
+			TRISD	= 0x00;					// PORTD OUT
+			while (SYNC);					// wait for SYNC = 0
+			TRISD	= 0xff;					// PORTD IN
+			break;
+
+		case (0x51):						// OUT 08h
+//			INT_PC	= ram[INT_PTR];			// INT_PC should not restore during INT procedure
+//			INTLOG	= ram[INTLOG_PTR];		// INTLOG should not restore drring INT procedure
+			INT		= 1;					// set INT signal
+			break;
+
+		case (0x53):						// OUT 09h and exit INT procedure
+			INT		= 0;					// reset INT signal
+			INTLOG	= ram[INTLOG_PTR];		// restore INTLOG
+			INT_PC	= ram[INT_PTR];			// restore INT_PC
+			ram[0x40] = 0x55;				// identify 8008 real chip and emulator(it's 0xaa)
+			break;
+
+		case (0x55):						// OUT 0ah
+			ROM_offset	= TBLPTRL;			// ROM read offset
+			break;
+
+		case (0x57):						// OUT 0bh
+			data_put1	= TBLPTRL;			// temporary put1
+			break;
+
+		case (0x59):						// OUT 0ch
+			data_put2	= TBLPTRL;			// temporary put2
+			break;
+
+		case (0x5b):						// OUT 0dh
+			data_put3	= TBLPTRL;			// temporary put3
+			break;
+
+		case (0x5d):						// OUT 0eh
+			data_SP		= TBLPTRL;			// set data stack pointer
+			break;
+
+		case (0x5f):						// OUT 0fh
+			data_SP--;						// PUSH A to data stack
+			FSR0L	= data_SP;
+			FSR0H	= RAM_start;
+			asm("movff	TBLPTRL,indf0	\n"); // ram[data_SP] = A
+			break;
+
+		case (0x61):						// OUT 10h
+			U3TXB		= TBLPTRL;			// UART send
+			break;
+
+		case (0x63):
+			FSR0L	= 0x41;					// IO mapped memory
+			FSR0H	= RAM_start;
+			asm("movff	TBLPTRL,indf0	\n");
+			break;
+
+		case (0x65):
+			FSR0L	= 0x42;
+			FSR0H	= RAM_start;
+			asm("movff	TBLPTRL,indf0	\n");
+			break;
+
+		case (0x67):
+			FSR0L	= 0x43;
+			FSR0H	= RAM_start;
+			asm("movff	TBLPTRL,indf0	\n");
+			break;
+
+		case (0x69):						// OUT 14h
+			break_l	= TBLPTRL;				// set break point L
+			FSR0L	= 0x44;					// copy to ram[0x44]
+			FSR0H	= RAM_start;
+			asm("movff	TBLPTRL,indf0	\n");
+			break_l	= TBLPTRL;
+			break;
+
+		case (0x6b):						// OUT 15h
+			break_h	= TBLPTRL;				// set break point H
+			FSR0L	= 0x45;					// copy to ram[0x45]
+			FSR0H	= RAM_start;
+			asm("movff	TBLPTRL,indf0	\n");
+			break;
+
+		case (0x6d):
+			FSR0L	= 0x46;
+			FSR0H	= RAM_start;
+			asm("movff	TBLPTRL,indf0	\n");
+			break;
+
+		case (0x6f):
+			FSR0L	= 0x47;
+			FSR0H	= RAM_start;
+			asm("movff	TBLPTRL,indf0	\n");
+			break;
+
+		case (0x71):
+			FSR0L	= 0x48;
+			FSR0H	= RAM_start;
+			asm("movff	TBLPTRL,indf0	\n");
+			break;
+
+		case (0x73):
+			FSR0L	= 0x49;
+			FSR0H	= RAM_start;
+			asm("movff	TBLPTRL,indf0	\n");
+			break;
+
+		case (0x75):
+			FSR0L	= 0x4a;
+			FSR0H	= RAM_start;
+			asm("movff	TBLPTRL,indf0	\n");
+			break;
+
+		case (0x77):
+			FSR0L	= 0x4b;
+			FSR0H	= RAM_start;
+			asm("movff	TBLPTRL,indf0	\n");
+			break;
+
+		case (0x79):
+			FSR0L	= 0x4c;
+			FSR0H	= RAM_start;
+			asm("movff	TBLPTRL,indf0	\n");
+			break;
+
+		case (0x7b):
+			FSR0L	= 0x4d;
+			FSR0H	= RAM_start;
+			asm("movff	TBLPTRL,indf0	\n");
+			break;
+
+		case (0x7d):
+			FSR0L	= 0x4e;
+			FSR0H	= RAM_start;
+			asm("movff	TBLPTRL,indf0	\n");
+			break;
+
+		case (0x7f):
+			FSR0L	= 0x4f;
+			FSR0H	= RAM_start;
+			asm("movff	TBLPTRL,indf0	\n");
+			break;
+
+		default:
+			break;
 		}
+		CLC2IF	= 0;						// clear CLC2 interrupt flag
 	}
 	else if (TBLPTRH < RAM_SIZE/0x100){		// RAM write
 
+		FSR0H	= T2_addr & 0x3f + RAM_start;	// mask upper 2bit(CPU status) and set FSR0H
+		FSR0L	= TBLPTRL;
+
 		while (!SYNC);						// wait for T3
-		ram[INTLOG]	= T2_addr;
-		INTLOG++;
 		while (SYNC);						// wait for SYNC = 0
 
 		asm("movff	PORTD,indf0	\n");		// ram[FSR0] = PORTD
+		CLC2IF	= 0;						// clear CLC2 interrupt flag
 	}
-	else {
-		ram[INTLOG]	= T2_addr;
-		INTLOG++;
+	else{
+		CLC2IF	= 0;
 	}
 }
 //==============================================================================
+void __interrupt(irq(CLC5),base(8)) HLT_ISR(){
 
-const unsigned char rom[] __at(0x10000) = {
-
-//	Simple loop back test
-//	nop   in 0  ani   1     jz 0001           in 01 out16 jmp 0000
-//	0xc0, 0x41, 0x24, 0x01, 0x68, 0x01, 0x00, 0x43, 0x61, 0x44, 0x00, 0x00,
-
-#include "sc1.txt"	
-};
+	ram[INT_PTR]	= HLT_vector;					// set INT instruction code address
+	INT_PC			= HLT_vector;
+	ram[INTLOG_PTR]	= INTLOG00;
+	INTLOG			= INTLOG00;
+	INT				= 1;
+	CLC5IF			= 0;
+}
