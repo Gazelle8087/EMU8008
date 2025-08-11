@@ -159,7 +159,7 @@ Ryo MukaiさんがTangNanoで8008を動作させています。
 ASCIIARTのBASICソースもこちらからいただきました。  
 https://github.com/ryomuk/tangnano-5V/tree/main/applications/TangNano8008MEM
 
-Jim Loos のシリアルモニタをほぼそのまま流用し  
+Jim Loosさんのシリアルモニタをほぼそのまま流用し  
 細部をEMU8008に合わせて改変しました。  
 https://github.com/jim11662418/Intel_8008_Single_Board_Computer
 
@@ -177,4 +177,5 @@ https://vintagechips.wordpress.com/2022/03/05/emuz80_reference/
 ## 変更履歴
 2025/07/26 Rev. 1.00 初回公開  
 2025/08/11 Rev. 1.10 シリアルモニタを統合 各種機能織り込み
+
 
