@@ -245,7 +245,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 "61091
 [; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC18F-Q_DFP/1.27.449/xc8\pic\include\proc/pic18f47q43.h: 61091: extern volatile __bit U3ON __attribute__((address(0x1697)));
 [v _U3ON `Vb ~T0 @X0 0 e@5783 ]
-"4368
+"117 C:\Program Files\Microchip\xc8\v3.00\pic\include\c99/stdio.h
+[; ;C:\Program Files\Microchip\xc8\v3.00\pic\include\c99/stdio.h: 117: int printf(const char *restrict, ...);
+[v _printf `(i ~T0 @X0 0 ev`*Cuc ]
+"4368 C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC18F-Q_DFP/1.27.449/xc8\pic\include\proc/pic18f47q43.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC18F-Q_DFP/1.27.449/xc8\pic\include\proc/pic18f47q43.h: 4368: extern volatile unsigned char SPI2CON0 __attribute__((address(0x091)));
 [v _SPI2CON0 `Vuc ~T0 @X0 0 e@145 ]
 "4434
@@ -296,10 +299,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 "60434
 [; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC18F-Q_DFP/1.27.449/xc8\pic\include\proc/pic18f47q43.h: 60434: extern volatile __bit TRISA4 __attribute__((address(0x2634)));
 [v _TRISA4 `Vb ~T0 @X0 0 e@9780 ]
-"117 C:\Program Files\Microchip\xc8\v3.00\pic\include\c99/stdio.h
-[; ;C:\Program Files\Microchip\xc8\v3.00\pic\include\c99/stdio.h: 117: int printf(const char *restrict, ...);
-[v _printf `(i ~T0 @X0 0 ev`*Cuc ]
-"44236 C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC18F-Q_DFP/1.27.449/xc8\pic\include\proc/pic18f47q43.h
+"44236
 [; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC18F-Q_DFP/1.27.449/xc8\pic\include\proc/pic18f47q43.h: 44236: extern volatile unsigned char IVTLOCK __attribute__((address(0x459)));
 [v _IVTLOCK `Vuc ~T0 @X0 0 e@1113 ]
 "44242
@@ -28178,111 +28178,111 @@ Version 4.0 HI-TECH Software Intermediate Code
 "482
 [; ;EMU8008.c: 482:  U3ON = 1;
 [e = _U3ON -> -> 1 `i `b ]
-"484
-[; ;EMU8008.c: 484:  SPI2CON0 = 0x03;
-[e = _SPI2CON0 -> -> 3 `i `uc ]
 "485
-[; ;EMU8008.c: 485:  SPI2CON1 = 0xc4;
-[e = _SPI2CON1 -> -> 196 `i `uc ]
-"486
-[; ;EMU8008.c: 486:  SPI2CON2 = 0x02;
-[e = _SPI2CON2 -> -> 2 `i `uc ]
-"487
-[; ;EMU8008.c: 487:  SPI2CLK = 0;
-[e = _SPI2CLK -> -> 0 `i `uc ]
-"488
-[; ;EMU8008.c: 488:  SPI2BAUD = 3;
-[e = _SPI2BAUD -> -> 3 `i `uc ]
-"489
-[; ;EMU8008.c: 489:  SPI2TWIDTH = 0;
-[e = _SPI2TWIDTH -> -> 0 `i `uc ]
-"490
-[; ;EMU8008.c: 490:  SPI2CON0bits.EN = 1;
-[e = . . _SPI2CON0bits 0 4 -> -> 1 `i `uc ]
-"492
-[; ;EMU8008.c: 492:  RB0PPS = 0x34;
-[e = _RB0PPS -> -> 52 `i `uc ]
-"493
-[; ;EMU8008.c: 493:  RB1PPS = 0x35;
-[e = _RB1PPS -> -> 53 `i `uc ]
-"494
-[; ;EMU8008.c: 494:  RA4PPS = 0x36;
-[e = _RA4PPS -> -> 54 `i `uc ]
-"495
-[; ;EMU8008.c: 495:  TRISB0 = 0;
-[e = _TRISB0 -> -> 0 `i `b ]
-"496
-[; ;EMU8008.c: 496:  TRISB1 = 0;
-[e = _TRISB1 -> -> 0 `i `b ]
-"497
-[; ;EMU8008.c: 497:  TRISA4 = 0;
-[e = _TRISA4 -> -> 0 `i `b ]
-"499
-[; ;EMU8008.c: 499:  led_7seg_write(0x0f,0);
-[e ( _led_7seg_write (2 , -> -> 15 `i `uc -> -> 0 `i `uc ]
-"500
-[; ;EMU8008.c: 500:  led_7seg_write(0x0a,0);
-[e ( _led_7seg_write (2 , -> -> 10 `i `uc -> -> 0 `i `uc ]
-"501
-[; ;EMU8008.c: 501:  led_7seg_write(0x0b,7);
-[e ( _led_7seg_write (2 , -> -> 11 `i `uc -> -> 7 `i `uc ]
-"502
-[; ;EMU8008.c: 502:  led_7seg_write(0x0c,1);
-[e ( _led_7seg_write (2 , -> -> 12 `i `uc -> -> 1 `i `uc ]
-"503
-[; ;EMU8008.c: 503:  led_7seg_write(0x09,0);
-[e ( _led_7seg_write (2 , -> -> 9 `i `uc -> -> 0 `i `uc ]
-"505
-[; ;EMU8008.c: 505:  led_7seg_write(0x01,0xff);
-[e ( _led_7seg_write (2 , -> -> 1 `i `uc -> -> 255 `i `uc ]
-"506
-[; ;EMU8008.c: 506:  led_7seg_write(0x02,0xff);
-[e ( _led_7seg_write (2 , -> -> 2 `i `uc -> -> 255 `i `uc ]
-"507
-[; ;EMU8008.c: 507:  led_7seg_write(0x03,0xff);
-[e ( _led_7seg_write (2 , -> -> 3 `i `uc -> -> 255 `i `uc ]
-"508
-[; ;EMU8008.c: 508:  led_7seg_write(0x04,0xff);
-[e ( _led_7seg_write (2 , -> -> 4 `i `uc -> -> 255 `i `uc ]
-"509
-[; ;EMU8008.c: 509:  led_7seg_write(0x05,0xff);
-[e ( _led_7seg_write (2 , -> -> 5 `i `uc -> -> 255 `i `uc ]
-"510
-[; ;EMU8008.c: 510:  led_7seg_write(0x06,0xff);
-[e ( _led_7seg_write (2 , -> -> 6 `i `uc -> -> 255 `i `uc ]
-"511
-[; ;EMU8008.c: 511:  led_7seg_write(0x07,0xff);
-[e ( _led_7seg_write (2 , -> -> 7 `i `uc -> -> 255 `i `uc ]
-"512
-[; ;EMU8008.c: 512:  led_7seg_write(0x08,0xff);
-[e ( _led_7seg_write (2 , -> -> 8 `i `uc -> -> 255 `i `uc ]
-"515
-[; ;EMU8008.c: 515:  printf("\r\nEMU8008 clock speed %3.0fkHz\r\n",(float)64000/(PWM1PR+1));
+[; ;EMU8008.c: 485:  printf("\r\nEMU8008 clock speed %3.0fkHz\r\n",(float)64000/(PWM1PR+1));
 [e ( _printf , (. :s 1C -> / -> -> 64000 `l `f -> + -> _PWM1PR `ui -> -> 1 `i `ui `f `d ]
-"516
-[; ;EMU8008.c: 516:  printf("PWM1 -> RB5 -> PHI1 width %3.0f nsec\r\n",(float)PWM1S1P1*15.625);
+"486
+[; ;EMU8008.c: 486:  printf("PWM1 -> RB5 -> PHI1 width %3.0f nsec\r\n",(float)PWM1S1P1*15.625);
 [e ( _printf , (. :s 2C * -> -> _PWM1S1P1 `f `d .15.625 ]
-"517
-[; ;EMU8008.c: 517:  printf("PWM2 -> RB4 -> PHI2 width %3.0f nsec\r\n\r\n",(float)PWM2S1P1*15.625);
+"487
+[; ;EMU8008.c: 487:  printf("PWM2 -> RB4 -> PHI2 width %3.0f nsec\r\n\r\n",(float)PWM2S1P1*15.625);
 [e ( _printf , (. :s 3C * -> -> _PWM2S1P1 `f `d .15.625 ]
-"519
-[; ;EMU8008.c: 519:  for(i = 0; i < 0x1F00; i++) {
+"489
+[; ;EMU8008.c: 489:  for(i = 0; i < 0x1F00; i++) {
 {
 [e = _i -> -> 0 `i `ui ]
 [e $ < _i -> -> 7936 `i `ui 2430  ]
 [e $U 2431  ]
 [e :U 2430 ]
 {
-"520
-[; ;EMU8008.c: 520:   ram[i] = rom[i];
+"490
+[; ;EMU8008.c: 490:   ram[i] = rom[i];
 [e = *U + &U _ram * -> _i `ux -> -> # *U &U _ram `ui `ux *U + &U _rom * -> _i `ux -> -> # *U &U _rom `ui `ux ]
-"521
-[; ;EMU8008.c: 521:  }
+"491
+[; ;EMU8008.c: 491:  }
 }
 [e ++ _i -> -> 1 `i `ui ]
 [e $ < _i -> -> 7936 `i `ui 2430  ]
 [e :U 2431 ]
 }
+"493
+[; ;EMU8008.c: 493:  SPI2CON0 = 0x03;
+[e = _SPI2CON0 -> -> 3 `i `uc ]
+"494
+[; ;EMU8008.c: 494:  SPI2CON1 = 0xc4;
+[e = _SPI2CON1 -> -> 196 `i `uc ]
+"495
+[; ;EMU8008.c: 495:  SPI2CON2 = 0x02;
+[e = _SPI2CON2 -> -> 2 `i `uc ]
+"496
+[; ;EMU8008.c: 496:  SPI2CLK = 0;
+[e = _SPI2CLK -> -> 0 `i `uc ]
+"497
+[; ;EMU8008.c: 497:  SPI2BAUD = 3;
+[e = _SPI2BAUD -> -> 3 `i `uc ]
+"498
+[; ;EMU8008.c: 498:  SPI2TWIDTH = 0;
+[e = _SPI2TWIDTH -> -> 0 `i `uc ]
+"499
+[; ;EMU8008.c: 499:  SPI2CON0bits.EN = 1;
+[e = . . _SPI2CON0bits 0 4 -> -> 1 `i `uc ]
+"501
+[; ;EMU8008.c: 501:  RB0PPS = 0x34;
+[e = _RB0PPS -> -> 52 `i `uc ]
+"502
+[; ;EMU8008.c: 502:  RB1PPS = 0x35;
+[e = _RB1PPS -> -> 53 `i `uc ]
+"503
+[; ;EMU8008.c: 503:  RA4PPS = 0x36;
+[e = _RA4PPS -> -> 54 `i `uc ]
+"504
+[; ;EMU8008.c: 504:  TRISB0 = 0;
+[e = _TRISB0 -> -> 0 `i `b ]
+"505
+[; ;EMU8008.c: 505:  TRISB1 = 0;
+[e = _TRISB1 -> -> 0 `i `b ]
+"506
+[; ;EMU8008.c: 506:  TRISA4 = 0;
+[e = _TRISA4 -> -> 0 `i `b ]
+"508
+[; ;EMU8008.c: 508:  led_7seg_write(0x0f,0);
+[e ( _led_7seg_write (2 , -> -> 15 `i `uc -> -> 0 `i `uc ]
+"509
+[; ;EMU8008.c: 509:  led_7seg_write(0x0a,0);
+[e ( _led_7seg_write (2 , -> -> 10 `i `uc -> -> 0 `i `uc ]
+"510
+[; ;EMU8008.c: 510:  led_7seg_write(0x0b,7);
+[e ( _led_7seg_write (2 , -> -> 11 `i `uc -> -> 7 `i `uc ]
+"511
+[; ;EMU8008.c: 511:  led_7seg_write(0x0c,1);
+[e ( _led_7seg_write (2 , -> -> 12 `i `uc -> -> 1 `i `uc ]
+"512
+[; ;EMU8008.c: 512:  led_7seg_write(0x09,0);
+[e ( _led_7seg_write (2 , -> -> 9 `i `uc -> -> 0 `i `uc ]
+"514
+[; ;EMU8008.c: 514:  led_7seg_write(0x01,0xff);
+[e ( _led_7seg_write (2 , -> -> 1 `i `uc -> -> 255 `i `uc ]
+"515
+[; ;EMU8008.c: 515:  led_7seg_write(0x02,0xff);
+[e ( _led_7seg_write (2 , -> -> 2 `i `uc -> -> 255 `i `uc ]
+"516
+[; ;EMU8008.c: 516:  led_7seg_write(0x03,0xff);
+[e ( _led_7seg_write (2 , -> -> 3 `i `uc -> -> 255 `i `uc ]
+"517
+[; ;EMU8008.c: 517:  led_7seg_write(0x04,0xff);
+[e ( _led_7seg_write (2 , -> -> 4 `i `uc -> -> 255 `i `uc ]
+"518
+[; ;EMU8008.c: 518:  led_7seg_write(0x05,0xff);
+[e ( _led_7seg_write (2 , -> -> 5 `i `uc -> -> 255 `i `uc ]
+"519
+[; ;EMU8008.c: 519:  led_7seg_write(0x06,0xff);
+[e ( _led_7seg_write (2 , -> -> 6 `i `uc -> -> 255 `i `uc ]
+"520
+[; ;EMU8008.c: 520:  led_7seg_write(0x07,0xff);
+[e ( _led_7seg_write (2 , -> -> 7 `i `uc -> -> 255 `i `uc ]
+"521
+[; ;EMU8008.c: 521:  led_7seg_write(0x08,0xff);
+[e ( _led_7seg_write (2 , -> -> 8 `i `uc -> -> 255 `i `uc ]
 "523
 [; ;EMU8008.c: 523:  ram[0x40] = 0x55;
 [e = *U + &U _ram * -> -> -> 64 `i `ui `ux -> -> # *U &U _ram `ui `ux -> -> 85 `i `uc ]

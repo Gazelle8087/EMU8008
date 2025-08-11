@@ -11,7 +11,7 @@
 # All addresses and the length are given in unqualified hexadecimal
 # in delta units.  Any other numeric values are decimal.
 %PSECTS
-$C:\Users\hiroy\AppData\Local\Temp\xcAsbn8.\driver_tmp_14.o
+$C:\Users\hiroy\AppData\Local\Temp\xcBshek.1\driver_tmp_14.o
 init CODE 0 16000 16000 4 1 2
 reset_vec CODE 0 0 0 4 1 2
 config CONFIG 4 300000 300000 A 1 1
@@ -1214,38 +1214,38 @@ $dist/default/production\EMU8008.X.production.o
 16A42 text0 CODE >480:C:\Users\hiroy\MPLABXProjects\EMU8008.X\EMU8008.c
 16A44 text0 CODE >481:C:\Users\hiroy\MPLABXProjects\EMU8008.X\EMU8008.c
 16A4A text0 CODE >482:C:\Users\hiroy\MPLABXProjects\EMU8008.X\EMU8008.c
-16A4C text0 CODE >484:C:\Users\hiroy\MPLABXProjects\EMU8008.X\EMU8008.c
-16A52 text0 CODE >485:C:\Users\hiroy\MPLABXProjects\EMU8008.X\EMU8008.c
-16A56 text0 CODE >486:C:\Users\hiroy\MPLABXProjects\EMU8008.X\EMU8008.c
-16A5A text0 CODE >487:C:\Users\hiroy\MPLABXProjects\EMU8008.X\EMU8008.c
-16A5C text0 CODE >488:C:\Users\hiroy\MPLABXProjects\EMU8008.X\EMU8008.c
-16A60 text0 CODE >489:C:\Users\hiroy\MPLABXProjects\EMU8008.X\EMU8008.c
-16A62 text0 CODE >490:C:\Users\hiroy\MPLABXProjects\EMU8008.X\EMU8008.c
-16A64 text0 CODE >492:C:\Users\hiroy\MPLABXProjects\EMU8008.X\EMU8008.c
-16A6A text0 CODE >493:C:\Users\hiroy\MPLABXProjects\EMU8008.X\EMU8008.c
-16A6E text0 CODE >494:C:\Users\hiroy\MPLABXProjects\EMU8008.X\EMU8008.c
-16A72 text0 CODE >495:C:\Users\hiroy\MPLABXProjects\EMU8008.X\EMU8008.c
-16A74 text0 CODE >496:C:\Users\hiroy\MPLABXProjects\EMU8008.X\EMU8008.c
-16A76 text0 CODE >497:C:\Users\hiroy\MPLABXProjects\EMU8008.X\EMU8008.c
-16A78 text0 CODE >499:C:\Users\hiroy\MPLABXProjects\EMU8008.X\EMU8008.c
-16A82 text0 CODE >500:C:\Users\hiroy\MPLABXProjects\EMU8008.X\EMU8008.c
-16A8C text0 CODE >501:C:\Users\hiroy\MPLABXProjects\EMU8008.X\EMU8008.c
-16A96 text0 CODE >502:C:\Users\hiroy\MPLABXProjects\EMU8008.X\EMU8008.c
-16AA0 text0 CODE >503:C:\Users\hiroy\MPLABXProjects\EMU8008.X\EMU8008.c
-16AAA text0 CODE >505:C:\Users\hiroy\MPLABXProjects\EMU8008.X\EMU8008.c
-16AB4 text0 CODE >506:C:\Users\hiroy\MPLABXProjects\EMU8008.X\EMU8008.c
-16ABE text0 CODE >507:C:\Users\hiroy\MPLABXProjects\EMU8008.X\EMU8008.c
-16AC8 text0 CODE >508:C:\Users\hiroy\MPLABXProjects\EMU8008.X\EMU8008.c
-16AD2 text0 CODE >509:C:\Users\hiroy\MPLABXProjects\EMU8008.X\EMU8008.c
-16ADC text0 CODE >510:C:\Users\hiroy\MPLABXProjects\EMU8008.X\EMU8008.c
-16AE6 text0 CODE >511:C:\Users\hiroy\MPLABXProjects\EMU8008.X\EMU8008.c
-16AF0 text0 CODE >512:C:\Users\hiroy\MPLABXProjects\EMU8008.X\EMU8008.c
-16AFA text0 CODE >515:C:\Users\hiroy\MPLABXProjects\EMU8008.X\EMU8008.c
-16B68 text0 CODE >516:C:\Users\hiroy\MPLABXProjects\EMU8008.X\EMU8008.c
-16BC8 text0 CODE >517:C:\Users\hiroy\MPLABXProjects\EMU8008.X\EMU8008.c
-16C28 text0 CODE >519:C:\Users\hiroy\MPLABXProjects\EMU8008.X\EMU8008.c
-16C30 text0 CODE >520:C:\Users\hiroy\MPLABXProjects\EMU8008.X\EMU8008.c
-16C54 text0 CODE >521:C:\Users\hiroy\MPLABXProjects\EMU8008.X\EMU8008.c
+16A4C text0 CODE >485:C:\Users\hiroy\MPLABXProjects\EMU8008.X\EMU8008.c
+16ABA text0 CODE >486:C:\Users\hiroy\MPLABXProjects\EMU8008.X\EMU8008.c
+16B1A text0 CODE >487:C:\Users\hiroy\MPLABXProjects\EMU8008.X\EMU8008.c
+16B7A text0 CODE >489:C:\Users\hiroy\MPLABXProjects\EMU8008.X\EMU8008.c
+16B82 text0 CODE >490:C:\Users\hiroy\MPLABXProjects\EMU8008.X\EMU8008.c
+16BA6 text0 CODE >491:C:\Users\hiroy\MPLABXProjects\EMU8008.X\EMU8008.c
+16BB2 text0 CODE >493:C:\Users\hiroy\MPLABXProjects\EMU8008.X\EMU8008.c
+16BB8 text0 CODE >494:C:\Users\hiroy\MPLABXProjects\EMU8008.X\EMU8008.c
+16BBC text0 CODE >495:C:\Users\hiroy\MPLABXProjects\EMU8008.X\EMU8008.c
+16BC0 text0 CODE >496:C:\Users\hiroy\MPLABXProjects\EMU8008.X\EMU8008.c
+16BC2 text0 CODE >497:C:\Users\hiroy\MPLABXProjects\EMU8008.X\EMU8008.c
+16BC6 text0 CODE >498:C:\Users\hiroy\MPLABXProjects\EMU8008.X\EMU8008.c
+16BC8 text0 CODE >499:C:\Users\hiroy\MPLABXProjects\EMU8008.X\EMU8008.c
+16BCA text0 CODE >501:C:\Users\hiroy\MPLABXProjects\EMU8008.X\EMU8008.c
+16BD0 text0 CODE >502:C:\Users\hiroy\MPLABXProjects\EMU8008.X\EMU8008.c
+16BD4 text0 CODE >503:C:\Users\hiroy\MPLABXProjects\EMU8008.X\EMU8008.c
+16BD8 text0 CODE >504:C:\Users\hiroy\MPLABXProjects\EMU8008.X\EMU8008.c
+16BDA text0 CODE >505:C:\Users\hiroy\MPLABXProjects\EMU8008.X\EMU8008.c
+16BDC text0 CODE >506:C:\Users\hiroy\MPLABXProjects\EMU8008.X\EMU8008.c
+16BDE text0 CODE >508:C:\Users\hiroy\MPLABXProjects\EMU8008.X\EMU8008.c
+16BE8 text0 CODE >509:C:\Users\hiroy\MPLABXProjects\EMU8008.X\EMU8008.c
+16BF2 text0 CODE >510:C:\Users\hiroy\MPLABXProjects\EMU8008.X\EMU8008.c
+16BFC text0 CODE >511:C:\Users\hiroy\MPLABXProjects\EMU8008.X\EMU8008.c
+16C06 text0 CODE >512:C:\Users\hiroy\MPLABXProjects\EMU8008.X\EMU8008.c
+16C10 text0 CODE >514:C:\Users\hiroy\MPLABXProjects\EMU8008.X\EMU8008.c
+16C1A text0 CODE >515:C:\Users\hiroy\MPLABXProjects\EMU8008.X\EMU8008.c
+16C24 text0 CODE >516:C:\Users\hiroy\MPLABXProjects\EMU8008.X\EMU8008.c
+16C2E text0 CODE >517:C:\Users\hiroy\MPLABXProjects\EMU8008.X\EMU8008.c
+16C38 text0 CODE >518:C:\Users\hiroy\MPLABXProjects\EMU8008.X\EMU8008.c
+16C42 text0 CODE >519:C:\Users\hiroy\MPLABXProjects\EMU8008.X\EMU8008.c
+16C4C text0 CODE >520:C:\Users\hiroy\MPLABXProjects\EMU8008.X\EMU8008.c
+16C56 text0 CODE >521:C:\Users\hiroy\MPLABXProjects\EMU8008.X\EMU8008.c
 16C60 text0 CODE >523:C:\Users\hiroy\MPLABXProjects\EMU8008.X\EMU8008.c
 16C66 text0 CODE >526:C:\Users\hiroy\MPLABXProjects\EMU8008.X\EMU8008.c
 16C6C text0 CODE >527:C:\Users\hiroy\MPLABXProjects\EMU8008.X\EMU8008.c
@@ -1288,26 +1288,26 @@ $dist/default/production\EMU8008.X.production.o
 16CFE text0 CODE >576:C:\Users\hiroy\MPLABXProjects\EMU8008.X\EMU8008.c
 16D08 text0 CODE >577:C:\Users\hiroy\MPLABXProjects\EMU8008.X\EMU8008.c
 16D12 text0 CODE >578:C:\Users\hiroy\MPLABXProjects\EMU8008.X\EMU8008.c
-18606 cinit CODE >26909:C:\Users\hiroy\AppData\Local\Temp\xcAsbn8.\driver_tmp_1.s
-18606 cinit CODE >26911:C:\Users\hiroy\AppData\Local\Temp\xcAsbn8.\driver_tmp_1.s
-18606 cinit CODE >26914:C:\Users\hiroy\AppData\Local\Temp\xcAsbn8.\driver_tmp_1.s
-18606 cinit CODE >26941:C:\Users\hiroy\AppData\Local\Temp\xcAsbn8.\driver_tmp_1.s
-1860A cinit CODE >26942:C:\Users\hiroy\AppData\Local\Temp\xcAsbn8.\driver_tmp_1.s
-1860C cinit CODE >26943:C:\Users\hiroy\AppData\Local\Temp\xcAsbn8.\driver_tmp_1.s
-1860C cinit CODE >26944:C:\Users\hiroy\AppData\Local\Temp\xcAsbn8.\driver_tmp_1.s
-1860E cinit CODE >26945:C:\Users\hiroy\AppData\Local\Temp\xcAsbn8.\driver_tmp_1.s
-18610 cinit CODE >26946:C:\Users\hiroy\AppData\Local\Temp\xcAsbn8.\driver_tmp_1.s
-18612 cinit CODE >26949:C:\Users\hiroy\AppData\Local\Temp\xcAsbn8.\driver_tmp_1.s
-18614 cinit CODE >26957:C:\Users\hiroy\AppData\Local\Temp\xcAsbn8.\driver_tmp_1.s
-18616 cinit CODE >26958:C:\Users\hiroy\AppData\Local\Temp\xcAsbn8.\driver_tmp_1.s
-18618 cinit CODE >26959:C:\Users\hiroy\AppData\Local\Temp\xcAsbn8.\driver_tmp_1.s
-1861A cinit CODE >26960:C:\Users\hiroy\AppData\Local\Temp\xcAsbn8.\driver_tmp_1.s
-1861C cinit CODE >26961:C:\Users\hiroy\AppData\Local\Temp\xcAsbn8.\driver_tmp_1.s
-1861E cinit CODE >26962:C:\Users\hiroy\AppData\Local\Temp\xcAsbn8.\driver_tmp_1.s
-18620 cinit CODE >26963:C:\Users\hiroy\AppData\Local\Temp\xcAsbn8.\driver_tmp_1.s
-18622 cinit CODE >26969:C:\Users\hiroy\AppData\Local\Temp\xcAsbn8.\driver_tmp_1.s
-18622 cinit CODE >26971:C:\Users\hiroy\AppData\Local\Temp\xcAsbn8.\driver_tmp_1.s
-18624 cinit CODE >26972:C:\Users\hiroy\AppData\Local\Temp\xcAsbn8.\driver_tmp_1.s
+18606 cinit CODE >26909:C:\Users\hiroy\AppData\Local\Temp\xcBshek.1\driver_tmp_1.s
+18606 cinit CODE >26911:C:\Users\hiroy\AppData\Local\Temp\xcBshek.1\driver_tmp_1.s
+18606 cinit CODE >26914:C:\Users\hiroy\AppData\Local\Temp\xcBshek.1\driver_tmp_1.s
+18606 cinit CODE >26941:C:\Users\hiroy\AppData\Local\Temp\xcBshek.1\driver_tmp_1.s
+1860A cinit CODE >26942:C:\Users\hiroy\AppData\Local\Temp\xcBshek.1\driver_tmp_1.s
+1860C cinit CODE >26943:C:\Users\hiroy\AppData\Local\Temp\xcBshek.1\driver_tmp_1.s
+1860C cinit CODE >26944:C:\Users\hiroy\AppData\Local\Temp\xcBshek.1\driver_tmp_1.s
+1860E cinit CODE >26945:C:\Users\hiroy\AppData\Local\Temp\xcBshek.1\driver_tmp_1.s
+18610 cinit CODE >26946:C:\Users\hiroy\AppData\Local\Temp\xcBshek.1\driver_tmp_1.s
+18612 cinit CODE >26949:C:\Users\hiroy\AppData\Local\Temp\xcBshek.1\driver_tmp_1.s
+18614 cinit CODE >26957:C:\Users\hiroy\AppData\Local\Temp\xcBshek.1\driver_tmp_1.s
+18616 cinit CODE >26958:C:\Users\hiroy\AppData\Local\Temp\xcBshek.1\driver_tmp_1.s
+18618 cinit CODE >26959:C:\Users\hiroy\AppData\Local\Temp\xcBshek.1\driver_tmp_1.s
+1861A cinit CODE >26960:C:\Users\hiroy\AppData\Local\Temp\xcBshek.1\driver_tmp_1.s
+1861C cinit CODE >26961:C:\Users\hiroy\AppData\Local\Temp\xcBshek.1\driver_tmp_1.s
+1861E cinit CODE >26962:C:\Users\hiroy\AppData\Local\Temp\xcBshek.1\driver_tmp_1.s
+18620 cinit CODE >26963:C:\Users\hiroy\AppData\Local\Temp\xcBshek.1\driver_tmp_1.s
+18622 cinit CODE >26969:C:\Users\hiroy\AppData\Local\Temp\xcBshek.1\driver_tmp_1.s
+18622 cinit CODE >26971:C:\Users\hiroy\AppData\Local\Temp\xcBshek.1\driver_tmp_1.s
+18624 cinit CODE >26972:C:\Users\hiroy\AppData\Local\Temp\xcBshek.1\driver_tmp_1.s
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -1362,19 +1362,19 @@ _WPUC 411 0 ABS 0 - dist/default/production\EMU8008.X.production.o
 _WPUD 419 0 ABS 0 - dist/default/production\EMU8008.X.production.o
 _WPUE 421 0 ABS 0 - dist/default/production\EMU8008.X.production.o
 _WREG 4E8 0 ABS 0 - dist/default/production\EMU8008.X.production.o
-___sp 0 0 STACK 2 stack C:\Users\hiroy\AppData\Local\Temp\xcAsbn8.\driver_tmp_14.o
+___sp 0 0 STACK 2 stack C:\Users\hiroy\AppData\Local\Temp\xcBshek.1\driver_tmp_14.o
 _dbuf 56E 0 BANK5 1 bssBANK5 dist/default/production\EMU8008.X.production.o
 _labs 18426 0 CODE 0 text12 dist/default/production\EMU8008.X.production.o
 _main 16880 0 CODE 0 text0 dist/default/production\EMU8008.X.production.o
 _prec 56A 0 BANK5 1 bssBANK5 dist/default/production\EMU8008.X.production.o
 __end_of_Default_ISR 18676 0 CODE 0 text25 dist/default/production\EMU8008.X.production.o
-___stack_hi 0 0 STACK 2 stack C:\Users\hiroy\AppData\Local\Temp\xcAsbn8.\driver_tmp_14.o
-___stack_lo 0 0 STACK 2 stack C:\Users\hiroy\AppData\Local\Temp\xcAsbn8.\driver_tmp_14.o
+___stack_hi 0 0 STACK 2 stack C:\Users\hiroy\AppData\Local\Temp\xcBshek.1\driver_tmp_14.o
+___stack_lo 0 0 STACK 2 stack C:\Users\hiroy\AppData\Local\Temp\xcBshek.1\driver_tmp_14.o
 read_prec_or_width@c 511 0 COMRAM 1 cstackCOMRAMhh dist/default/production\EMU8008.X.production.o
 read_prec_or_width@n 512 0 COMRAM 1 cstackCOMRAMhh dist/default/production\EMU8008.X.production.o
 pad@i 523 0 COMRAM 1 cstackCOMRAMhh dist/default/production\EMU8008.X.production.o
 pad@p 520 0 COMRAM 1 cstackCOMRAMhh dist/default/production\EMU8008.X.production.o
-start 16000 0 CODE 0 init C:\Users\hiroy\AppData\Local\Temp\xcAsbn8.\driver_tmp_14.o
+start 16000 0 CODE 0 init C:\Users\hiroy\AppData\Local\Temp\xcBshek.1\driver_tmp_14.o
 ___flmul@aexp 526 0 COMRAM 1 cstackCOMRAMhh dist/default/production\EMU8008.X.production.o
 ___flmul@bexp 52B 0 COMRAM 1 cstackCOMRAMhh dist/default/production\EMU8008.X.production.o
 ___flmul@prod 52C 0 COMRAM 1 cstackCOMRAMhh dist/default/production\EMU8008.X.production.o
@@ -1388,11 +1388,11 @@ efgtoa@pp 5C6 0 BANK5 1 cstackBANK5 dist/default/production\EMU8008.X.production
 __Hpowerup 0 0 CODE 0 powerup dist/default/production\EMU8008.X.production.o
 __end_of_T1_ISR 175E0 0 CODE 0 text26 dist/default/production\EMU8008.X.production.o
 __end_of_vfpfcnvrt 17C9C 0 CODE 0 text3 dist/default/production\EMU8008.X.production.o
-__accesstop 560 0 ABS 0 - C:\Users\hiroy\AppData\Local\Temp\xcAsbn8.\driver_tmp_14.o
-intlevel0 0 0 CODE 0 text C:\Users\hiroy\AppData\Local\Temp\xcAsbn8.\driver_tmp_14.o
-intlevel1 0 0 CODE 0 text C:\Users\hiroy\AppData\Local\Temp\xcAsbn8.\driver_tmp_14.o
-intlevel2 0 0 CODE 0 text C:\Users\hiroy\AppData\Local\Temp\xcAsbn8.\driver_tmp_14.o
-intlevel3 0 0 CODE 0 text C:\Users\hiroy\AppData\Local\Temp\xcAsbn8.\driver_tmp_14.o
+__accesstop 560 0 ABS 0 - C:\Users\hiroy\AppData\Local\Temp\xcBshek.1\driver_tmp_14.o
+intlevel0 0 0 CODE 0 text C:\Users\hiroy\AppData\Local\Temp\xcBshek.1\driver_tmp_14.o
+intlevel1 0 0 CODE 0 text C:\Users\hiroy\AppData\Local\Temp\xcBshek.1\driver_tmp_14.o
+intlevel2 0 0 CODE 0 text C:\Users\hiroy\AppData\Local\Temp\xcBshek.1\driver_tmp_14.o
+intlevel3 0 0 CODE 0 text C:\Users\hiroy\AppData\Local\Temp\xcBshek.1\driver_tmp_14.o
 floorf@e 540 0 COMRAM 1 cstackCOMRAMhh dist/default/production\EMU8008.X.production.o
 floorf@m 53C 0 COMRAM 1 cstackCOMRAMhh dist/default/production\EMU8008.X.production.o
 floorf@u 542 0 COMRAM 1 cstackCOMRAMhh dist/default/production\EMU8008.X.production.o
@@ -1419,8 +1419,8 @@ _ANSELB 408 0 ABS 0 - dist/default/production\EMU8008.X.production.o
 _ANSELC 410 0 ABS 0 - dist/default/production\EMU8008.X.production.o
 _ANSELD 418 0 ABS 0 - dist/default/production\EMU8008.X.production.o
 _ANSELE 420 0 ABS 0 - dist/default/production\EMU8008.X.production.o
-___inthi_sp 0 0 STACK 2 stack C:\Users\hiroy\AppData\Local\Temp\xcAsbn8.\driver_tmp_14.o
-___intlo_sp 0 0 STACK 2 stack C:\Users\hiroy\AppData\Local\Temp\xcAsbn8.\driver_tmp_14.o
+___inthi_sp 0 0 STACK 2 stack C:\Users\hiroy\AppData\Local\Temp\xcBshek.1\driver_tmp_14.o
+___intlo_sp 0 0 STACK 2 stack C:\Users\hiroy\AppData\Local\Temp\xcBshek.1\driver_tmp_14.o
 _U3RXPPS 276 0 ABS 0 - dist/default/production\EMU8008.X.production.o
 _CLC1IE 24F5 0 ABS 0 - dist/default/production\EMU8008.X.production.o
 _CLC1IF 2575 0 ABS 0 - dist/default/production\EMU8008.X.production.o
@@ -1514,7 +1514,7 @@ _U3RXEN 168C 0 ABS 0 - dist/default/production\EMU8008.X.production.o
 _U3TXEN 168D 0 ABS 0 - dist/default/production\EMU8008.X.production.o
 _U3TXIF 25B9 0 ABS 0 - dist/default/production\EMU8008.X.production.o
 __end_of_printf 1864A 0 CODE 0 text1 dist/default/production\EMU8008.X.production.o
-isa$xinst 0 0 ABS 0 - C:\Users\hiroy\AppData\Local\Temp\xcAsbn8.\driver_tmp_14.o
+isa$xinst 0 0 ABS 0 - C:\Users\hiroy\AppData\Local\Temp\xcBshek.1\driver_tmp_14.o
 _led_7seg_write 185D8 0 CODE 0 text23 dist/default/production\EMU8008.X.production.o
 _efgtoa$883 5C4 0 BANK5 1 cstackBANK5 dist/default/production\EMU8008.X.production.o
 fputc@fp 50E 0 COMRAM 1 cstackCOMRAMhh dist/default/production\EMU8008.X.production.o
@@ -1781,16 +1781,16 @@ ___fldiv@rem 525 0 COMRAM 1 cstackCOMRAMhh dist/default/production\EMU8008.X.pro
 _IVTLOCKbits 459 0 ABS 0 - dist/default/production\EMU8008.X.production.o
 __end_of_read_prec_or_width 18288 0 CODE 0 text4 dist/default/production\EMU8008.X.production.o
 __Lfarbss 0 0 FARRAM 0 farbss dist/default/production\EMU8008.X.production.o
-___inthi_stack_hi 0 0 STACK 2 stack C:\Users\hiroy\AppData\Local\Temp\xcAsbn8.\driver_tmp_14.o
-___inthi_stack_lo 0 0 STACK 2 stack C:\Users\hiroy\AppData\Local\Temp\xcAsbn8.\driver_tmp_14.o
+___inthi_stack_hi 0 0 STACK 2 stack C:\Users\hiroy\AppData\Local\Temp\xcBshek.1\driver_tmp_14.o
+___inthi_stack_lo 0 0 STACK 2 stack C:\Users\hiroy\AppData\Local\Temp\xcBshek.1\driver_tmp_14.o
 _Default_ISR 18674 0 CODE 0 text25 dist/default/production\EMU8008.X.production.o
 _strcpy 18576 0 CODE 0 text6 dist/default/production\EMU8008.X.production.o
 __Lfardata 0 0 FARRAM 0 fardata dist/default/production\EMU8008.X.production.o
-isa$std 1 0 ABS 0 - C:\Users\hiroy\AppData\Local\Temp\xcAsbn8.\driver_tmp_14.o
+isa$std 1 0 ABS 0 - C:\Users\hiroy\AppData\Local\Temp\xcBshek.1\driver_tmp_14.o
 ___fldiv@new_exp 52A 0 COMRAM 1 cstackCOMRAMhh dist/default/production\EMU8008.X.production.o
 __p_bank_rom_text 14000 0 CODE 0 _bank_rom_text dist/default/production\EMU8008.X.production.o
-stackhi 0 0 ABS 0 - C:\Users\hiroy\AppData\Local\Temp\xcAsbn8.\driver_tmp_14.o
-stacklo 0 0 ABS 0 - C:\Users\hiroy\AppData\Local\Temp\xcAsbn8.\driver_tmp_14.o
+stackhi 0 0 ABS 0 - C:\Users\hiroy\AppData\Local\Temp\xcBshek.1\driver_tmp_14.o
+stacklo 0 0 ABS 0 - C:\Users\hiroy\AppData\Local\Temp\xcBshek.1\driver_tmp_14.o
 __Lirdata 0 0 CODE 0 irdata dist/default/production\EMU8008.X.production.o
 __Livt0x8 8 0 CODE 0 ivt0x8 dist/default/production\EMU8008.X.production.o
 ___fladd@grs 51A 0 COMRAM 1 cstackCOMRAMhh dist/default/production\EMU8008.X.production.o
@@ -1869,7 +1869,7 @@ __Ltext26 0 0 ABS 0 text26 dist/default/production\EMU8008.X.production.o
 __Ltext27 0 0 ABS 0 text27 dist/default/production\EMU8008.X.production.o
 __Ltext28 0 0 ABS 0 text28 dist/default/production\EMU8008.X.production.o
 _SPI2STATUSbits 94 0 ABS 0 - dist/default/production\EMU8008.X.production.o
-__ramtop 2600 0 RAM 0 ramtop C:\Users\hiroy\AppData\Local\Temp\xcAsbn8.\driver_tmp_14.o
+__ramtop 2600 0 RAM 0 ramtop C:\Users\hiroy\AppData\Local\Temp\xcBshek.1\driver_tmp_14.o
 putch@c 50B 0 COMRAM 1 cstackCOMRAMhh dist/default/production\EMU8008.X.production.o
 _vfprintf 184B6 0 CODE 0 text2 dist/default/production\EMU8008.X.production.o
 __Lpowerup 0 0 CODE 0 powerup dist/default/production\EMU8008.X.production.o
@@ -1886,12 +1886,12 @@ __psmallconst 2600 0 SMALLCONST 0 smallconst dist/default/production\EMU8008.X.p
 _bank_rom 14000 0 CODE 0 _bank_rom_text dist/default/production\EMU8008.X.production.o
 __Lreset_vec 0 0 CODE 0 reset_vec dist/default/production\EMU8008.X.production.o
 __end_of_vfprintf 184FA 0 CODE 0 text2 dist/default/production\EMU8008.X.production.o
-___heap_hi 0 0 ABS 0 - C:\Users\hiroy\AppData\Local\Temp\xcAsbn8.\driver_tmp_14.o
-___heap_lo 0 0 ABS 0 - C:\Users\hiroy\AppData\Local\Temp\xcAsbn8.\driver_tmp_14.o
+___heap_hi 0 0 ABS 0 - C:\Users\hiroy\AppData\Local\Temp\xcBshek.1\driver_tmp_14.o
+___heap_lo 0 0 ABS 0 - C:\Users\hiroy\AppData\Local\Temp\xcBshek.1\driver_tmp_14.o
 ___fltol@f1 50B 0 COMRAM 1 cstackCOMRAMhh dist/default/production\EMU8008.X.production.o
 ___param_bank 0 0 ABS 0 - dist/default/production\EMU8008.X.production.o
-___intlo_stack_hi 0 0 STACK 2 stack C:\Users\hiroy\AppData\Local\Temp\xcAsbn8.\driver_tmp_14.o
-___intlo_stack_lo 0 0 STACK 2 stack C:\Users\hiroy\AppData\Local\Temp\xcAsbn8.\driver_tmp_14.o
+___intlo_stack_hi 0 0 STACK 2 stack C:\Users\hiroy\AppData\Local\Temp\xcBshek.1\driver_tmp_14.o
+___intlo_stack_lo 0 0 STACK 2 stack C:\Users\hiroy\AppData\Local\Temp\xcBshek.1\driver_tmp_14.o
 __Hbigdata 0 0 BIGRAM 1 bigdata dist/default/production\EMU8008.X.production.o
 strcpy@src 50D 0 COMRAM 1 cstackCOMRAMhh dist/default/production\EMU8008.X.production.o
 __end_of__initialization 18622 0 CODE 0 cinit dist/default/production\EMU8008.X.production.o

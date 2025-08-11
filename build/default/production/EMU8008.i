@@ -30943,6 +30943,15 @@ void main(void) {
  RA6PPS = 0x26;
  U3ON = 1;
 
+
+ printf("\r\nEMU8008 clock speed %3.0fkHz\r\n",(float)64000/(PWM1PR+1));
+ printf("PWM1 -> RB5 -> PHI1 width %3.0f nsec\r\n",(float)PWM1S1P1*15.625);
+ printf("PWM2 -> RB4 -> PHI2 width %3.0f nsec\r\n\r\n",(float)PWM2S1P1*15.625);
+
+ for(i = 0; i < 0x1F00; i++) {
+  ram[i] = rom[i];
+ }
+
  SPI2CON0 = 0x03;
  SPI2CON1 = 0xc4;
  SPI2CON2 = 0x02;
@@ -30972,15 +30981,6 @@ void main(void) {
  led_7seg_write(0x06,0xff);
  led_7seg_write(0x07,0xff);
  led_7seg_write(0x08,0xff);
-
-
- printf("\r\nEMU8008 clock speed %3.0fkHz\r\n",(float)64000/(PWM1PR+1));
- printf("PWM1 -> RB5 -> PHI1 width %3.0f nsec\r\n",(float)PWM1S1P1*15.625);
- printf("PWM2 -> RB4 -> PHI2 width %3.0f nsec\r\n\r\n",(float)PWM2S1P1*15.625);
-
- for(i = 0; i < 0x1F00; i++) {
-  ram[i] = rom[i];
- }
 
  ram[0x40] = 0x55;
 

@@ -81,21 +81,21 @@
 [v _SPI2TCNT SPI2TCNT `VEus  1 e 2 @143 ]
 "4368
 [v _SPI2CON0 SPI2CON0 `VEuc  1 e 1 @145 ]
-[s S176 . 1 `uc 1 BMODE 1 0 :1:0 
+[s S181 . 1 `uc 1 BMODE 1 0 :1:0 
 `uc 1 MST 1 0 :1:1 
 `uc 1 LSBF 1 0 :1:2 
 `uc 1 . 1 0 :4:3 
 `uc 1 EN 1 0 :1:7 
 ]
 "4389
-[s S182 . 1 `uc 1 SPI2BMODE 1 0 :1:0 
+[s S187 . 1 `uc 1 SPI2BMODE 1 0 :1:0 
 `uc 1 SPI2MST 1 0 :1:1 
 `uc 1 SPI2LSBF 1 0 :1:2 
 `uc 1 . 1 0 :4:3 
 `uc 1 SPI2SPIEN 1 0 :1:7 
 ]
-[u S188 . 1 `S176 1 . 1 0 `S182 1 . 1 0 ]
-[v _SPI2CON0bits SPI2CON0bits `VES188  1 e 1 @145 ]
+[u S193 . 1 `S181 1 . 1 0 `S187 1 . 1 0 ]
+[v _SPI2CON0bits SPI2CON0bits `VES193  1 e 1 @145 ]
 "4434
 [v _SPI2CON1 SPI2CON1 `VEuc  1 e 1 @146 ]
 "4536

@@ -480,6 +480,15 @@ void main(void) {
 	TRISA6		= 0;		// TX set as output
 	RA6PPS		= 0x26;		// RA6->UART3:TX3;
 	U3ON		= 1;		// Serial port enable
+
+
+	printf("\r\nEMU8008 clock speed %3.0fkHz\r\n",(float)64000/(PWM1PR+1));
+	printf("PWM1 -> RB5 -> PHI1 width %3.0f nsec\r\n",(float)PWM1S1P1*15.625);
+	printf("PWM2 -> RB4 -> PHI2 width %3.0f nsec\r\n\r\n",(float)PWM2S1P1*15.625);
+
+	for(i = 0; i < RAM_SIZE; i++) {
+		ram[i] = rom[i];
+	}
 //======= SPI setup =======================================
 	SPI2CON0	= 0x03;		// EN=0, LSBF=0; MST=1, BMODE=1
 	SPI2CON1	= 0xc4;		// SMP=1, CKE=1, CKP=0, FST=0, SSP=1, SDOP=0, SDIO=0
@@ -511,15 +520,6 @@ void main(void) {
 	led_7seg_write(0x07,0xff);
 	led_7seg_write(0x08,0xff);
 //==============================================
-
-	printf("\r\nEMU8008 clock speed %3.0fkHz\r\n",(float)64000/(PWM1PR+1));
-	printf("PWM1 -> RB5 -> PHI1 width %3.0f nsec\r\n",(float)PWM1S1P1*15.625);
-	printf("PWM2 -> RB4 -> PHI2 width %3.0f nsec\r\n\r\n",(float)PWM2S1P1*15.625);
-
-	for(i = 0; i < RAM_SIZE; i++) {
-		ram[i] = rom[i];
-	}
-
 	ram[0x40] = 0x55;		// identify 8008 real chip and emulator(it's 0xaa)
 
     // Unlock IVT
