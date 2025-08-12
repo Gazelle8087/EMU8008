@@ -3993,9 +3993,6 @@ DIMERR:    MVI	A, 304o               ;On error condition, load ASCII code for le
            JMP	ERROR              ;Go display the Dirnension Error (DE) message.
 
 ;------------------------------------------------------------------------
-
-;;; THE ABOVE MUST CONCLUDE BEFORE BY PAGE 1 STARTS
-
 ;;; Page one has many constants and variables.
 
 ;		ORG	PG01 * 0100h	;001#000
